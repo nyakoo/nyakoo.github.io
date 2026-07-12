@@ -1,0 +1,50 @@
+集会,しゅうかい,0,集會,meeting, assembly
+集金,しゅうきん,0,收錢,money collection
+集合,しゅうごう,0,集合,gathering, assembly
+習字,しゅうじ,0,習字、書法,penmanship
+修繕,しゅうぜん,0,修繕、修理,repair, mending
+じゅうたん,じゅうたん,1,地毯,carpet
+終点,しゅうてん,0,終點,terminus, last stop (e.g train)
+重点,じゅうてん,0,重點,important point, lay stress on, emphasis
+リズム,りずむ,1,節奏,rhythm
+リットル,りっとる,1,公升,liter
+リボン,りぼん,2,緞帶,ribbon
+略す,りゃくす,2,省略、簡寫,to abbreviate
+～流,～りゅう,1,…流、…派,fashion, manner, way
+流域,りゅういき,0,流域,(river) basin
+両～,りょう～,1,兩…,both ~
+～料,～りょう,1,…費、…料,fare, charge
+～領,～りょう,1,…領、…土,territory
+両側,りょうがわ,0,兩側,both sides
+漁師,りょうし,1,漁夫,fisherman
+領事,りょうじ,1,領事,consul
+領収,りょうしゅう,0,簽收、收據,receipt, voucher
+～力,～りょく,1,…力,power of ~
+臨時,りんじ,0,臨時,temporary, special, extraordinary
+留守番,るすばん,0,看家,care-taking, caretaker, house-watching
+零点,れいてん,0,零分,zero, no marks
+冷凍,れいとう,0,冷凍,freezing, cold storage, refrigeration
+レインコート,れいんこうと,3,雨衣,raincoat
+レクリェーション,れくりぇいしょん,4,康樂、消遣活動,recreation
+レジャー,れじゃあ,1,休閒、娛樂,leisure
+列島,れっとう,0,列島,chain of islands
+リポート,りぽうと,2,報告,report, paper
+煉瓦,れんが,1,紅磚,brick
+連合,れんごう,0,聯合,union, alliance
+レンズ,れんず,1,鏡頭、透鏡,lens
+ろうそく,ろうそく,3,蠟燭,candle
+ローマ字,ろうまじ,3,羅馬字,romanization, Roman letters (alphabet)
+録音,ろくおん,0,錄音,(audio) recording
+ロッカー,ろっかあ,1,置物櫃,locker
+ロビー,ろびい,1,大廳,lobby
+～論,～ろん,1,…論,theory
+論ずる,ろんずる,3,論述、闡述,to argue, to discuss
+和～,わ～,1,和…（日式）,Japanese style
+～羽,～わ,1,…隻（計算鳥類、兔子單位）,counter for rabbits; birds
+和英,わえい,0,和英（日、英）,Japanese-English
+我～,わが～,1,我們…,our ~
+若々しい,わかわかしい,4,朝氣蓬勃的,youthful, young
+詫びる,わびる,2,道歉,to apologize
+和服,わふく,0,和服,Japanese clothes
+割合に,わりあいに,0,意外地、比較地,relatively, comparatively
+割算,わりざん,0,除法,division (math)

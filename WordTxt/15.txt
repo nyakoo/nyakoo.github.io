@@ -1,0 +1,50 @@
+下品,げひん,3,下流、卑劣,vulgar, indecent, coarse
+煙い,けむい,2,煙霧瀰漫的,smoky
+険しい,けわしい,3,險峻的、嚴厲的,steep, rugged; severe
+～圏,～けん,1,…圈,bloc, sphere, area
+現～,げん～,1,現…,present, incumbent
+見学,けんがく,0,參觀、見習,tour, study by observation
+謙虚,けんきょ,1,謙虛,modesty, humble
+原稿,げんこう,0,原稿,manuscript, copy
+原産,げんさん,0,原產,place of origin
+原始,げんし,1,原始,origin, primeval
+研修,けんしゅう,0,研修、培訓,training
+厳重,げんじゅう,0,嚴格、嚴密,strict, severe, firm
+謙遜,けんそん,0,謙遜,humble, humility, modesty
+県庁,けんちょう,0,縣政府,prefectural office
+限度,げんど,1,限度,limit, bounds
+現に,げんに,1,事實上、親眼,actually, really
+顕微鏡,けんびきょう,0,顯微鏡,microscope
+懸命,けんめい,0,拚命、竭盡全力,eagerness, strenuous
+原理,げんり,0,原理,principle, theory, fundamental truth
+原料,げんりょう,0,原料,raw materials
+小～,こ～,1,小…,small ~
+恋しい,こいしい,3,思念的、懷念的,dear, beloved; to miss
+高～,こう～,1,高…,high (level) ~
+～校,～こう,1,…校,counter for school
+～港,～こう,1,…港,~ port
+～号,～ごう,1,…號,counter for magazine; the name of ship
+工員,こういん,0,工廠作業員,factory worker
+強引,ごういん,0,強行、強制,forcible, assertive, pushy
+公害,こうがい,0,公害,public nuisance, pollution
+高級,こうきゅう,0,高級,high class; first-rate
+公共,こうきょう,0,公共,public, community, communal
+工芸,こうげい,0,工藝,industrial arts
+孝行,こうこう,3,孝順,filial piety
+交差,こうさ,0,交叉,cross
+講師,こうし,1,講師,lecturer
+工事,こうじ,1,工程,construction work
+公式,こうしき,0,公式,formula, formality, official
+口実,こうじつ,0,藉口,excuse
+こうして,こうして,0,這樣、如此,like this, with this
+公衆,こうしゅう,0,公眾,the public
+香水,こうすい,0,香水,perfume
+功績,こうせき,0,功績,achievements, merit
+光線,こうせん,0,光線,beam, light ray
+高層,こうそう,0,高層,tall, high rise
+構造,こうぞう,0,構造,structure, construction
+交替,こうたい,0,輪換、更替,change, relief, alteration
+耕地,こうち,0,耕地,arable land
+交通機関,こうつうきかん,5,交通工具,transportation facilities
+校庭,こうてい,0,校園、操場,school yard
+肯定,こうてい,0,肯定,positive, affirmation

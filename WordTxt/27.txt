@@ -1,0 +1,50 @@
+縫う,ぬう,1,縫,to sew
+ねじ,ねじ,1,螺絲,(a) screw
+捩る,ねじる,2,扭、轉,to twist
+ネックレス,ねっくれす,1,項鍊,necklace
+熱する,ねっする,3,加熱、發熱,to heat
+寝間着,ねまき,0,睡衣,sleep-wear, pajamas
+寝巻,ねまき,0,睡衣,sleep-wear, pajamas
+狙い,ねらい,3,目標,aim
+狙う,ねらう,2,瞄準,to aim at
+～年生,～ねんせい,3,…年級,counter for school year
+年度,ねんど,1,年度,year, fiscal year
+農産物,のうさんぶつ,3,農產品,agricultural produce
+農村,のうそん,0,農村,agricultural community
+濃度,のうど,1,濃度,concentration, density
+農薬,のうやく,0,農藥,agricultural chemicals
+能率,のうりつ,0,效率,efficiency
+のこぎり,のこぎり,0,鋸子,saw
+残らず,のこらず,2,一個不剩,completely, without exception
+上り,のぼり,0,上行、往上,up-train (going to Tokyo), ascent
+糊,のり,1,膠水、漿糊,glue, paste, starch
+乗換,のりかえ,0,換乘,a transfer (e.g., trains, buses)
+乗り越し,のりこし,0,坐過站,riding past (one's station)
+鈍い,のろい,2,遲鈍的、鈍的,dull (e.g., a knife), slow (opposite of fast), stupid
+のろのろ,のろのろ,1,慢吞吞地,slowly, sluggishly
+呑気,のんき,1,悠閒、不拘小節,carefree, optimistic, careless
+はい,はい,1,是,yes
+灰色,はいいろ,0,灰色,grey, ashen
+俳句,はいく,0,俳句,haiku poetry
+売店,ばいてん,0,販賣部,shop, stand
+バイバイ,ばいばい,1,再見,bye bye
+売買,ばいばい,1,買賣,trade, buying and selling
+這う,はう,1,爬行,to creep, to crawl
+剥す,はがす,2,剝下,to tear off, to peel off, to rip off
+ばからしい,ばからしい,4,愚蠢的、荒謬的,absurd
+秤,はかり,2,秤,scales, weighing machine
+吐き気,はきけ,3,噁心、想吐,nausea, sickness in the stomach
+はきはき,はきはき,1,乾脆、爽快,clearly
+～泊,～はく,1,…晚（住宿單位）,counter for staying (e.g., 2 nights)
+歯車,はぐるま,2,齒輪,gear, cog-wheel
+バケツ,ばけつ,0,水桶,bucket, pail
+挟まる,はさまる,3,夾在中間,to get between, to be caught in
+挟む,はさむ,2,夾、插,to pinch; to hold between; to insert
+梯子,はしご,0,梯子,ladder, stairs
+始めに,はじめに,2,首先、開始時,to begin with, first of all
+初めに,はじめに,2,起初、第一次,to begin with, first of all
+はじめまして,はじめまして,4,初次見面,How do you do, I am glad to meet you
+斜,はす,2,斜,diagonal
+パターン,ぱたあん,2,模式、圖案,pattern
+肌着,はだぎ,0,內衣、貼身衣物,underwear
+果して,はたして,2,果然、果真,as was expected, really

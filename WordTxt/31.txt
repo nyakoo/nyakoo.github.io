@@ -1,0 +1,50 @@
+分解,ぶんかい,0,分解,analysis, disassembly
+文芸,ぶんげい,0,文藝,literature, art and literature
+文献,ぶんけん,0,文獻,literature, books (reference)
+噴水,ふんすい,0,噴水池,water fountain
+分数,ぶんすう,3,分數,fraction (in math)
+文体,ぶんたい,0,文體,literary style
+分布,ぶんぷ,0,分布,distribution
+文房具,ぶんぼうぐ,3,文具,stationery
+文脈,ぶんみゃく,0,上下文、語境,context
+分量,ぶんりょう,3,分量,amount, quantity
+分類,ぶんるい,0,分類,classification
+閉会,へいかい,0,閉會,closure
+平気,へいき,0,不在乎、冷靜,coolness, calmness, unconcern
+並行,へいこう,0,並行,(going) side by side, concurrent, at the same time
+平日,へいじつ,0,平日、工作日,weekday
+兵隊,へいたい,0,士兵,soldier
+平凡,へいぼん,0,平凡,common, ordinary
+平野,へいや,1,平原,plain, open field
+凹む,へこむ,0,凹陷、屈服,to be dented, to be indented
+へそ,へそ,0,肚臍,navel, belly-button
+隔てる,へだてる,3,隔開、間隔,to be shut out
+別荘,べっそう,3,別墅,villa; vacation home; summer cottage
+別々,べつべつ,0,分別、各自,separately, individually
+ベテラン,べてらん,0,老手、資深人士,veteran
+ヘリコプター,へりこぷたあ,3,直升機,helicopter
+～遍,～へん,1,…次,time
+～弁,～べん,1,…腔、…辯,speech, dialect
+編集,へんしゅう,0,編輯,editing, compilation, editorial (e.g., committee)
+便所,べんじょ,3,廁所,toilet, lavatory
+ペンチ,ぺんち,1,老虎鉗,pliers (lit: pinchers)
+～歩,～ほ,1,…步,step, pace
+～ぽい,～ぽい,1,容易…、帶有…傾向,~ish
+～ほう,～ほう,1,…方（比較）,(in comparison)
+防～,ぼう～,1,防…,~ prevention
+望遠鏡,ぼうえんきょう,0,望遠鏡,telescope
+方角,ほうがく,0,方位,direction, way
+箒,ほうき,1,掃帚,broom
+方言,ほうげん,3,方言,dialect
+坊さん,ぼうさん,1,和尚,Buddhist priest, monk
+防止,ぼうし,0,防止,prevention, check
+方針,ほうしん,0,方針,objective, plan, policy
+法則,ほうそく,0,法則,law, rule
+包帯,ほうたい,0,繃帶,bandage
+膨大,ぼうだい,0,龐大,enormous, extensive
+包丁,ほうちょう,0,菜刀,kitchen knife, carving knife
+方程式,ほうていしき,3,方程式,equation
+防犯,ぼうはん,0,防犯,prevention of crime
+方面,ほうめん,3,方面,direction; area
+坊や,ぼうや,1,小男孩,boy
+放る,ほうる,1,扔、拋,to let go

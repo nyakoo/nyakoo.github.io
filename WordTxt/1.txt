@@ -1,0 +1,51 @@
+就任,しゅうにん,0,就任、就職,inauguration, assumption of office
+周辺,しゅうへん,0,周圍、周邊,circumference, peripheral
+重役,じゅうやく,0,董事、高管,director, high executive
+終了,しゅうりょう,0,結束、終止,end, close, termination
+重量,じゅうりょう,0,重量,heavyweight
+重力,じゅうりょく,1,重力,gravity
+熟語,じゅくご,0,熟語、成語,idiom, kanji compound
+祝日,しゅくじつ,0,節日、國定假日,national holiday
+縮小,しゅくしょう,0,縮小,reduction, curtailment
+受験,じゅけん,0,應試、參加考試,taking an examination
+主語,しゅご,1,主語,(gram) subject
+主人,しゅじん,1,丈夫、主人,(one's own) husband
+出勤,しゅっきん,0,出勤、上班,going to work, at work
+述語,じゅつご,0,謂語,predicate
+出張,しゅっちょう,0,出差,official tour, business trip
+寿命,じゅみょう,0,壽命,life span
+主役,しゅやく,0,主角、主演,leading part
+受話器,じゅわき,2,聽筒、受話器,(telephone) receiver
+循環,じゅんかん,0,循環,circulation, rotation, cycle
+巡査,じゅんさ,0,巡警,policeman
+順々,じゅんじゅん,3,按順序、依次,in order, in turn
+順序,じゅんじょ,1,順序,order, sequence, procedure
+純情,じゅんじょう,0,純情,pure heart
+純粋,じゅんすい,0,純粹,pure, genuine, unmixed
+初～,しょ～,1,初次、第…個,first ~
+諸～,しょ～,1,諸…、各種,various ~
+～所,～しょ,0,…所、…場所,place
+～所,～じょ,0,…所、…處,place
+女～,じょ～,1,女…,things done by women
+～女,～じょ,1,…女,count for sisters
+省～,しょう～,1,省…,economizing ~
+～省,～しょう,1,…省,kind of ministry
+～商,～しょう,1,…商,merchant, business
+～勝,～しょう,1,…勝,count for victory
+～条,～じょう,1,…條,counter for article
+～場,～じょう,1,…場,kind of field, ground
+～畳,～じょう,1,…疊（榻榻米單位）,count for tatami, mat
+消化,しょうか,0,消化,digestion
+小学生,しょうがくせい,3,小學生,elementary school pupil
+しょうがない,しょうがない,5,沒辦法、無可奈何,It is not worth ~
+将棋,しょうぎ,0,將棋,Japanese chess
+蒸気,じょうき,1,蒸汽,steam, vapor
+定規,じょうぎ,3,尺、定規,(measuring) ruler
+上級,じょうきゅう,0,上級、高級,advanced level, high grade, senior
+商業,しょうぎょう,1,商業,commerce, trade, business
+消極的,しょうきょくてき,0,消極的,passive
+賞金,しょうきん,0,獎金,prize, monetary award
+上下,じょうげ,1,上下,high and low, up and down
+障子,しょうじ,0,障子、紙木窗門,paper sliding door
+商社,しょうしゃ,1,商社,trading company
+

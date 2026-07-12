@@ -1,0 +1,50 @@
+砕く,くだく,2,弄碎、打碎,to break, to smash
+砕ける,くだける,3,破碎、打碎,to break, to be broken
+くたびれる,くたびれる,4,疲勞、精疲力竭,to get tired, to wear out
+くだらない,くだらない,4,無聊的、沒價值的,good-for-nothing, stupid, worthless
+～口,～くち,0,…口,~ opening; ~ entrance, ~ exit
+唇,くちびる,0,嘴唇,lip
+口紅,くちべに,3,口紅,lipstick
+くっつく,くっつく,3,黏住、緊貼,to adhere to, to keep close to
+くっつける,くっつける,4,使黏住、貼上,to attach
+くどい,くどい,2,囉唆的、油膩的,verbose, importunate, heavy (taste)
+句読点,くとうてん,2,句讀點、標點符號,punctuation marks
+配る,くばる,2,分發、分配,to distribute, to deliver
+工夫,くふう,0,琢磨、設法,device, artifice, ingenuity
+区分,くぶん,0,區分,division, section, classification
+組合せ,くみあわせ,0,組合,combination
+組み立てる,くみたてる,4,組裝、裝配,to assemble, to set up, to construct
+悔やむ,くやむ,2,後悔、哀悼,to regret, to mourn
+クリーニング,くりいにんぐ,2,洗衣、乾洗,cleaning, dry cleaning, laundry service
+くるむ,くるむ,2,被打包起来,to be enveloped by, to wrap up
+くれぐれも,くれぐれも,3,反覆、周到地,repeatedly, sincerely, earnestly
+～家,～け,1,…家,~'s family, the house of ~
+～形,～けい,1,…形、…型,shape of ~
+～系,～けい,1,…系,~ system, ~ lineage, ~ group
+稽古,けいこ,1,練習、排練,practice, training, study
+敬語,けいご,0,敬語,honorific language (lit., respect language)
+蛍光灯,けいこうとう,0,日光燈、螢光燈,fluorescent lamp
+形式,けいしき,0,形式,form, formality, format
+継続,けいぞく,0,繼續,continuation
+毛糸,けいと,0,毛線,knitting wool
+経度,けいど,1,經度,longitude
+系統,けいとう,0,系統、體系,system, genealogy
+芸能,げいのう,0,演藝、曲藝,public entertainment, performing arts
+競馬,けいば,0,賽馬,horse racing
+警備,けいび,1,警備、保安,defense, guard, policing, security
+形容詞,けいようし,3,形容詞,adjective
+形容動詞,けいようどうし,4,形容動詞,adjectival noun, quasi-adjective
+外科,げか,0,外科,surgical department
+毛皮,けがわ,0,毛皮,fur, skin, pelt
+激増,げきぞう,0,激增,sudden increase
+下車,げしゃ,0,下車,alighting, getting off
+下旬,げじゅん,0,下旬,month (last third of)
+下水,げすい,0,下水道,drainage, sewage, ditch, gutter, sewerage
+削る,けずる,0,削減、刨、刮,to cut down little by little, to take a percentage
+桁,けた,0,位數、橫樑,column, beam, digit
+下駄,げた,0,木屐,(Japanese footwear), wooden clogs
+血圧,けつあつ,0,血壓,blood pressure
+月給,げっきゅう,0,月薪,monthly salary
+傑作,けっさく,0,傑作,masterpiece, best work
+月末,げつまつ,0,月底,end of the month
+気配,けはい,0,氣息、跡象,indication, sign, hint

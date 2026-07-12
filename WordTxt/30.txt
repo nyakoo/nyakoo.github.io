@@ -1,0 +1,50 @@
+不運,ふうん,1,不幸、倒霉,unlucky, misfortune, bad luck
+不規則,ふきそく,2,不規則,irregularity, unsteadiness
+普及,ふきゅう,0,普及,diffusion, spread
+付近,ふきん,0,附近,neighborhood, vicinity
+副～,ふく～,1,副…,vice ~
+副詞,ふくし,0,副詞,adverb
+複写,ふくしゃ,0,複印,copy, duplicate
+複数,ふくすう,3,複數,plural, multiple
+膨らます,ふくらます,4,充氣、使膨脹,to swell, to expand, to inflate
+膨らむ,ふくらむ,0,膨脹、鼓起,to expand, to swell (out), to become inflated
+不潔,ふけつ,0,不潔、髒,unclean, dirty
+更ける,ふける,2,深、更（指夜深）,to get late, to wear on
+符号,ふごう,0,符號,sign, mark, symbol
+夫妻,ふさい,1,夫妻,man and wife, married couple
+塞がる,ふさがる,0,堵塞、閉塞,to be plugged up, to be shut up
+塞ぐ,ふさぐ,2,堵塞、遮蓋,to stuff, to close up, to block (up)
+ふざける,ふざける,3,開玩笑、胡鬧,to romp, to gambol, to frolic
+無沙汰,ぶさた,0,久違、疏於聯絡,neglecting to stay in contact
+武士,ぶし,1,武士,warrior, samurai
+部首,ぶしゅ,1,部首,radical (of a kanji character)
+襖,ふすま,0,襖（日式拉門紙）,sliding screen
+附属,ふぞく,0,附屬,attached, belonging, affiliated
+蓋,ふた,2,蓋子,cover, lid, cap
+物騒,ぶっそう,0,騷動、危險,dangerous, disturbed, insecure
+ぶつぶつ,ぶつぶつ,1,嘀咕、碎碎念、顆粒狀,grumbling, complaining in a small voice
+船便,ふなびん,0,船運、海運,surface mail (ship)
+部品,ぶひん,0,零件,parts, accessories
+吹雪,ふぶき,2,暴風雪,snow storm
+父母,ふぼ,1,父母,father and mother, parents
+踏切,ふみきり,0,鐵路平交道,railway crossing, level crossing, starting line, scratch, crossover
+麓,ふもと,3,山腳,the foot, the bottom, the base (of a mountain)
+フライパン,ふらいぱん,0,平底鍋,fry pan, frying pan
+ブラウス,ぶらうす,2,女裝襯衫,blouse
+ぶらさげる,ぶらさげる,0,懸掛、吊著,to hang, to suspend, to swing
+ブラシ,ぶらし,1,刷子,brush
+プラットホーム,ぷらっとほうむ,4,月台,platform
+～振り,～ぶり,0,…的樣子、隔了…（時間）,after an interval of ~
+フリー,ふりい,2,免費、自由,free
+振り仮名,ふりがな,3,振假名（漢字上標註的假名）,pronunciation key
+振り向く,ふりむく,3,回頭、轉向,to turn one's face, to turn around
+プリント,ぷりんと,0,講義、影印本,print, handout
+古～,ふる～,1,老…、舊…,old ~
+故郷,ふるさと,1,故鄉,home town, birthplace
+古里,ふるさと,2,故鄉、老家,home town, birthplace
+振舞う,ふるまう,3,招待、舉止,to behave, to conduct
+ブローチ,ぶろうち,2,胸針,brooch
+プログラム,ぷろぐらむ,2,程式、計畫,program
+風呂敷,ふろしき,0,風呂敷（日式包袱布）,wrapping cloth, cloth wrapper
+ふわふわ,ふわふわ,1,輕飄飄、鬆軟,light, soft
+噴火,ふんか,0,噴發,eruption

@@ -1,0 +1,50 @@
+妨げる,さまたげる,4,妨礙、阻撓,to disturb, to prevent
+さようなら,さようなら,4,再見,good-bye
+サラリーマン,さらりいまん,3,上班族,salaryman; company employee
+騒がしい,さわがしい,4,吵鬧的、騷動的,noisy
+さわやか,さわやか,2,清爽的、爽朗的,fresh, refreshing
+～山,～さん,1,…山,the name of mountain
+～産,～さん,1,…產,made in ~
+三角,さんかく,0,三角,triangle, triangular
+算数,さんすう,3,算術,arithmetic
+産地,さんち,1,產地,producing area
+サンプル,さんぷる,1,樣品、樣本,sample
+山林,さんりん,0,山林,mountain forest
+～史,～し,1,…史,history of ~
+～紙,～し,1,…紙,newspaper, type of paper
+～寺,～じ,1,…寺,the name of temple
+仕上がる,しあがる,3,完成、做好,to be finished
+明明後日,しあさって,3,大後天,two days after tomorrow
+シーズン,しいずん,1,季節、賽季,season (sporting)
+シーツ,しいつ,1,被單、床單,sheet
+寺院,じいん,1,寺院、廟宇,temple
+しいんと (する),しいんと,2,靜悄悄、鴉雀無聲,silent (as the grave), (deathly) quiet
+自衛,じえい,0,自衛,self-defense
+塩辛い,しおからい,4,鹹的,salty (taste)
+司会,しかい,0,主持、司儀,host, chairperson
+四角い,しかくい,3,四角形的,square
+仕方がない,しかたがない,5,沒辦法,it can't be helped, it's inevitable
+～時間目,～じかんめ,3,第…節課,~th hour, ~th period
+時間割,じかんわり,0,課表、時間表,timetable, schedule
+式,しき,1,…式（日本式）,custom,
+敷地,しきち,0,佔地、建築用地,site
+敷く,しく,1,鋪、墊,to spread out, to lay out
+茂る,しげる,2,茂盛,to grow thick
+持参,じさん,0,自備、攜帶,bringing, taking, carrying
+磁石,じしゃく,1,磁鐵,magnet
+四捨五入,ししゃごにゅう,4,四捨五入,rounding up (fractions)
+始終,しじゅう,1,始終、經常,continuously, always, constantly
+自習,じしゅう,0,自習,self-study
+静まる,しずまる,3,平靜下來、安靜下來,to quieten down, to calm down
+姿勢,しせい,0,姿勢、姿態,attitude; posture
+自然科学,しぜんかがく,4,自然科學,natural science
+時速,じそく,1,時速,speed (per hour)
+子孫,しそん,1,子孫,descendant, offspring
+死体,したい,0,屍體,corpse
+下書き,したがき,0,草稿、初稿,rough copy, draft
+自宅,じたく,0,自家、家裡,one's own home (same as 自分の家 (じぶんのいえ))
+下町,したまち,0,老街、平民區,old parts of town
+自治,じち,1,自治,self-government, autonomy
+室～,しつ～,1,室…,room
+～室,～しつ,1,…室,counter for room
+～日,～じつ,0,…日,day

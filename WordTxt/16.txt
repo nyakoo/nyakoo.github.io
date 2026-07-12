@@ -1,0 +1,50 @@
+高度,こうど,1,高度、高級的,altitude, height; advanced
+高等,こうとう,0,高等,high class, high grade
+合同,ごうどう,0,合併、共同,combination, incorporation
+高等学校,こうとうがっこう,5,高中,senior high school
+公表,こうひょう,0,公佈,official announcement, proclamation
+鉱物,こうぶつ,0,礦物,mineral
+公務,こうむ,1,公務,official business, public business
+項目,こうもく,0,項目,item
+紅葉,こうよう,0,紅葉,fall colors (of leaves)
+合理,ごうり,1,合理,rational
+交流,こうりゅう,0,交流,exchange; alternating current
+合流,ごうりゅう,0,匯合,confluence, merge, join
+効力,こうりょく,1,效力,effect, efficacy
+コース,こうす,1,路線、課程,course
+コーラス,こうらす,1,合唱、合唱團,chorus
+焦がす,こがす,2,燒焦、弄焦,to burn, to scorch
+～国,～こく,1,…國,nation of ~
+国王,こくおう,0,國王,king
+国立,こくりつ,0,國立,national
+ご苦労様,ごくろうさま,3,辛苦了,Thank you for your had work
+焦げる,こげる,2,焦、糊,to burn, to be burned
+凍える,こごえる,0,凍僵,to freeze, to be chilled, to be frozen
+心当たり,こころあたり,0,線索、頭緒,having some knowledge of, happening to know
+心得る,こころえる,4,領會、懂得,to understand, to have thorough knowledge
+腰掛け,こしかけ,0,凳子、臨時職位,seat, bench
+腰掛ける,こしかける,4,坐下,to sit (down)
+五十音,ごじゅうおん,3,五十音,the Japanese syllabary
+こしらえる,こしらえる,4,做、製造,to make, to manufacture
+擦る,こする,1,摩擦、揉搓,to rub, to chafe, to file, to frost (glass), to strike (match)
+個体,こたい,0,固體,an individual
+ごちそうさま,ごちそうさま,4,多謝款待,Thank you for the meal
+こちらこそ,こちらこそ,4,彼此彼此、哪裡的話,it is I who should say so
+小遣い,こづかい,3,零用錢,pocket money, allowance
+コック,こっく,1,廚師、活栓,cook; tap, cock
+こっそり,こっそり,3,悄悄地,stealthily, secretly
+古典,こてん,0,古典,classics, classic
+～毎,～ごと,1,每…,every ~, each ~
+〜 (まる) ごと,ごと,1,整個、全部,whole ~, all of ~
+言付ける,ことづける,4,託付、傳話,to leave a message
+言葉遣い,ことばづかい,4,措辭、說法,speech, expression, wording
+こないだ,こないだ,0,前幾天,the other day, lately, recently
+御無沙汰,ごぶさた,0,久違、久未聯絡,not writing or contacting for a while
+ゴム,ごむ,1,橡膠,gum, rubber
+御免,ごめん,0,抱歉、許可,declining (something); pardon, sorry
+ごめんください,ごめんください,6,有人在嗎？（登門拜訪）,May I come in, Is anyone here
+小指,こゆび,0,小指,little finger
+堪える,こらえる,3,忍受、耐住,to bear, to endure, to put up with
+娯楽,ごらく,0,娛樂,pleasure, amusement, recreation
+御覧,ごらん,0,觀看（「見る」的尊敬語）,(hon.) look, inspection, try
+コレクション,これくしょん,0,收藏、收集,collection; correction

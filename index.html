@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>日语助手-首页</title>
+    
+    <!-- 💗 核心注入：纯代码、透明背景的粉色爱心标签页图标 -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M12 4.419C12.433 3.473 13.9 1 18.5 1 23.5 1 26 5.344 26 8.5c0 6-7.5 12-14 17.5-6.5-5.5-14-11.5-14-17.5C-2 5.344.5 1 5.5 1c4.6 0 6.067 2.473 6.5 3.419z' transform='scale(3.5) translate(3, 2)' fill='%23ff9ebb'/></svg>">
+
+    <style>
+        /* 这里是你原本的 CSS 样式... */
+    </style>
+</head>
+
+    <title>日语助手-首页</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+
+            /* 🌟 风格 1：纯代码渲染的“淡紫淡蓝相间”像素格纹背景 */
+            background-color: #d1dcff; 
+            background-image: 
+                linear-gradient(45deg, #e2d1f9 25%, transparent 25%, transparent 75%, #e2d1f9 75%, #e2d1f9),
+                linear-gradient(45deg, #e2d1f9 25%, transparent 25%, transparent 75%, #e2d1f9 75%, #e2d1f9);
+            background-size: 120px 120px;
+            background-position: 0 0, 60px 60px;
+            font-family: 'Segoe UI', "Microsoft YaHei", monospace;
+        }
+
+        /* 🌟 风格 2：高还原彩虹渐变外圈大面板（带粗黑复古边框） */
+        #nav-container {
+            width: 100%;
+            max-width: 380px;
+            /* 梦幻马卡龙彩虹渐变 */
+            background: linear-gradient(135deg, #ffccd5, #fff4d4, #d8f3dc, #bce3f7, #e2d1f9, #ffccd5);
+            /* 复古像素游戏机粗边 */
+            border: 2px solid #7d6b91; 
+            border-radius: 40px; 
+            padding: 16px;
+            box-shadow: 0 12px #7d6b91 rgba(93, 77, 112, 0.25);
+            position: relative;
+        }
+        
+        /* 🌟 风格 3：内层深紫色核心导航面板 */
+        .pixel-card-inner {
+            background-color: #ecd5fa; /* 复古淡紫内壳 */
+            border-radius: 28px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            color: #5d4d70;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 26px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px #fff;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #7d6b91;
+            font-size: 12px;
+            margin-bottom: 35px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        /* 按钮容器布局 */
+        .menu-group {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 100%;
+        }
+
+        /* 🌟 风格 4：像素游戏机风格的方块导航按钮 */
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 20px;
+            color: #4a3e56; /* 改为复古深色字 */
+            border: 2px solid #7d6b91;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none; 
+            box-shadow: 0 4px 0px #7d6b91; /* 扁平化像素立体阴影 */
+            transition: all 0.05s ease;
+            position: relative;
+            top: 0;
+        }
+
+        /* 💗 核心注入：纯 CSS 绘制的透明背景爱心图标 */
+        .nav-btn span {
+            position: relative;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+        .nav-btn span::before,
+        .nav-btn span::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 16px;
+            background-color: #ff9ebb; /* 粉色爱心充填 */
+            border-radius: 10px 10px 0 0;
+        }
+        .nav-btn span::before {
+            left: 10px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .nav-btn span::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        /* 按钮专属马卡龙配色 */
+        .btn-tango {
+            background-color: #ffccd5; /* 单词本搭配温柔粉 */
+        }
+
+        .btn-bunpo {
+            background-color: #bce3f7; /* 文法助手搭配清爽蓝 */
+        }
+
+        /* 像素风按钮按下的卡嗒反馈效果 */
+        .nav-btn:active {
+            top: 4px; /* 往下压 */
+            box-shadow: 0 0px 0px #4a3e56; /* 阴影消失 */
+        }
+        
+        /* 电脑端悬停微调 */
+        @media (min-width: 768px) {
+            .nav-btn:hover {
+                filter: brightness(1.03);
+            }
+        }
+
+        /* 底部存储卡样式的提示框 */
+        .footer-tips {
+            width: 100%;
+            margin-top: 35px;
+            background-color: #fff4d4; /* 奶黄色存储卡样式 */
+            border: 0px solid #4a3e56;
+            border-radius: 15px;
+            padding: 10px;
+            font-size: 11px;
+            color: #6a5742;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+<!-- 彩虹外圈大面板 -->
+<div id="nav-container">
+    
+    <!-- 内层紫色游戏主板 -->
+    <div class="pixel-card-inner">
+        <h1>N2基础大巩固</h1>
+        <div class="subtitle">SELECT MODULE</div>
+        
+        <!-- 按钮组 -->
+        <div class="menu-group">
+            <a href="tango.html" class="nav-btn btn-tango">
+                <span></span> 单词训练系统
+            </a>
+            
+            <a href="bunpo.html" class="nav-btn btn-bunpo">
+                <span></span> 语法训练系统
+            </a>
+        </div>
+
+        <!-- 底部标语 -->
+        <div class="footer-tips">
+            祝幸运的你通关能力考 · MEMORY CARD
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

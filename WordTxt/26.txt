@@ -1,0 +1,50 @@
+取り消す,とりけす,3,取消,to cancel
+取り出す,とりだす,3,拿出,to take out, to pick out
+採る,とる,1,採收、錄用,to adopt (measure, proposal); to pick (fruit)
+捕る,とる,1,捕捉,to take, to catch (fish)
+丼,どんぶり,0,丼飯、大碗,porcelain bowl, bowl of rice with food on top
+～内,～ない,1,…內,inside ~
+内科,ないか,0,內科,internist clinic, internal medicine
+内線,ないせん,0,內線,phone extension
+ナイロン,ないろん,1,尼龍,nylon
+長～,なが～,1,長…,long ~
+仲直り,なかなおり,3,和好,reconciliation, make peace with
+長引く,ながびく,3,拖延,to be prolonged, to drag on
+中指,なかゆび,3,中指,middle finger
+仲良し,なかよし,3,好朋友,intimate friend, bosom buddy
+慰める,なぐさめる,4,慰問、安慰,to comfort, to console
+為す,なす,1,做、成為,to accomplish, to do
+謎謎,なぞなぞ,0,謎語,riddle
+傾らか,なだらか,2,平緩、平坦,gradual, gentle
+懐かしい,なつかしい,4,懷念的,dear, desired, missed
+撫でる,なでる,2,撫摸,to brush gently, to stroke
+斜め,ななめ,2,斜、歪,diagonal, oblique
+なにしろ,なにしろ,1,無論如何、畢竟,at any rate, in any case
+何々,なになに,1,什麼、種種,such and such, What?
+何分,なにぶん,0,多少、請,by all means, please
+生意気,なまいき,0,自大、傲慢,impertinent, impudent
+並木,なみき,0,林蔭大道,roadside tree, row of trees
+倣う,ならう,2,模仿、學習,to imitate, to follow, to emulate
+南極,なんきょく,0,南極,south pole, Antarctic
+なんとなく,なんとなく,4,總覺得、不由得,somehow or other, for some reason or another
+なんとも,なんとも,1,（不）怎麼、無論如何,nothing (with neg. verb), quite, not a bit
+ナンバー,なんばあ,1,號碼,number
+南米,なんべい,0,南美,South America
+南北,なんぼく,1,南北,south and north
+匂う,におう,2,發出香味,to be fragrant, to smell
+逃がす,にがす,2,放走、漏掉,to let loose, to set free, to let escape
+憎い,にくい,2,可恨的、極好的,hateful, abominable, detestable
+～難い,～がたい,2,難以…,hard (difficult) to do ~
+憎む,にくむ,2,恨、厭惡,to hate, to detest
+憎らしい,にくらしい,4,可惡的、令人討厭的,odious, hateful
+にこにこ,にこにこ,1,微笑地,smile sweetly, smiley
+濁る,にごる,2,混濁,to become muddy, to get cloudy
+虹,にじ,0,彩虹,rainbow
+日時,にちじ,1,日期和時間,date and time
+日用品,にちようひん,0,日用品,daily necessities
+日課,にっか,0,日課,daily work, daily routine
+日程,にってい,0,日程,schedule
+鈍い,にぶい,2,遲鈍的、緩慢的,dull (e.g., a knife), thickheaded, slow (opposite of fast), stupid
+入社,にゅうしゃ,0,入職,entry to a company
+女房,にょうぼう,1,妻子、夫人,wife
+睨む,にらむ,2,瞪、注視,to glare at, to stare; to keep an eye on

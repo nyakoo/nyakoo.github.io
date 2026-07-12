@@ -1,0 +1,47 @@
+釣り合う,つりあう,3,相稱、平衡,to balance, to be in harmony, to suit
+吊る,つる,0,懸掛、吊,to hang
+吊す,つるす,0,吊、掛,to hang
+手洗い,てあらい,2,洗手間,restroom, lavatory
+低～,てい～,1,低…,low ~
+定員,ていいん,0,定員、限額,fixed number of regular personnel, capacity (e.g., of boat)
+定価,ていか,0,定價,established price
+低下,ていか,0,低下、降低,fall, decline
+定期券,ていきけん,3,定期票,commuter pass, season ticket
+定休日,ていきゅうび,3,固定休息日,regular holiday
+停止,ていし,0,停止,suspension, interruption, stoppage
+停車,ていしゃ,0,停車,stopping (e.g., train)
+出入り,でいり,1,進出,in and out, coming and going
+出入口,でいりぐち,0,出入口,exit and entrance
+手入れ,ていれ,1,保養、維修,repairs, maintenance
+テーマ,ていま,1,主題,theme, project, topic (GER: Thema)
+～滴,～てき,1,…滴,drop
+出来上がり,できあがり,0,完成（名詞）,be finished, ready
+出来上がる,できあがる,0,完成、做好（動詞）,to be finished, to be ready
+的確,てきかく,0,確切、適當,precise, accurate
+適確,てきかく,0,正確、確實,precise, accurate
+手首,てくび,1,手腕,wrist
+凸凹,でこぼこ,0,凹凸不平,unevenness, roughness, ruggedness
+手頃,てごろ,0,適中、合適,moderate, handy
+弟子,でし,0,徒弟,pupil, disciple, apprentice
+でたらめ,でたらめ,0,胡說八道、隨便,irresponsible utterance, nonsense; random
+手帳,てちょう,0,記事本,notebook
+鉄橋,てっきょう,0,鐵橋,iron bridge
+手続き,てつづき,2,手續,procedure, (legal) process, formalities
+鉄砲,てっぽう,0,獵槍、鐵炮,gun
+テニスコート,てにすこうと,4,網球場,tennis court
+手拭い,てぬぐい,3,手帕、毛巾,(hand) towel
+手前,てまえ,3,面前、手前,before, this side
+出迎え,でむかえ,0,迎接,meeting, reception
+照らす,てらす,0,照耀、對照,to shine on, to illuminate
+照る,てる,1,照耀、日照,to shine
+～点,～てん,1,…點,counter for scores
+展開,てんかい,0,展開,develop, expansion (opposite of compression)
+伝記,でんき,1,傳記,biography, life story
+電球,でんきゅう,0,燈泡,light bulb
+点数,てんすう,3,分數,marks, points, score
+伝染,でんせん,0,傳染,contagion
+電池,でんち,1,電池,battery
+点々,てんてん,0,點點、處處,here and there, little by little
+転々,てんてん,0,輾轉、多處移動,from one to another
+電柱,でんちゅう,0,電線桿,telephone pole, telegraph pole, light pole
+天皇,てんのう,0,天皇,Emperor of Japan

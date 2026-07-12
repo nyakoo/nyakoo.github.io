@@ -1,0 +1,50 @@
+着せる,きせる,0,給人穿衣服,to put on clothes
+基礎,きそ,2,基礎,foundation, basis
+基地,きち,1,基地,base
+きっかけ,きっかけ,0,契機、開端,prompt, trigger, cue
+ぎっしり,ぎっしり,3,塞得滿滿地,tightly, fully
+基盤,きばん,0,基盤、基礎,foundation, basis
+～気味,～ぎみ,0,有點…、稍微有點…（感覺）,slightly ~
+客席,きゃくせき,0,客席、觀眾席,guest seating
+客間,きゃくま,0,客廳,parlor, guest room
+ギャング,ぎゃんぐ,1,歹徒、強盜集團,gang
+キャンパス,きゃんぱす,1,校園,campus
+休業,きゅうぎょう,0,停業,closure, shutdown, holiday
+休講,きゅうこう,0,停課,lecture canceled
+給与,きゅうよ,1,薪資、給付,salary
+休養,きゅうよう,0,休養,rest, break, recreation
+清い,きよい,2,清澈的、潔淨的,clear, pure, noble
+～教,～きょう,1,…教,religion
+～行,～ぎょう,1,…行,line, row
+～業,～ぎょう,1,…業,type of business
+強化,きょうか,1,強化,strengthen, intensify, reinforce
+境界,きょうかい,0,境界、邊界,boundary
+共産～,きょうさん～,0,共產…,communist ~
+行事,ぎょうじ,1,活動、儀式,event, function
+恐縮,きょうしゅく,0,惶恐、不好意思,sorry to trouble
+教養,きょうよう,0,教養、修養,culture, education, sophistication
+行列,ぎょうれつ,0,隊伍、行列,line, procession; matrix (math)
+漁業,ぎょぎょう,1,漁業,fishing (industry)
+曲線,きょくせん,0,曲線,curve
+規律,きりつ,1,規律、紀律,order, rules, law
+斬る,きる,1,斬、殺,to behead, to murder
+～きる,～きる,0,…完、…盡（後綴）,nevertheless, to carry through
+～切れ,～きれ,2,用完、賣完（後綴）,out of ~
+気を付ける,きをつける,4,小心、注意,to be careful, to pay attention, to take care
+金魚,きんぎょ,1,金魚,goldfish
+区域,くいき,1,區域,zone, district, area
+空～,くう～,1,空…,empty ~
+偶数,ぐうすう,0,偶數,even number
+空想,くうそう,0,空想、幻想,daydream, fantasy
+空中,くうちゅう,0,空中,sky, air
+クーラー,くうらあ,1,冷氣,air conditioner
+釘,くぎ,0,釘子,nail
+区切る,くぎる,2,劃分、隔開,to punctuate, to cut off, to mark off
+櫛,くし,1,梳子,comb
+くしゃみ,くしゃみ,2,噴嚏,sneeze
+苦情,くじょう,0,投訴、抱怨,complaint, grievance, grumble
+苦心,くしん,0,費心、苦心,pain, trouble
+屑,くず,1,碎片、垃圾,waste, scrap
+崩す,くずす,2,拆毀、弄亂、找零,to destroy, to make change (money)
+薬指,くすりゆび,3,無名指,ring finger
+崩れる,くずれる,3,崩塌、瓦解,to collapse, to crumble

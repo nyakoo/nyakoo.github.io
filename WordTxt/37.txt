@@ -1,0 +1,50 @@
+長所,ちょうしょ,1,優點,strong point, merit; advantage
+長女,ちょうじょ,1,長女,eldest daughter
+調整,ちょうせい,0,調整,regulation, adjustment, tuning
+調節,ちょうせつ,0,調節,regulation, adjustment, control
+長短,ちょうたん,0,長短,length, long and short, +-
+頂点,ちょうてん,1,頂點,top, summit
+長男,ちょうなん,1,長子,eldest son
+長方形,ちょうほうけい,3,長方形,rectangle, oblong
+調味料,ちょうみりょう,3,調味料,condiment, seasoning
+～丁目,～ちょうめ,3,…丁目,~ district (of a town; city, block)
+チョーク,ちょうく,1,粉筆,chalk
+直後,ちょくご,1,之後、隨即,immediately following
+直線,ちょくせん,0,直線,straight line
+直前,ちょくぜん,0,之前、門前,just before
+直通,ちょくつう,0,直通,direct connection
+直流,ちょくりゅう,0,直流,direct current
+貯蔵,ちょぞう,0,貯藏,storage, preservation
+直角,ちょっかく,0,直角,right angle
+直径,ちょっけい,0,直徑,diameter
+散らかす,ちらかす,0,弄亂,to scatter around, to leave untidy
+散らかる,ちらかる,0,凌亂,to be in disorder
+塵紙,ちりがみ,2,衛生紙,tissue paper, toilet paper
+追加,ついか,0,追加,addition, supplement, appendix
+ついで,ついで,0,順便,opportunity, occasion
+～通,～つう,1,…封（信件單位）,counter for letters
+通ずる,つうずる,3,通往、精通,to lead, to run, to open
+通知,つうち,0,通知,notice, notification
+通帳,つうちょう,0,存摺,bankbook
+通用,つうよう,0,通用,popular use, circulation
+通路,つうろ,1,通路,passage, pathway
+～遣い,～づかい,3,…用法、…使喚,use of ~
+～付,～つき,1,…附,with ~
+突き当たり,つきあたり,0,盡頭,end (e.g., of street)
+突き当たる,つきあたる,4,撞上、碰到頂,to run into, to collide with
+月日,つきひ,1,年月日、時光,time, years, days
+～続く,～つづく,0,持續…,follow, continue, go on
+突っ込む,つっこむ,3,闖入、塞進,to plunge into, to stick into
+務める,つとめる,3,擔任、任職,to serve, to act
+努める,つとめる,3,努力,to try, to aim
+綱,つな,0,繩索,rope
+繋がり,つながり,0,聯繫、關係,connection, link, relationship
+粒,つぶ,2,顆粒,grain
+潰す,つぶす,0,壓碎、弄壞,to smash, to waste
+潰れる,つぶれる,0,倒塌、破產,to be smashed, to go bankrupt
+つまずく,つまずく,3,絆倒,to stumble, to trip
+詰まる,つまる,2,堵塞、充滿,to be blocked, to be packed
+爪,つめ,0,指甲,fingernail or toenail
+艶,つや,0,光澤,gloss, glaze
+強気,つよき,0,強硬、好強,firm, strong
+～辛い,～づらい,0,太辣的、痛苦的,hard to do ~

@@ -1,0 +1,50 @@
+目印,めじるし,0,目標、記號,mark, sign, landmark
+目立つ,めだつ,2,顯眼、引人注目,to be conspicuous, to stand out
+めちゃくちゃ,めちゃくちゃ,0,亂七八糟、格外,absurd, messed up, wrecked
+めっきり,めっきり,3,明顯地（變化）,remarkably
+めでたい,めでたい,4,值得慶賀的、喜慶的,happy, propitious, joyous
+メニュー,めにゅう,1,菜單,menu
+めまい,めまい,0,頭暈,dizziness, giddiness
+目安,めやす,0,基準、目標,criterion, aim
+免税,めんぜい,0,免稅,tax exemption
+面積,めんせき,1,面積,area
+面倒臭い,めんどうくさい,5,非常麻煩、討厭,bother to do, tiresome
+儲かる,もうかる,3,賺錢,to be profitable, to yield a profit
+儲ける,もうける,3,賺取、獲利,to earn, to have (bear, beget) a child
+申し訳ない,もうしわけない,6,非常抱歉,inexcusable, I am sorry
+モーター,もうたあ,1,馬達,motor
+木材,もくざい,0,木材,lumber, timber, wood
+目次,もくじ,0,目錄,table of contents
+潜る,もぐる,2,潛入、鑽進,to drive, to pass through; to evade, to hide
+もしかしたら,もしかしたら,4,或許、萬一,perhaps, maybe, by some chance
+もたれる,もたれる,3,倚靠、積食,to lean against, to lean on
+モダン,もだん,1,現代、時髦,modern
+餅,もち,0,年糕,sticky rice cake
+～もち,～もち,0,…持有、…帶有,person who has ~
+モデル,もでる,1,模型、模特兒,a fashion model
+元々,もともと,0,原本,originally, by nature, from the start
+物置,ものおき,0,儲藏室,storage room
+物語る,ものがたる,4,講述、表明,to tell, to indicate
+物差し,ものさし,0,尺、標準,ruler, measure
+物凄い,ものすごい,0,極其、非常,earth-shattering, staggering, to a very great extent
+モノレール,ものれいる,3,單軌鐵路,monorail
+紅葉,もみじ,0,紅葉、楓葉,(Japanese) maple
+揉む,もむ,0,揉、搓、爭論,to rub, to crumple (up), to wrinkle
+催し,もよおし,0,活動、催促,event, festivities, function
+盛る,もる,0,盛、堆,to serve (food); to fill up; to prescribe
+～問,～もん,1,第…問,counter for questions
+問答,もんどう,1,問答,questions and answers, dialogue
+～夜,～や,1,第…夜,counter for nights
+やかましい,やかましい,4,吵鬧的、囉唆的,to be fussy, to be overly critical
+夜間,やかん,1,夜間,at night, nighttime
+やかん,やかん,0,燒水壺,kettle
+役者,やくしゃ,0,演員,actor
+役所,やくしょ,0,政府機關,government office, public office
+役人,やくにん,0,官員,government official
+薬品,やくひん,0,藥品,medicine(s), chemical(s)
+役目,やくめ,3,職責、任務,duty, business
+火傷,やけど,0,燙傷,burn, scald
+夜行,やこう,0,夜行、夜間行駛,night train, night travel
+矢印,やじるし,2,箭頭,directing arrow
+やたらに,やたらに,0,胡亂、過分,randomly, recklessly, blindly
+薬局,やっきょく,0,藥局,pharmacy, drugstore

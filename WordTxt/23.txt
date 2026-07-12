@@ -1,0 +1,50 @@
+いきなり,いきなり,0,突然,all of a sudden
+幾～,いく～,1,幾…,several ~
+育児,いくじ,1,育兒,childcare, nursing
+幾分,いくぶん,0,稍微、部分,somewhat
+生け花,いけばな,2,插花,flower arrangement
+以後,いご,1,以後,after this; from now on; hereafter
+以降,いこう,1,以後、之後,on and after, hereafter
+イコール,いこうる,0,等於,equal
+勇ましい,いさましい,4,勇敢的、威武的,brave, valiant
+衣食住,いしょくじゅう,3,衣食住,food, clothing and shelter
+～いち,～いち,1,第一（日本第一）,No. 1 ~ (in)
+いちいち,いちいち,2,逐一地、詳細地,one by one, separately
+一応,いちおう,0,姑且、起碼,tentatively, for the time being
+一段と,いちだんと,0,更加、進一步,by far, greater
+一流,いちりゅう,0,一流,first class, leading
+一昨日,いっさくじつ,2,前天,day before yesterday
+一昨年,いっさくねん,2,前年,year before last
+一斉,いっせい,0,一齊,simultaneous, all at once
+一旦,いったん,0,一旦,once, for a moment
+一定,いってい,0,一定,fixed, settled, regular
+行っていらっしゃい,いっていらっしゃい,6,慢走（出門時對他人說）,have a nice day, see you
+行ってらっしゃい,いってらっしゃい,6,慢走（同上，較隨意）,have a nice day, see you
+いってまいります,いってまいります,6,我走了（出門時對家人說）,(Lit.) I'll go and come back, 'I'm going, see you later'
+いってきます,いってきます,4,我走了（同上，較隨意）,(Lit.) I'll go and come back, 'I'm going, see you later'
+移転,いてん,0,搬遷、遷移,moving, transfer
+井戸,いど,1,井,water well
+緯度,いど,1,緯度,latitude (navigation)
+威張る,いばる,2,自大、傲慢,to be proud, to swagger
+嫌がる,いやがる,3,討厭、不願意,reluctant, to dislike
+いよいよ,いよいよ,0,終於、總算,more and more, increasingly, at last
+煎る,いる,1,煎、烘焙,to roast
+炒る,いる,1,炒,to parch, to roast
+入れ物,いれもの,0,容器,container, case
+インキ,いんき,1,墨水,ink
+引力,いんりょく,1,引力,gravity
+ウーマン,ううまん,1,女性,woman
+ウール,ううる,1,羊毛,wool
+ウエートレス,うえいとれす,3,女服務生,waitress
+植木,うえき,0,盆栽、植株,garden shrubs, trees, potted plant
+飢える,うえる,2,飢餓,to starve
+浮ぶ,うかぶ,0,浮現、浮,to float, to rise to surface, to come to mind
+浮かべる,うかべる,0,使浮起、想起,to float; to express
+浮く,うく,0,浮、剩下,to float
+承る,うけたまわる,4,承蒙、聽取（敬語）,(humble) to hear, to be told, to know
+受取,うけとり,0,收據、領取,receipt
+受け持つ,うけもつ,3,擔當、負責,to take (be in) charge of
+薄暗い,うすぐらい,0,微暗的、昏暗的,dim, gloomy
+薄める,うすめる,0,稀釋、弄薄,to dilute, to water down
+打合せ,うちあわせ,0,商量、碰頭,business meeting, previous arrangement
+打ち消す,うちけす,3,否定、消除,to deny, to negate

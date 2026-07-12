@@ -1,0 +1,50 @@
+ボーナス,ぼうなす,1,獎金,bonus
+朗らか,ほがらか,2,開朗的、爽朗的,bright, cheerful, melodious
+牧場,ぼくじょう,0,牧場,farm (livestock); pasture land
+牧畜,ぼくちく,0,畜牧,stock-farming
+保健,ほけん,0,保健,health preservation, hygiene, sanitation
+募集,ぼしゅう,0,募集,recruitment
+干す,ほす,1,曬、晾,to air, to dry, to drink up
+ポスター,ぽすたあ,1,海報,poster
+北極,ほっきょく,0,北極,North Pole
+坊っちゃん,ぼっちゃん,3,小少爺,son (of others)
+解く,ほどく,1,解開、解決,to unfasten
+掘る,ほる,1,挖、掘,to dig, to excavate
+彫る,ほる,1,雕刻,to carve, to chisel
+ぼろ,ぼろ,1,破爛、缺點,rag, tattered clothes
+盆,ぼん,1,盆、中元節,Festival of the Dead; tray
+盆地,ぼんち,3,盆地,basin (e.g., between mountains)
+ほんの～,ほんの～,1,僅僅、一點點,mere, just
+本部,ほんぶ,1,總部,headquarters
+本来,ほんらい,1,本來,essentially, naturally, by nature
+まあまあ,まあまあ,1,還好、馬馬虎虎,okay; so-so; decent
+毎～,まい～,1,每…,every ~
+枚数,まいすう,3,張數,the number of flat things
+毎度,まいど,1,每次、多謝,each time, common service-sector greeting
+枕,まくら,1,枕頭,pillow
+曲げる,まげる,0,弄彎,to bend, to crook, to lean
+まごまご,まごまご,1,張皇失措、猶豫不決,confused, be at a loss
+摩擦,まさつ,0,摩擦,friction; rubbing; chafe
+マスク,ますく,1,口罩、面具,mask
+またぐ,またぐ,2,跨過,to straddle
+待合室,まちあいしつ,3,候車室、等候室,waiting room
+待ち合わせる,まちあわせる,5,約會、碰頭,to rendezvous, to meet at a prearranged place and time
+街角,まちかど,0,街頭,street corner
+真っ暗,まっくら,3,漆黑,total darkness
+真っ黒,まっくろ,3,烏黑,pitch black
+真っ青,まっさお,3,慘白、鐵青,deep blue, ghastly pale
+真っ先,まっさき,0,最先,foremost, beginning
+真っ白,まっしろ,3,雪白,pure white
+祭る,まつる,0,祭祀,to deify, to enshrine
+窓口,まどぐち,2,窗口、聯絡處,(ticket) window
+真似る,まねる,0,模仿,to mimic, to imitate
+まぶた,まぶた,1,眼瞼,eyelids
+マフラー,まふらあ,1,圍巾,a winter scarf
+間も無く,まもなく,2,不久、馬上,soon, in a short time
+マラソン,まらそん,0,馬拉松,marathon
+稀,まれ,0,稀少、罕見,rare, seldom
+回り道,まわりみち,0,繞道,detour
+満員,まんいん,0,滿員,full house, no vacancy, sold out
+マンション,まんしょん,1,高級公寓,multistory apartment house, condominium
+満点,まんてん,0,滿分,perfect score
+未～,み～,1,未…,not yet ~

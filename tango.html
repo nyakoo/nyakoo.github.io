@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>N2日语单词助手</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M12 4.419C12.433 3.473 13.9 1 18.5 1 23.5 1 26 5.344 26 8.5c0 6-7.5 12-14 17.5-6.5-5.5-14-11.5-14-17.5C-2 5.344.5 1 5.5 1c4.6 0 6.067 2.473 6.5 3.419z' transform='scale(3.5) translate(3, 2)' fill='%23ff9ebb'/></svg>">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* 完全复用首页背景 */
+        body {
+            margin: 0;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #d1dcff;
+            background-image:
+                linear-gradient(45deg, #e2d1f9 25%, transparent 25%, transparent 75%, #e2d1f9 75%, #e2d1f9),
+                linear-gradient(45deg, #e2d1f9 25%, transparent 25%, transparent 75%, #e2d1f9 75%, #e2d1f9);
+            background-size: 120px 120px;
+            background-position: 0 0, 60px 60px;
+            font-family: 'Segoe UI', "Microsoft YaHei", monospace;
+            transition: background 0.3s ease;
+        }
+
+        
+        /* 💡 只有在“游戏进行中”且“没有显示结算面板”时，才抹除格子背景变灰色 */
+body.in-game-mode:not(.game-over) {
+    background-image: none !important;
+    background-color: #eaeaef !important; 
+}
+
+
+        /* 全局色彩变量统一首页色系 */
+        :root {
+            --main-dark-purple: #7d6b91;
+            --text-dark: #4a3e56;
+            --inner-bg: #ecd5fa;
+            --btn-pink: #ffccd5;
+            --btn-blue: #bce3f7;
+            --btn-yellow: #fff4d4;
+            --success-color: #4a3e56;
+            --warn-color: #e67e22;
+            --error-color: #e74c3c;
+            --purple-color: #9b59b6;
+            --jp-bg: #e8f4fd;
+            --jp-border: #bce3f7;
+            --jp-text: #2b6cb0;
+            --zh-bg: #fff4d4;
+            --zh-border: #ffccd5;
+            --zh-text: #6a5742;
+            --selected-color: #e2d1f9cc;
+        }
+
+        /* 外层彩虹渐变容器，复刻首页 #nav-container */
+        #word-game-container {
+            width: 100%;
+            max-width: 500px;
+            min-height: 520px;
+            text-align: center;
+            /* 首页同款彩虹渐变外圈 */
+            background: linear-gradient(135deg, #ffccd5, #fff4d4, #d8f3dc, #bce3f7, #e2d1f9, #ffccd5);
+            border: 2px solid var(--main-dark-purple);
+            border-radius: 40px;
+            padding: 16px;
+            box-shadow: 0 12px var(--main-dark-purple) rgba(93, 77, 112, 0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: zoom 0.15s ease, background 0.3s ease; /* 平滑切换 */
+        }
+
+        /* 💡 只有在“游戏进行中”且“没有显示结算面板”时，大框才变成淡灰紫色 */
+body.in-game-mode:not(.game-over) #word-game-container,
+body.in-game-mode:not(.game-over) .inner-wrap {
+    background: #d5d4e6 !important;
+    background-color: #d5d4e6 !important;
+}
+
+
+        /* 👑 关键修复：改用 zoom 直接干掉物理占位高度，彻底消灭滚动条 */
+        #word-game-container.setup-scaled {
+            zoom: 0.8;
+        }
+
+        /* 内层淡紫核心面板，复刻 .pixel-card-inner */
+        .inner-wrap {
+            background-color: var(--inner-bg);
+            border-radius: 28px;
+            padding: 25px 15px;
+            width: 100%;
+            min-height: 480px;
+            display: flex;          /* 👈 变为 flex 布局 */
+            flex-direction: column; /* 👈 让内容垂直往下排 */
+        }
+
+        h3 {
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-shadow: 1px 1px 0px #fff;
+        }
+        .hidden { display: none !important; }
+
+        .setup-box {
+            border: 2px dashed var(--main-dark-purple);
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 🎀 可复用像素风心形图标样式 */
+        .icon-heart {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            margin-right: 6px;
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M12 4.419C12.433 3.473 13.9 1 18.5 1 23.5 1 26 5.344 26 8.5c0 6-7.5 12-14 17.5-6.5-5.5-14-11.5-14-17.5C-2 5.344.5 1 5.5 1c4.6 0 6.067 2.473 6.5 3.419z' transform='scale(3.5) translate(3, 2)' fill='%23ff9ebb'/></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* 统一提示文字容器的布局（让心形和文字完美对齐） */
+        .hint-text-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+        }
+
+        /* 统一像素游戏机按钮样式（首页.nav-btn） */
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 16px;
+            color: var(--text-dark);
+            border: 2px solid var(--main-dark-purple);
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 0px var(--main-dark-purple);
+            transition: all 0.05s ease;
+            position: relative;
+            top: 0;
+            margin: 5px;
+            outline: none;
+        }
+        button:active {
+            top: 4px;
+            box-shadow: 0 0px 0px var(--main-dark-purple);
+        }
+        .load-txt-btn {
+            background-color: var(--btn-blue);
+            width:100%;
+        }
+        .mode-btn-container button:nth-child(1) { background: var(--btn-pink); }
+        .mode-btn-container button:nth-child(2) { background: var(--btn-blue); }
+        .mode-btn-container button:nth-child(3) { background: #e2d1f9; }
+        .mode-btn-container button:nth-child(4) { background: var(--btn-yellow); }
+        button[style*="background:#888"] { background: #d1dcff !important; }
+        button[style*="background:#666"] { background: #e2d1f9 !important; }
+        /* 统一的灰色按钮类，用于看答案按钮对齐返回菜单的初始灰色 */
+        .btn-gray { background: #e2e2e2 !important; }
+
+        .card {
+            border: 2px solid var(--main-dark-purple);
+            border-radius: 18px;
+            padding: 20px;
+            margin: 15px 0;
+            background: #fff;
+            text-align: left;
+            box-shadow: none;
+        }
+        .card h2 { font-size: 2.5em; color: var(--text-dark); margin: 0; text-align: center; }
+        .card-info p { margin: 8px 0; border-bottom: 1px solid #e2d1f9; padding-bottom: 5px; font-size: 1.1em; color: var(--text-dark); }
+
+        .spelling-box {
+            margin: 10px 0 15px 0;
+            padding: 16px 15px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 16px;
+            border: none;
+        }
+        .spelling-box label { font-size: 0.85em; color: var(--main-dark-purple); display: block; margin-top: 0;margin-bottom: 10px; font-weight: bold; }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2em;
+            font-weight: 575;
+            border: 2px solid var(--main-dark-purple);
+            border-radius: 12px;
+            text-align: center;
+            outline: none;
+            -webkit-appearance: none;
+            background: #fff;
+            color: var(--main-dark-purple);
+
+        }
+        input[type="text"]:focus { border-color: var(--main-dark-purle); }
+        #display-word { font-size: 3.5em; font-weight: bold; margin: 15px 0; color: var(--text-dark); word-break: break-all; }
+        #display-word.definition-mode { font-size: 2.2em; color: var(--text-dark); padding: 0 10px; }
+        .feedback-text { height: 20px; font-weight: bold; margin-top: 10px; margin-bottom: 0;font-size: 0.9em; }
+
+                 #help-list {
+            background: transparent !important;       /* 彻底拔掉白色背景，变透明 */
+            border: none !important;                  /* 彻底拔掉黑边框 */
+            box-shadow: none !important;              /* 彻底拔掉阴影 */
+            
+            display: flex;                            /* 启用弹性布局 */
+            flex-direction: column;                   /* 关键：强行让所有单词垂直往下排（也就是独占一行） */
+            align-items: center;                      /* 关键：让每一行的单词水平居中 */
+            justify-content: center;                  /* 垂直方向也居中 */
+            
+            
+            
+            max-height: 220px;                        /* 稍微拉高一点高度，防止单词多了显示不全 */
+            overflow-y: auto; 
+  
+            color: var(--text-dark); 
+            
+        }
+
+
+        .btn-group-vertical { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .progress-text { color: var(--main-dark-purple); font-size: 0.85em; margin-bottom: 5px; font-weight: bold; }
+        .mode-btn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .mode-btn-container button {
+            width: 80%;
+            max-width: 300px;
+            margin: 0;
+        }
+        
+        /* 👑 核心重构：死死固定为 3 行的书写测试方块网格 */
+        .scramble-container {
+            display: grid;
+            grid-template-rows: repeat(3, auto); /* 死死限制为 3 行 */
+            grid-auto-flow: column;             /* 优先纵向往下排满 3 行再向右扩展新列 */
+            grid-auto-columns: minmax(0, 1fr);  /* 列宽等分自适应 */
+            gap: 6px;                           /* 方块间距 */
+            justify-content: center;
+            justify-items: center;
+            margin: 12px 0;
+            min-height: 130px;
+            width: 100%;
+        }
+        .char-tile {
+            background: #ffffff;
+            border: 2px solid var(--main-dark-purple);
+color:var(--main-dark-purple);
+            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            line-height: 38px;
+            font-size: 1.2em;
+            font-weight: 575;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.15s;
+            box-shadow: none;
+            text-align: center;
+        }
+        .char-tile:active {
+            border-width: 1px;        /* 边框变细 */
+            transform: scale(1.05);   /* 稍微放大整体（内部填充变大） */
+            background: #e2d1f9;      /* 保持原有的点击变色，如不需要可删掉 */
+        }
+        .char-tile.used {
+            opacity: 0.4;
+            background: #d1dcff;
+            cursor: default;
+            pointer-events: none;
+        }
+        .char-tile.correct-hidden {
+            visibility: hidden;
+            pointer-events: none;
+        }
+        /* 连连看卡片 */
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .match-card {
+            border-radius: 16px;
+            padding: 15px 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: none;
+            transition: all 0.05s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 75px;
+            word-break: break-all;
+            border: 2px solid currentColor;
+            position: relative;
+            top:0;
+        }
+        .match-card:active {
+            top:4px;
+            box-shadow:0 0 var(--main-dark-purple);
+        }
+        .match-card.lang-word { background-color:var(--selected-color) ; color: var(--text-dark); }
+        .match-card.lang-def { background-color:#f7f0ff;color: var(--text-dark); }
+        .match-card.selected {  
+    background-color: #fff8e7; /* 66 表示 40% 的不透明度 */
+    color: var(--text-dark);
+    transform: scale(1.02); 
+}
+
+        .match-card.invisible { visibility: hidden; pointer-events: none; }
+        /* 虚拟数字键盘 */
+        .num-input-box{
+            margin-top:0; margin-bottom:0;
+        }
+        #numFileInput{
+            text-align:center;
+            font-size:18px;
+            letter-spacing:4px;
+        }
+        .numpad-wrap{
+            margin-top:22px ; 
+            margin-bottom:12px;
+        }
+        .numpad-row{
+            display:flex;
+            gap:6px;
+            justify-content:center;
+            margin-bottom:6px;
+        }
+        .num-key{
+            width:60px;
+            height:60px;
+            font-size:22px;
+            padding:0;
+            margin:0;
+            background:#fff;
+            color:var(--text-dark);
+            border:2px solid var(--main-dark-purple);
+            border-radius:12px;
+            box-shadow:none;
+        }
+
+        .num-key:active {
+            top:0; /* 阻止全局按钮的向下位移 */
+            border-width:1px;        /* 边框变细 */
+            transform: scale(1.05);   /* 稍微放大整体 */
+            box-shadow: none;         /* 确保点击时也没有阴影 */
+        }
+
+        .num-key.func{
+            background:#e2d1f9;
+        }
+        @media (min-width: 768px) {
+            button:hover {
+                filter: brightness(1.03);
+            }
+            .match-card:hover {
+                filter: brightness(1.03);
+            }
+        }
+        @media (max-width: 480px) {
+            #word-game-container { padding: 10px; }
+            .inner-wrap { padding: 15px 10px; }
+            .card h2 { font-size: 2em; }
+            /* 👑 窄屏微调方块尺寸以实现完美不溢出 */
+            .char-tile { width: 36px; height: 36px; line-height: 32px; font-size: 1.05em; border-radius: 9px; }
+            .match-card { font-size: 0.95em; padding: 12px 4px; min-height: 70px; }
+            .num-key{
+                width:50px;
+                height:50px;
+                font-size:18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 初始化时默认加上 setup-scaled 类名 -->
+<div id="word-game-container" class="setup-scaled">
+    <!-- 新增内层淡紫面板，对齐首页结构 -->
+    <div class="inner-wrap">
+        <div id="setup-area">
+            <h3>N2日语單詞助手</h3>
+            <div class="setup-box">
+                <!-- 💡 线上提取输入框上方的提示语加入心形图标 -->
+                <p class="hint-text-wrapper" style="font-size: 0.8em;"><span class="icon-heart" style="width:14px; height:14px;"></span>输入数字(1-38)提取 WordTxt/[].txt</p>
+                <div class="num-input-box">
+                    <input type="text" id="numFileInput" readonly placeholder="...">
+                </div>
+                <div class="numpad-wrap">
+                    <div class="numpad-row">
+                        <button class="num-key" data-val="1">1</button>
+                        <button class="num-key" data-val="2">2</button>
+                        <button class="num-key" data-val="3">3</button>
+                    </div>
+                    <div class="numpad-row">
+                        <button class="num-key" data-val="4">4</button>
+                        <button class="num-key" data-val="5">5</button>
+                        <button class="num-key" data-val="6">6</button>
+                    </div>
+                    <div class="numpad-row">
+                        <button class="num-key" data-val="7">7</button>
+                        <button class="num-key" data-val="8">8</button>
+                        <button class="num-key" data-val="9">9</button>
+                    </div>
+                    <div class="numpad-row">
+
+                       
+<button class="num-key func" data-val="clear">AC</button>
+
+<button class="num-key" data-val="0">0</button>
+                       
+ <button class="num-key func" data-val="del">←</button>
+
+                        
+
+                    </div>
+                </div>
+                <button class="load-txt-btn" id="fetchWordTxtBtn">加载在线文本</button>
+                <div style="margin-top:15px;border-top:2px dashed var(--main-dark-purple);padding-top:15px;width:100%; display: flex; flex-direction: column; align-items: center;">
+                    <!-- 💡 本地汇入上方的提示语也同样加入了心形图标 -->
+                    <p class="hint-text-wrapper" style="font-size: 0.8em; margin:0 0 5px 0;"><span class="icon-heart" style="width:14px; height:14px;"></span>你也可以手动上传txt  //格式:單詞,讀音,聲調,含義</p>
+                    <label for="fileInput" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 12px 16px; background-color: var(--zh-bg); border: 2px solid var(--main-dark-purple); border-radius: 16px; color: var(--text-dark); font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 0px var(--main-dark-purple); transition: all 0.05s ease; position: relative; top: 0; margin: 5px;">汇入本地文件</label>
+                    <input type="file" id="fileInput" accept=".txt" style="display: none;">
+                </div>
+            </div>
+        </div>
+       <div id="mode-area" class="hidden" style="display: flex; flex-direction: column; justify-content: center; flex: 1; margin: auto 0;">
+
+            <h3>已加载 <span id="total-count">0</span> 个单词</h3>
+            <div class="mode-btn-container">
+                <button onclick="startMode('study')">📖 学习模式</button>
+                <button onclick="startMode('challenge')">🎯 假名挑战</button>
+                <button onclick="startMode('hard-test')">📝 书写测试</button>
+                <button onclick="startMode('match')">🧩 连线消除</button>
+            </div>
+        </div>
+
+        <div id="study-area" class="hidden">
+            <div class="progress-text">学习进度: <span id="study-progress">0</span> / <span id="study-total">0</span></div>
+            <div class="card" id="card-content"></div>
+
+            <div class="spelling-box">
+                <label>
+    <span class="icon-heart" style="width: 14px; height: 14px; margin: 0 6px 2px 0;"></span>输入假名/罗马音
+</label>
+
+                <input type="text" id="studyAnswerInput" placeholder="..." autocomplete="off">
+                <div id="study-feedback" class="feedback-text"></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                <div style="display: flex; gap: 10px; width: 100%;">
+                    <button onclick="prevCard()" style="flex: 1; margin: 0;">上一张</button>
+                    <button onclick="nextCard()" style="flex: 1; margin: 0;">下一张</button>
+                </div>
+                <div style="display: flex; width: 100%;">
+                    <button onclick="switchView('mode-area')" style="flex: 1; margin: 0; font-size: 14px;">返回菜单</button>
+                </div>
+            </div>
+        </div>
+       <div id="challenge-area" class="hidden" style="display: flex; flex-direction: column; flex: 1; height: 100%;">
+
+            <div class="progress-text"><span id="challenge-mode-title">挑战</span>进度: <span id="challenge-progress">0</span> / <span id="challenge-total">0</span></div>
+            <div id="display-word">---</div>
+            <div id="answer-hint-card" class="card hidden"></div>
+
+            <div class="spelling-box">
+                <div id="scramble-test-zone">
+                    <label>
+    <span class="icon-heart" style="width: 14px; height: 14px; margin: 0 6px 2px 0;"></span>依顺序点击下方方块
+</label>
+                    <input type="text" id="scrambleAnswerInput" placeholder="..." readonly autocomplete="off">
+                    <div id="hard-scramble-container" class="scramble-container"></div>
+                </div>
+
+                <div id="typing-test-zone" class="hidden">
+                    <label>
+    <span class="icon-heart" style="width: 14px; height: 14px; margin: 0 6px 2px 0;"></span>输入假名/罗马音
+</label>
+                    <input type="text" id="challengeAnswerInput" placeholder="..." autocomplete="off">
+                </div>
+
+                <div id="challenge-feedback" class="feedback-text"></div>
+            </div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: auto; padding-top: 10px;">
+
+                <button id="show-answer-btn" onclick="showHelpAnswer()" class="btn-gray" style="color: var(--text-dark); width: 100%; margin: 0;font-size: 14px">提示我</button>
+                <button onclick="switchView('mode-area')" class="btn-gray"style="width: 100%; margin: 0; font-size: 14px;">返回菜单</button>
+            </div>
+
+        </div>
+        <div id="match-area" class="hidden">
+            <div class="progress-text">已消除单词: <span id="match-cleared-progress">0</span> / <span id="match-game-total">0</span></div>
+            <p style="color:var(--main-dark-purple); font-size:0.8em; margin: 0 0 10px 0;">中日语可任意顺序双向连线</p>
+
+            <div class="match-grid" id="match-grid-container"></div>
+            <div id="match-feedback" class="feedback-text"></div>
+            <button onclick="switchView('mode-area')" style="width:100%; margin-top:20px; font-size: 14px;">返回菜单</button>
+        </div>
+                <div id="result-area" class="hidden" style="display: flex; flex-direction: column; justify-content: center; flex: 1; margin: auto 0;">
+
+            <h2 id="result-title" style="color: var(--text-dark); text-shadow: 1px 1px 0px #fff; margin-top: 0; margin-bottom: 20px; font-size: 22px;">🎉 通关！</h2>
+
+            <div id="helped-words-container" class="hidden">
+                <p style="font-weight: bold; color: var(--warn-color); margin-bottom: 5px;">难词回顾</p>
+                <div id="help-list" style="margin-bottom: 10px;"></div>
+            </div>
+            <div class="btn-group-vertical">
+                <button id="btn-retry-easy" onclick="retryExcludingHelped()" style="background-color: var(--btn-yellow)">再来一遍</button>
+
+                <button id="btn-focus-hard" onclick="focusOnHelped()" style="background-color: var(--selected-color)">巩固难词</button>
+                <button id="btn-change-mode" onclick="switchView('mode-area')" style="background-color: var(--btn-blue)"><span class="icon-heart"></span>换个模式<span class="icon-heart"></span></button>
+                <button onclick="location.reload()" style="background-color: var(--btn-pink)">重选文件</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+(function() {
+    let originalWordList = [];
+    let challengeQueue = [];
+    let currentIndex = 0;
+    let helpedKanjiSet = new Set();
+    let currentMode = '';
+    let matchRemainingWords = [];
+    let matchFirstSelectedCard = null;
+    const INTERVALS = [3, 8, 11];
+    
+    // 👑 基础默认总数设定为 18 (后续会根据设备视口宽度在 JS 内动态计算更改)
+    let dynamicTileCount = 18; 
+
+    const romajiMap = {
+        'a':'あ','i':'い','u':'う','e':'え','o':'お',
+'ka':'か','ki':'き','ku':'く','ke':'け','ko':'こ',
+'sa':'さ','shi':'し','su':'す','se':'せ','so':'そ',
+'ta':'た','chi':'ち','tu':'つ','te':'て','to':'と',
+'na':'な','ni':'に','nu':'ぬ','ne':'ね','no':'の',
+'ha':'は','hi':'ひ','hu':'ふ','he':'へ','ho':'ほ',
+'ma':'ま','mi':'み','mu':'む','me':'め','mo':'も',
+'ya':'や','yu':'ゆ','yo':'よ',
+'ra':'ら','ri':'り','ru':'る','re':'れ','ro':'ろ',
+'wa':'わ','wo':'を','nn':'ん',
+'ga':'が','gi':'ぎ','gu':'ぐ','ge':'げ','go':'ご',
+'za':'ざ','ji':'じ','zu':'ず','ze':'ぜ','zo':'ぞ',
+'da':'だ','di':'ぢ','du':'づ','de':'で','do':'ど',
+'ba':'ば','bi':'び','bu':'ぶ','be':'べ','bo':'ぼ',
+'pa':'ぱ','pi':'ぴ','pu':'ぷ','pe':'ぺ','po':'ぽ',
+'kya':'きゃ','kyu':'きゅ','kyo':'きょ',
+'sha':'しゃ','shu':'しゅ','sho':'しょ',
+'cha':'ちゃ','chu':'ちゅ','cho':'ちょ',
+'nya':'にゃ','nyu':'にゅ','nyo':'にょ',
+'hya':'ひゃ','hyu':'ひゅ','hyo':'ひょ',
+'mya':'みゃ','myu':'みゃ','myo':'みょ',
+'rya':'りゃ','ryu':'りゅ','ryo':'りょ',
+'gya':'ぎゃ','gyu':'ぎゅ','gyo':'ぎょ',
+'jya':'じゃ','jyu':'じゅ','jyo':'じょう',
+'bya':'びゃ','byu':'びゅ','byo':'びょ',
+'pya':'ぴゃ','pyu':'ぴゅ','pyo':'ぴょ',
+'sho':'しょ','cho':'ちょ','jyo':'じょ',
+'rye':'りぇ','ddi':'でぃ','fa':'ふぁ'
+    };
+    const numInput = document.getElementById('numFileInput');
+    const numKeys = document.querySelectorAll('.num-key');
+    const loadTxtBtn = document.getElementById('fetchWordTxtBtn');
+    numKeys.forEach(key=>{
+        key.addEventListener('click',()=>{
+            const val = key.dataset.val;
+            if(val === 'clear'){
+                numInput.value = '';
+            }else if(val === 'del'){
+                numInput.value = numInput.value.slice(0,-1);
+            }else{
+                numInput.value += val;
+            }
+        })
+    })
+    loadTxtBtn.addEventListener('click',async ()=>{
+        const num = numInput.value.trim();
+        if(!num){
+            alert("请先输入文件编号！");
+            return;
+        }
+        const txtUrl = `./WordTxt/${num}.txt`;
+        try{
+            const res = await fetch(txtUrl);
+            if(!res.ok) throw new Error("文件不存在");
+            const text = await res.text();
+            parseTxtData(text);
+        }catch(err){
+            alert(`加载失败：${err.message}\n请确认仓库WordTxt文件夹下存在 ${num}.txt`);
+        }
+    })
+    function parseTxtData(rawText){
+        originalWordList = rawText.split(/\r?\n/)
+            .filter(l => l.includes(','))
+            .map(l => {
+                const p = l.split(',').map(s => s.trim());
+                let rawDefinition = p.slice(3).filter(x => x).join('、');
+                let cleanDefinition = rawDefinition.replace(/[^\u4e00-\u9fa5\u3001\uff0c\uff08\uff09\u2014]/g, '').trim();
+                cleanDefinition = cleanDefinition.replace(/、{2,}/g, '');
+                cleanDefinition = cleanDefinition.replace(/^、|、$/g, '').trim();
+                if (!cleanDefinition) cleanDefinition = rawDefinition;
+                return {
+                    id: Math.random().toString(36).substr(2, 9),
+                    kanji: p[0],
+                    kana: p[1],
+                    accent: p[2] || '0',
+                    definition: cleanDefinition
+                };
+            });
+        if(originalWordList.length > 0) {
+            document.getElementById('total-count').innerText = originalWordList.length;
+            switchView('mode-area');
+        }else{
+            alert("txt内无有效单词数据，请检查格式");
+        }
+    }
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            parseTxtData(event.target.result);
+        };
+        reader.readAsText(file);
+    });
+    window.startMode = function(mode, customList = null) {
+        currentMode = mode;
+        currentIndex = 0;
+        if (!customList) helpedKanjiSet.clear();
+
+        const targetList = customList || originalWordList;
+
+        if (mode === 'challenge' || mode === 'hard-test') {
+            challengeQueue = targetList.map(w => ({ ...w }));
+            document.getElementById('challenge-mode-title').innerText = mode === 'hard-test' ? '书写测试' : '挑战';
+            switchView('challenge-area');
+            renderChallenge();
+        } else if (mode === 'match') {
+            matchRemainingWords = [...targetList];
+            shuffleArray(matchRemainingWords);
+            document.getElementById('match-game-total').innerText = targetList.length;
+            document.getElementById('match-cleared-progress').innerText = 0;
+            switchView('match-area');
+            nextMatchRound();
+        } else {
+            switchView('study-area');
+            renderStudy();
+        }
+    };
+    function renderStudy() {
+        const w = originalWordList[currentIndex];
+        const studyInput = document.getElementById('studyAnswerInput');
+        document.getElementById('study-progress').innerText = currentIndex + 1;
+        document.getElementById('study-total').innerText = originalWordList.length;
+        document.getElementById('study-feedback').innerText = "";
+        studyInput.value = "";
+
+        document.getElementById('card-content').innerHTML = `
+            <h2>${w.kanji}</h2>
+            <div class="card-info">
+                <p>读音：${w.kana}</p>
+                <p>声调：${w.accent}</p>
+                <p>释义：${w.definition}</p>
+            </div>
+        `;
+        ;
+    }
+    document.getElementById('studyAnswerInput').addEventListener('input', function() {
+        const userVal = cleanString(romajiToKana(this.value.trim()));
+        const targetVal = cleanString(originalWordList[currentIndex].kana);
+
+        if (userVal !== "" && userVal === targetVal) {
+            const fb = document.getElementById('study-feedback');
+            fb.innerText = "正确！";
+            fb.style.color = "#46b450";
+            setTimeout(nextCard, 200);
+        }
+    });
+    window.nextCard = () => {
+        if(currentIndex < originalWordList.length - 1) {
+            currentIndex++;
+            renderStudy();
+        } else {
+            finishSession("📖 学习模式已完成！");
+        }
+    };
+
+    window.prevCard = () => {
+        if(currentIndex > 0) {
+            currentIndex--;
+            renderStudy();
+        }
+    };
+    function generateScrambledTiles(correctAnswer) {
+        let chars = correctAnswer.split('');
+        
+        // 👑 依据当前设备屏幕宽度实时更新目标方块个数
+        // 电脑和平板（>=550px）为 8列 × 3行 = 24 个方块
+        // 手机等窄屏（<630px）为 6列 × 3行 = 18 个方块
+        if (window.innerWidth >= 550) {
+            dynamicTileCount = 24;
+        } else {
+            dynamicTileCount = 18;
+        }
+
+        if (chars.length < dynamicTileCount && originalWordList.length > 0) {
+            let pool = originalWordList
+                .map(w => w.kanji + w.kana)
+                .join('')
+                .split('');
+            if (pool.length === 0) pool = "するないたてますればから漢字日常".split('');
+            while (chars.length < dynamicTileCount && pool.length > 0) {
+                const randIndex = Math.floor(Math.random() * pool.length);
+                chars.push(pool.splice(randIndex, 1)[0]);
+            }
+        }
+        
+        // 如果提取的总字数超出了，切断多余部分保证严格等于 dynamicTileCount
+        if (chars.length > dynamicTileCount) {
+            chars = chars.slice(0, dynamicTileCount);
+        }
+
+        shuffleArray(chars);
+        return chars;
+    }
+    function initHardScrambleZone(answer) {
+        const zone = document.getElementById('hard-scramble-container');
+        const input = document.getElementById('scrambleAnswerInput');
+        zone.innerHTML = '';
+        input.value = '';
+        const tiles = generateScrambledTiles(answer);
+        tiles.forEach(char => {
+            const btn = document.createElement('div');
+            btn.className = 'char-tile';
+            btn.innerText = char;
+            btn.onclick = () => {
+                const currentLength = input.value.length;
+                if (answer[currentLength] === char) {
+                    input.value += char;
+                    btn.classList.add('correct-hidden');
+
+                    if (input.value.trim() === answer.trim()) {
+                        document.getElementById('challenge-feedback').innerText = "正确！";
+                        document.getElementById('challenge-feedback').style.color = "var(--success-color)";
+                        currentIndex++;
+                        setTimeout(() => {
+                            renderChallenge();
+                        }, 220);
+                    }
+                } else {
+                    input.value += char;
+                    btn.classList.add('used');
+                    document.getElementById('challenge-feedback').innerText = "回答错误";
+                    document.getElementById('challenge-feedback').style.color = "var(--error-color)";
+                }
+            };
+            zone.appendChild(btn);
+        });
+        input.onclick = () => {
+            input.value = "";
+            document.getElementById('challenge-feedback').innerText = "";
+            zone.querySelectorAll('.char-tile').forEach(t => {
+                t.classList.remove('used', 'correct-hidden');
+            });
+        };
+    }
+    function renderChallenge() {
+        if (currentIndex >= challengeQueue.length) {
+            finishSession(currentMode === 'hard-test' ? "📝 书写测试完成！🎉" : "挑战成功！🥳");
+document.body.classList.add('game-over'); 
+            return;
+        }
+        const w = challengeQueue[currentIndex];
+        const wordDisplay = document.getElementById('display-word');
+
+        document.getElementById('challenge-feedback').innerText = "";
+        document.getElementById('answer-hint-card').classList.add('hidden');
+        document.getElementById('show-answer-btn').classList.remove('hidden');
+        if (currentMode === 'hard-test') {
+            wordDisplay.innerText = w.definition;
+            wordDisplay.classList.add('definition-mode');
+
+            document.getElementById('scramble-test-zone').classList.remove('hidden');
+            document.getElementById('typing-test-zone').classList.add('hidden');
+            initHardScrambleZone(w.kanji);
+        } else {
+            wordDisplay.innerText = w.kanji;
+            wordDisplay.classList.remove('definition-mode');
+            document.getElementById('scramble-test-zone').classList.add('hidden');
+            document.getElementById('typing-test-zone').classList.remove('hidden');
+            document.getElementById('challengeAnswerInput').value = "";
+            
+        }
+        document.getElementById('challenge-progress').innerText = currentIndex + 1;
+        document.getElementById('challenge-total').innerText = challengeQueue.length;
+    }
+    document.getElementById('challengeAnswerInput').addEventListener('input', function() {
+        const userVal = cleanString(romajiToKana(this.value.trim()));
+        const targetVal = cleanString(challengeQueue[currentIndex].kana);
+
+        if (userVal !== "" && userVal === targetVal) {
+            const fb = document.getElementById('challenge-feedback');
+            fb.innerText = "正确！";
+            fb.style.color = "#46b450";
+            currentIndex++;
+            setTimeout(renderChallenge, 220);
+        }
+    });
+    window.showHelpAnswer = function() {
+        const w = challengeQueue[currentIndex];
+        helpedKanjiSet.add(w.kanji);
+        const hintCard = document.getElementById('answer-hint-card');
+        hintCard.innerHTML = `<h2>${w.kanji}</h2><div class="card-info"><p>读音：${w.kana}</p><p>声调：${w.accent}</p><p>释义：${w.definition}</div>`;
+        hintCard.classList.remove('hidden');
+
+        requeueWord(w);
+    };
+    function requeueWord(wordObj) {
+        const baseK = wordObj.kanji;
+        challengeQueue = challengeQueue.filter((item, idx) => idx <= currentIndex || item.kanji !== baseK);
+        const remainingCount = challengeQueue.length - (currentIndex + 1);
+
+        INTERVALS.forEach(gap => {
+            let actualGap = gap;
+            if (actualGap > remainingCount) actualGap = remainingCount;
+            const targetPos = currentIndex + 1 + actualGap;
+            challengeQueue.splice(targetPos, 0, { ...wordObj });
+        });
+        document.getElementById('challenge-total').innerText = challengeQueue.length;
+    }
+    function nextMatchRound() {
+        matchFirstSelectedCard = null;
+        document.getElementById('match-feedback').innerText = "";
+        if (matchRemainingWords.length === 0) {
+            finishSession("🧩 恭喜通关！🎉");
+            return;
+        }
+        let currentRoundWords = matchRemainingWords.splice(0, 4);
+        let mixedPool = [];
+        currentRoundWords.forEach(w => {
+            mixedPool.push({ id: w.id, text: w.kanji, type: 'word', rawObj: w });
+            mixedPool.push({ id: w.id, text: w.definition, type: 'def', rawObj: w });
+        });
+        let attempts = 0;
+        while (attempts < 20) {
+            shuffleArray(mixedPool);
+            if (!hasNeighborPairs(mixedPool)) break;
+            attempts++;
+        }
+        const gridContainer = document.getElementById('match-grid-container');
+        gridContainer.innerHTML = "";
+        for (let i = 0; i < 8; i++) {
+            if (mixedPool[i]) {
+                gridContainer.appendChild(createMatchCardElement(mixedPool[i]));
+            } else {
+                gridContainer.appendChild(createMatchPlaceholder());
+            }
+        }
+    }
+    function hasNeighborPairs(pool) {
+        for (let i = 0; i < pool.length; i++) {
+            if (i % 2 === 0 && i + 1 < pool.length) {
+                if (pool[i].id === pool[i+1].id) return true;
+            }
+            if (i + 2 < pool.length) {
+                if (pool[i].id === pool[i+2].id) return true;
+            }
+        }
+        return false;
+    }
+    function createMatchCardElement(item) {
+        const card = document.createElement('div');
+        card.className = `match-card lang-${item.type}`;
+        card.innerText = item.text;
+        card.dataset.id = item.id;
+        card.dataset.type = item.type;
+        card.customWordData = item.rawObj;
+        card.addEventListener('click', function() {
+            handleMatchCardClick(card);
+        });
+        return card;
+    }
+    function createMatchPlaceholder() {
+        const card = document.createElement('div');
+        card.className = 'match-card invisible';
+        return card;
+    }
+    function handleMatchCardClick(clickedCard) {
+        const cardType = clickedCard.dataset.type;
+        const cardId = clickedCard.dataset.id;
+        const feedback = document.getElementById('match-feedback');
+        if (!matchFirstSelectedCard) {
+            matchFirstSelectedCard = clickedCard;
+            clickedCard.classList.add('selected');
+            feedback.innerText = "";
+            return;
+        }
+        if (matchFirstSelectedCard === clickedCard) {
+            clickedCard.classList.remove('selected');
+            matchFirstSelectedCard = null;
+            return;
+        }
+        if (matchFirstSelectedCard.dataset.type === cardType) {
+            matchFirstSelectedCard.classList.remove('selected');
+            matchFirstSelectedCard = clickedCard;
+            clickedCard.classList.add('selected');
+            return;
+        }
+        if (matchFirstSelectedCard.dataset.id === cardId) {
+            feedback.innerText = "正确！";
+            feedback.style.color = "var(--success-color)";
+
+            matchFirstSelectedCard.classList.remove('selected');
+            matchFirstSelectedCard.classList.add('invisible');
+            clickedCard.classList.add('invisible');
+
+            matchFirstSelectedCard = null;
+            let currentProgress = parseInt(document.getElementById('match-cleared-progress').innerText);
+            document.getElementById('match-cleared-progress').innerText = currentProgress + 1;
+            checkMatchRoundComplete();
+        } else {
+            feedback.innerText = "❌ 错啦，再试试！";
+            feedback.style.color = "red";
+            if(clickedCard.customWordData) {
+                helpedKanjiSet.add(clickedCard.customWordData.kanji);
+            }
+            matchFirstSelectedCard.classList.remove('selected');
+            matchFirstSelectedCard = null;
+        }
+    }
+    function checkMatchRoundComplete() {
+        const activeCards = document.querySelectorAll('#match-grid-container .match-card:not(.invisible)');
+        if (activeCards.length === 0) {
+            setTimeout(nextMatchRound, 300);
+        }
+    }
+
+
+                function finishSession(title) {
+        switchView('result-area');
+        document.getElementById('result-title').innerText = title;
+        const listDiv = document.getElementById('help-list');
+        const container = document.getElementById('helped-words-container');
+        if (helpedKanjiSet.size > 0) {
+            container.classList.remove('hidden');
+            
+            // 💡 动态判断格式：如果是书写测试或连线消除，显示中文意思；如果是假名挑战，显示假名
+            listDiv.innerHTML = Array.from(helpedKanjiSet).map(kanji => {
+                // 从原始词库中找到这个难词的完整数据
+                const wordObj = originalWordList.find(w => w.kanji === kanji);
+                if (!wordObj) return `<div>${kanji}</div>`;
+                
+                if (currentMode === 'hard-test' || currentMode === 'match') {
+                    // 书写测试 或 连线消除：日文原文（汉字）: 中文释义
+                    return `<div class="hard-word-item"><span class="jp-part">${wordObj.kanji}</span>：<span class="hint-part">${wordObj.definition}</span></div>`;
+                } else {
+                    // 假名挑战：日文原文（汉字）: 假名
+                    return `<div class="hard-word-item"><span class="jp-part">${wordObj.kanji}</span>：<span class="hint-part">${wordObj.kana}</span></div>`;
+                }
+            }).join('');
+                
+        } else {
+            container.classList.add('hidden');
+        }
+    }
+
+
+
+
+
+    window.retryExcludingHelped = function() {
+    if(originalWordList.length === 0) return alert("没有剩余单词可重新进行");
+    // 直接传入完整的原始单词列表
+    startMode(currentMode, originalWordList); 
+};
+
+
+    window.focusOnHelped = function() {
+        const filtered = originalWordList.filter(w => helpedKanjiSet.has(w.kanji));
+        if(filtered.length === 0) return alert("当前没有记录到难词");
+        startMode(currentMode, filtered);
+
+    };
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    function romajiToKana(text) {
+        text = text.toLowerCase();
+        let res = ""; let i = 0;
+        while (i < text.length) {
+            let found = false;
+            for (let len = 4; len >= 1; len--) {
+                let sub = text.substr(i, len);
+                if (romajiMap[sub]) { res += romajiMap[sub]; i += len; found = true; break; }
+            }
+            if (!found) {
+                if (text[i] === text[i+1] && text[i] >= 'a' && text[i] <= 'z' && text[i] !== 'n') {
+                    res += "っ"; i += 1;
+                } else { res += text[i]; i += 1; }
+            }
+        }
+        return res;
+    }
+    function cleanString(str) {
+        return str ? str.replace(/[^\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FA5]/g, '').toLowerCase() : "";
+    }
+    
+       /* 👈 完美路由控制 */
+    window.switchView = function(id) {
+        ['setup-area', 'mode-area', 'study-area', 'challenge-area', 'match-area', 'result-area'].forEach(v => {
+            const el = document.getElementById(v);
+            if(el) el.classList.add('hidden');
+        });
+        const targetEl = document.getElementById(id);
+        if(targetEl) targetEl.classList.remove('hidden');
+
+        // 核心优化：当处于导入txt页面时启用 zoom，真正释放高度空间，彻底移除滚动条！
+        const container = document.getElementById('word-game-container');
+        if (id === 'setup-area') {
+            container.classList.add('setup-scaled');
+        } else {
+            container.classList.remove('setup-scaled');
+        }
+
+        // 💡 动态控制游戏模式专属状态
+        if (['study-area', 'challenge-area', 'match-area'].includes(id)) {
+            // 1. 只有正在答题/连线时，才是真正的“游戏进行中”（显现灰色）
+            document.body.classList.add('in-game-mode');
+            document.body.classList.remove('game-over'); // 确保重新开局时，结算标记被清除
+        } else if (id === 'result-area') {
+            // 2. 进入结算页面，保持 in-game-mode 状态，但强行加上 game-over（恢复彩虹色）
+            document.body.classList.add('in-game-mode');
+            document.body.classList.add('game-over');
+        } else {
+            // 3. 回到主菜单或上传页，彻底清除游戏状态
+            document.body.classList.remove('in-game-mode');
+            document.body.classList.remove('game-over');
+        }
+    }
+})(); // 👈 这一行保留在最下面，作为脚本闭合
+
+</script>
+</body>
+</html>

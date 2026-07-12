@@ -1,0 +1,51 @@
+乗車,じょうしゃ,0,乘車,taking a train, entraining
+上旬,じょうじゅん,0,上旬,first 10 days of month
+生ずる,しょうずる,3,發生、產生,to cause, to arise, to be generated
+小数,しょうすう,3,小數,fraction (part of), decimal
+商店,しょうてん,0,商店,shop, business firm
+焦点,しょうてん,1,焦點,focus, point
+消毒,しょうどく,0,消毒,disinfection
+勝敗,しょうはい,1,勝負、勝敗,victory or defeat, issue (of battle)
+蒸発,じょうはつ,0,蒸發,evaporation; unexplained disappearance
+上品,じょうひん,3,高雅、文雅,refined, elegant, well-mannered
+勝負,しょうぶ,1,勝負、比賽,victory or defeat, game
+小便,しょうべん,1,小便,(col) urine, piss
+消防署,しょうぼうしょ,3,消防署,fire station
+正味,しょうみ,1,淨重、內容物,net (weight)
+正面,しょうめん,3,正面,front
+消耗,しょうもう,0,消耗,exhaustion, consumption
+初級,しょきゅう,0,初級,elementary level
+助教授,じょきょうじゅ,3,副教授,assistant professor
+～色,～しょく,0,…色,kind of color
+食塩,しょくえん,0,食鹽,table salt
+職人,しょくにん,0,工匠、手藝人,artisan, craftsman
+職場,しょくば,0,職場、工作單位,workplace
+初旬,しょじゅん,0,初旬、上旬,first 10 days of the month
+書籍,しょせき,1,書籍,book, publication
+食器,しょっき,0,餐具,tableware
+ショップ,しょっぷ,1,商店、店鋪,a shop
+書店,しょてん,1,書店,bookshop
+書道,しょどう,1,書法,calligraphy
+初歩,しょほ,1,初步、入門,elements, rudiments
+白髪,しらが,0,白髮,white or grey hair, trendy hair bleaching
+シリーズ,しりいず,1,系列,series
+私立,しりつ,0,私立,private (establishment)
+資料,しりょう,1,資料,materials, data
+汁,しる,1,汁、湯汁,juice, soup
+素人,しろうと,1,外行、門外漢,layman, amateur, novice
+しわ,しわ,0,皺紋（臉上的）,wrinkles, creases
+芯,しん,1,芯、中心,core, heart, wick
+新幹線,しんかんせん,3,新幹線,Shinkansen, "Bullet Train"
+真空,しんくう,0,真空,vacuum
+人事,じんじ,1,人事,human resources, personnel management
+信ずる,しんずる,3,相信,to believe
+心身,しんしん,1,身心,mind and body
+申請,しんせい,0,申請,application, request, petition
+人造,じんぞう,0,人造,man-made, synthetic, artificial
+寝台,しんだい,0,臥舖、睡床,bed
+診断,しんだん,0,診斷,diagnosis
+侵入,しんにゅう,0,侵入、進入,invasion, raid, trespass
+人文科学,じんぶんかがく,4,人文科學,social sciences, humanities
+人命,じんめい,0,人命,(human) life
+深夜,しんや,1,深夜,late at night
+

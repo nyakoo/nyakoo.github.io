@@ -1,0 +1,50 @@
+欄,らん,1,欄位,column of text (e.g., as in a newspaper)
+ランチ,らんち,1,午餐,lunch
+ランニング,らんにんぐ,0,跑步,running; tank top
+乱暴,らんぼう,0,粗暴,rude, violent, rough
+理科,りか,1,理科,science
+利害,りがい,1,利害,advantages and disadvantages, interest
+段階,だんかい,0,階段,gradation, grade, stage
+短期,たんき,1,短期,short term
+炭鉱,たんこう,0,炭礦,coal mine, coal pit
+短所,たんしょ,1,缺點,defect, weak point; disadvantage
+たんす,たんす,0,衣櫃,chest of drawers
+淡水,たんすい,1,淡水,fresh water
+断水,だんすい,0,停水,water outage
+単数,たんすう,3,單數,singular (number)
+団地,だんち,0,團地（住宅區）,housing complex
+断定,だんてい,0,斷定,conclusion, decision
+短編,たんぺん,0,短篇,short (e.g., story, film)
+誓う,ちかう,2,發誓,to swear, to vow
+地下水,ちかすい,2,地下水,underground water
+近々,ちかぢか,2,近期,soon, before long
+近付ける,ちかづける,4,靠近、使靠近,to bring near, to put close, to let come near
+近寄る,ちかよる,0,靠近,to approach, to draw near
+力強い,ちからづよい,4,強而有力的,powerful, strong, vigorous
+ちぎる,ちぎる,2,撕碎,to cut up fine, to pick (fruit)
+地質,ちしつ,0,地質,geological features
+知人,ちじん,0,熟人,friend, acquaintance
+地帯,ちたい,0,地帶,area, zone
+縮む,ちぢむ,0,收縮,to shrink, to be contracted
+縮める,ちぢめる,0,縮短,to shorten, to reduce, to shrink
+縮れる,ちぢれる,3,捲曲,to be wavy, to be curled
+チップ,ちっぷ,1,小費,gratuity, tip; chip
+地点,ちてん,0,地點,site, point on a map
+地名,ちめい,0,地名,place name
+茶色い,ちゃいろい,3,茶色的,brown
+～着,～ちゃく,1,…件（衣服單位）,counter for clothes; finishing place
+着々,ちゃくちゃく,0,穩紮穩打地,steadily
+中間,ちゅうかん,0,中間,middle, midway, interim
+中旬,ちゅうじゅん,0,中旬,second third of a month
+抽象,ちゅうしょう,0,抽象,abstract
+中世,ちゅうせい,1,中世紀,Middle Ages, medieval times
+中性,ちゅうせい,0,中性,neuter gender, neutral
+中途,ちゅうと,0,中途,in the middle, half-way
+中年,ちゅうねん,0,中年,middle-aged
+長～,ちょう～,1,長…,long ~
+～庁,～ちょう,1,…廳（政府機關）,office, agency
+～兆,～ちょう,1,…兆,trillion
+～長,～ちょう,1,…長,leader, head
+～帳,～ちょう,1,…帳、…簿,~ book, notebook
+超過,ちょうか,1,超過,excess, being more than
+彫刻,ちょうこく,0,雕刻,carving, engraving, sculpture

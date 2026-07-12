@@ -1,0 +1,50 @@
+お帰り,おかえり,0,我回來了,return, welcome
+おかけください,おかけください,6,請坐,please sit down
+おかげさまで,おかげさまで,0,託您的福,Thanks to god, thanks to you
+おかず,おかず,0,飯菜、配菜,side dish, accompaniment for rice dishes
+おかまいなく,おかまいなく,5,請別客氣、請別費心,please don't fuss over me
+拝む,おがむ,2,拜、祈禱,to worship, to pray
+お代わり,おかわり,0,再往碗裡加（飯菜）、換一份,second helping, another cup
+補う,おぎなう,3,補充、補償,to compensate for
+お気の毒に,おきのどくに,2,太可憐了、遺憾,I'm sorry to hear that…
+屋外,おくがい,0,戶外,outdoors
+送り仮名,おくりがな,4,送假名（漢字後面的假名）,part of word written in kana
+お元気で,おげんきで,2,請保重,Take care'
+怠る,おこたる,3,怠慢、疏忽,to neglect, to fail
+お先に,おさきに,0,我先走了,before, after you
+伯父,おじ,0,伯父,(humble) uncle (older than one's parent)
+叔父,おじ,0,叔父,uncle (younger than one's parent)
+惜しい,おしい,2,可惜的、遺憾的,regrettable, disappointing
+伯父さん,おじさん,2,伯父（稱呼）,(hon.) middle-aged gentleman, uncle
+小父さん,おじさん,2,叔叔、伯伯（對長輩的稱呼）,(hon.) middle-aged gentleman, uncle
+叔父さん,おじさん,2,叔父（稱呼）,(hon.) middle-aged gentleman, uncle
+お邪魔します,おじゃまします,6,打擾了,Excuse me for disturbing you
+お世話になりました,おせわになりました,3,承蒙您的照顧了,I've been in your care
+お大事に,おだいじに,2,請保重（對病人說）,Take care of yourself, Take care!, Get well soon
+落着く,おちつく,0,冷靜、安頓,to calm down, to settle down
+お出掛け,おでかけ,0,出門,outing
+お手伝いさん,おてつだいさん,4,女傭、幫傭,maid
+脅かす,おどかす,4,威脅、嚇唬,to threaten, to coerce
+落し物,おとしもの,0,遺失物,lost property
+驚かす,おどろかす,4,嚇唬,to surprise, to frighten
+お願いします,おねがいします,6,拜託了,Please (lit., I request)
+各々,おのおの,2,各自、各個,each, every, either
+伯母,おば,0,伯母,(humble) aunt (older than one's parent)
+叔母,おば,0,叔母,aunt (younger than one's parent)
+小母さん,おばさん,2,大嬸、阿姨,lady, woman, ma'am
+おはよう,おはよう,0,早安,(abbr.) Good morning
+お参り,おまいり,0,參拜,worship, shrine visit
+お待たせしました,おまたせしました,5,讓您久等了,Sorry to have kept you waiting
+お待ちください,おまちください,6,請稍等,Please wait a moment
+おまちどおさま,おまちどおさま,6,讓您久等了（多用於餐飲）,Sorry to have kept you waiting
+おめでたい,おめでたい,4,值得慶賀的、喜慶的,happy event, matter for congratulation
+思い掛けない,おもいがけない,5,意想不到的,unexpected, casual
+思い切り,おもいきり,0,盡情地、果斷地,with all one's strength (heart), resignation, resolution
+思い込む,おもいこむ,4,深信、固執地認為,to be under impression that, to be convinced that
+思いっ切り,おもいっきり,0,盡情地、使勁地,very, much, fully
+重たい,おもたい,3,沉重的,heavy, massive, serious
+お休み,おやすみ,0,休息、晚安,holiday, absence; (exp.) Good night
+おやつ,おやつ,2,點心,between meal snack, afternoon refreshment
+親指,おやゆび,2,拇指,thumb
+オルガン,おるがん,0,風琴,organ
+恩恵,おんけい,1,恩惠,blessing, benefit

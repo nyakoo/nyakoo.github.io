@@ -1,0 +1,50 @@
+見上げる,みあげる,0,仰視,to look up at, to admire
+見送る,みおくる,0,送行,to see off; to escort; to let pass
+見下ろす,みおろす,3,俯視,to overlook, to look down on something
+見掛け,みかけ,0,外表、外觀,outward appearance
+三日月,みかづき,0,三日月、新月,crescent moon
+岬,みさき,0,岬、海角,cape (on coast)
+みじめ,みじめ,0,悲慘的,sad, pitiful, wretched
+ミシン,みしん,0,縫紉機,sewing machine
+自ら,みずから,1,自己、親自,for one's self, personally
+水着,みずぎ,0,泳衣,bathing suit (woman's)
+店屋,みせや,0,商店、店舖,store, shop
+～みたい,～みたい,0,像…一樣,looks like ~
+見出し,みだし,0,標題、索引,heading, index
+道順,みちじゅん,0,路線、步驟,itinerary, route
+みっともない,みっともない,5,難看的、不像樣的,shameful, indecent
+見詰める,みつめる,0,凝視,to stare at, to gaze at
+見直す,みなおす,0,重看、重新評估,to look over again, to review
+見慣れる,みなれる,3,看慣的,to become used to seeing, to be familiar with
+醜い,みにくい,3,醜陋的,ugly
+実る,みのる,2,結實、成熟,to bear fruit, to ripen
+身分,みぶん,1,身分,position, status
+見本,みほん,0,樣本,sample
+見舞う,みまう,0,探望、遭受,to ask after (health), to visit
+未満,みまん,0,未滿,less than, insufficient
+名字,みょうじ,1,姓氏,surname, family name
+ミリ,みり,1,公釐,milli-
+民間,みんかん,0,民間,private, civilian
+民主～,みんしゅ～,1,民主…,democratic
+民謡,みんよう,0,民謠,folk song, popular song
+～向け,～むけ,0,面向…、適合…,for ~
+無限,むげん,0,無限,infinite
+無地,むじ,1,素色、無花紋,plain
+矛盾,むじゅん,0,矛盾,contradiction, inconsistency
+無数,むすう,0,無數,countless number, infinite number
+紫,むらさき,2,紫色,purple color, violet
+群れ,むれ,2,群體,crowd, flock, herd
+姪,めい,0,姪女、外甥女,niece
+名～,めい～,1,名…,famous ~
+～名,～めい,1,…名（計算人數單位）,counter for people
+名作,めいさく,0,名作,masterpiece
+名所,めいしょ,0,名勝,famous place
+命ずる,めいずる,3,命令、任命,to command, to appoint
+迷信,めいしん,0,迷信,superstition
+名物,めいぶつ,0,名產,famous product, special product, speciality
+銘々,めいめい,0,每個人、各自,each, individual
+恵まれる,めぐまれる,4,得天獨厚、受惠於,to be blessed with, to be rich in
+巡る,めぐる,0,巡迴、圍繞,to go around
+目指す,めざす,2,以…為目標,to aim at, to have an eye on
+目覚し,めざまし,3,鬧鐘,alarm-clock
+目下,めした,0,目前,at present, now

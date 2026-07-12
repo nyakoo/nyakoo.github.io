@@ -1,0 +1,50 @@
+やっつける,やっつける,4,打敗、幹掉,to attack (an enemy), to beat, to finish off
+家主,やぬし,1,房東,landlord
+やっぱり,やっぱり,0,果然,after all, anyway
+破く,やぶく,2,撕毀、弄破,to tear
+やむをえない,やむをえない,5,不得已、沒辦法,cannot be helped, unavoidable
+軟らかい,やわらかい,4,柔軟的,soft, tender, limp
+遊園地,ゆうえんち,3,遊樂園,amusement park
+夕刊,ゆうかん,0,晚報,evening paper
+郵送,ゆうそう,0,郵寄,mailing
+夕立,ゆうだち,0,雷陣雨,(sudden) evening shower (rain)
+夕日,ゆうひ,0,夕陽,(in) the evening sun, setting sun
+悠々,ゆうゆう,0,悠然、餘裕,quiet, calm, leisurely
+有料,ゆうりょう,0,付費、收費,admission-paid, toll
+浴衣,ゆかた,0,浴衣,bathrobe, informal summer kimono
+行方,ゆくえ,0,去向、行蹤,one's whereabouts
+湯気,ゆげ,1,水蒸氣,steam
+輸血,ゆけつ,0,輸血,blood transfusion
+輸送,ゆそう,0,運輸,transport, transportation
+油断,ゆだん,0,疏忽、大意,negligence, unpreparedness
+湯飲み,ゆのみ,3,茶杯,teacup
+緩い,ゆるい,2,鬆的、緩慢的,loose, lenient, slow
+溶岩,ようがん,1,熔岩,lava
+用語,ようご,0,用語,term, terminology
+要旨,ようし,0,要旨,gist, essentials, summary
+幼児,ようじ,1,幼兒,infant, baby, child
+容積,ようせき,0,容積,capacity, volume
+幼稚,ようち,0,幼稚,infancy, childish, infantile
+幼稚園,ようちえん,3,幼兒園,kindergarten
+用途,ようと,1,用途,use, usefulness
+洋品店,ようひんてん,3,西裝用品店,clothes store
+養分,ようぶん,0,養分,nourishment, nutrient
+羊毛,ようもう,0,羊毛,wool
+漸く,ようやく,0,好不容易、漸漸,at last, finally, hardly
+要領,ようりょう,0,要領、訣竅,gist, essentials, outline
+翌～,よく～,1,翌…、次…,next ~
+欲張り,よくばり,3,貪婪,greedy
+余計,よけい,0,多餘、格外,too much, unnecessary, abundance, surplus, excess, superfluity
+よこす,よこす,2,寄來、交給,to send, to forward; to hand over (e.g., money)
+余所,よそ,0,別處,another place, somewhere else, strange parts
+四つ角,よつかど,0,十字路口,four corners, crossroads
+酔っ払い,よっぱらい,0,醉漢,drunkard
+予備,よび,1,預備,preparation, spare
+呼び掛ける,よびかける,4,呼籲、招呼,to call out to, to accost, to address (crowd), to appeal
+呼び出す,よびだす,3,傳喚、叫出,to summon, to call (e.g., phone)
+蘇る,よみがえる,3,甦醒、復甦,to be resurrected, to be revived
+慶ぶ,よろこぶ,3,欣喜、慶賀,to be delighted, to be glad
+～等,～ら,1,…等,plural persons
+来日,らいにち,0,來日（訪問日本）,coming to Japan, visit to Japan
+落第,らくだい,0,留級、不及格,failure, dropping out of a class
+ラッシュアワー,らっしゅあわあ,4,尖峰時段,rush hour

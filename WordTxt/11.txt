@@ -1,0 +1,50 @@
+格別,かくべつ,0,格外,exceptional
+確率,かくりつ,0,概率、機率,probability
+学力,がくりょく,0,學力、學習能力,scholarship, knowledge
+掛け算,かけざん,3,乘法,multiplication
+可決,かけつ,0,通過、表決通過,approval, adoption (e.g., motion, bill), passage
+火口,かこう,0,火山口,crater (of a volcano)
+下降,かこう,0,下降,decline, descent, fall
+火山,かざん,1,火山,volcano
+かしこまりました,かしこまりました,7,我知道了、遵命,Certainly
+貸し出し,かしだし,0,借出、出租,lending, loaning
+過失,かしつ,0,過失、差錯,error, mistake, negligence
+果実,かじつ,1,果實、成果,fruit
+貸間,かしま,0,出租房間,room to let
+貸家,かしや,0,出租房屋,house for rent
+箇所,かしょ,1,處、個,place, point, part
+過剰,かじょう,0,過剩、多餘,excess, over-
+かじる,かじる,2,咬、啃、咬文嚼字,to chew, to bite (at)
+課税,かぜい,0,課稅,taxation
+下線,かせん,0,下劃線,underline, underscore
+カセット,かせっと,1,卡帶,cassette (tape)
+加速,かそく,0,加速,acceleration
+加速度,かそくど,3,加速度,acceleration
+塊,かたまり,0,塊狀物、堆,lump, mass, cluster
+固まる,かたまる,3,凝固、堅固、聚集,to harden, to solidify, to become firm
+片道,かたみち,0,單程,one-way (trip)
+傾く,かたむく,3,傾斜、偏向,to incline toward, to slant, to lurch
+片寄る,かたよる,3,偏於、偏袒,to be one-sided, to incline, to be partial
+～がち,～がち,0,容易…、往往會…,tend to do ~
+学科,がっか,0,學科,study subject, course of study
+学会,がっかい,0,學會,academic conference
+学級,がっきゅう,0,班級,class
+担ぐ,かつぐ,2,扛、擔、欺騙,to shoulder, to carry on shoulder
+括弧,かっこ,1,括號,parenthesis, brackets
+活字,かつじ,0,活字、印刷字體,printing type
+勝手に,かってに,0,隨便、任意、擅自,arbitrarily,
+活力,かつりょく,1,活力,vitality, energy
+仮名,かな,0,假名,kana
+仮名遣い,かなづかい,4,假名拼寫法,kana orthography, syllabary spelling
+加熱,かねつ,0,加熱,heating
+兼ねる,かねる,2,兼任、兼具,to simultaneously serve two or more functions
+カバー,かばあ,1,蓋子、封面、覆蓋,cover (e.g., book)
+過半数,かはんすう,3,過半數,majority
+かび (～がはえる),かび,0,發霉,mold, mildew
+被せる,かぶせる,3,覆蓋、戴上、潑灑,to cover (with something)
+釜,かま,1,鍋、釜,iron pot, kettle
+構いません,かまいません,4,沒關係、不介意,it's all right; one doesn’t mind
+紙屑,かみくず,3,廢紙、紙屑,wastepaper
+神様,かみさま,1,神、神靈,god
+剃刀,かみそり,0,刮鬍刀、剃刀,razor
+ガム,がむ,1,口香糖,chewing gum

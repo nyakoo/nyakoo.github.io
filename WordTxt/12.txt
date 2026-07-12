@@ -1,0 +1,50 @@
+貨物,かもつ,1,貨物,cargo, freight
+カラー,からあ,1,顏色、彩色,collar, color
+からかう,からかう,3,嘲弄、開玩笑,to ridicule, to make fun of
+空っぽ,からっぽ,0,空空如也,empty, vacant, hollow
+かるた,かるた,0,歌留多（日本花牌遊戲）,playing cards (POR: carta)
+枯れる,かれる,0,枯萎、乾枯,to wither, to die (plant), to be blasted (plant)
+カロリー,かろりい,1,卡路里,calorie
+可愛がる,かわいがる,4,疼愛、寵愛,to love, to be affectionate
+為替,かわせ,0,匯率、匯票,money order, exchange
+瓦,かわら,0,瓦片,roof tile
+～刊,～かん,1,…刊,~ issued (magazine, newspaper)
+～間,～かん,1,…期間、…之間,between, during
+～巻,～かん,1,…卷、…冊,volume
+～館,～かん,1,…館,~ hall, ~ building
+～感,～かん,1,…感,feeling, sense, impression
+換気,かんき,0,換氣、通風,ventilation
+感激,かんげき,0,感激、感動,deep emotion, impression, inspiration
+関西,かんさい,1,關西,south-western half of Japan, including Osaka
+元日,がんじつ,0,元旦,New Year's Day
+鑑賞,かんしょう,0,鑑賞,appreciation
+感ずる,かんずる,3,感覺、覺得,to feel, to sense
+間接,かんせつ,0,間接,indirect, indirectness
+観測,かんそく,0,觀測,observation
+寒帯,かんたい,0,寒帶,frigid zone
+官庁,かんちょう,0,官廳、政府機關,government office, authorities
+勘違い,かんちがい,3,誤解、錯認,misunderstanding, wrong guess
+缶詰,かんづめ,0,罐頭,canning, canned goods,
+乾電池,かんでんち,3,乾電池,dry cell, battery
+関東,かんとう,1,關東,eastern half of Japan, including Tokyo
+観念,かんねん,1,觀念、死心,idea, notion; sense
+乾杯,かんぱい,0,乾杯,Cheers! (a toast)
+看板,かんばん,0,看板、招牌,sign, signboard
+看病,かんびょう,0,看護、照料,nursing (a patient)
+冠,かんむり,3,冠、冠軍、帽子,crown, wreath
+漢和,かんわ,0,漢和（字典）,Chinese Character-Japanese (e.g., dictionary)
+～期,～き,1,…期,~age, ~period
+～器,～き,1,…器、…具,device, equipment
+～機,～き,1,…機,machine
+気圧,きあつ,0,氣壓,atmospheric pressure
+着替え,きがえ,0,換洗衣服,changing clothes, change of clothes
+着替える,きがえる,3,換衣服,to change (one's) clothes
+機関車,きかんしゃ,2,機關車、火車頭,locomotive, engine
+飢饉,ききん,1,饑荒,famine
+器具,きぐ,1,器具、工具,instrument
+記号,きごう,0,記號、符號,symbol, code
+刻む,きざむ,2,雕刻、刻劃、切碎,to mince, to carve, to engrave
+儀式,ぎしき,1,儀式,ceremony, rite, ritual
+基準,きじゅん,0,基準、標準,standard, basis, criteria
+規準,きじゅん,0,規準、準則,standard, basis, criteria
+起床,きしょう,0,起床,rising, getting out of bed

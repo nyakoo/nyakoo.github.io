@@ -1,0 +1,50 @@
+～等,～とう,1,…等,level, place
+～島,～とう,1,…島,kind of islands
+銅,どう,1,銅,copper
+同～,どう～,1,同…,same ~
+～道,～どう,1,…道,kind of path, road
+どういたしまして,どういたしまして,1,不客氣,you are welcome, don't mention it
+統一,とういつ,0,統一,unity, consolidation, uniformity
+同格,どうかく,0,同格、地位相等,the same rank, equality, apposition
+峠,とうげ,3,山頂、難關,ridge, (mountain) pass, difficult part
+統計,とうけい,0,統計,scattering, a scatter, dispersion
+動作,どうさ,1,動作,action, movements, motions
+東西,とうざい,1,東西（方向）,East and West, whole country
+当日,とうじつ,0,當日,appointed day, very day
+投書,とうしょ,0,投書、投稿,letter to the editor, letter from a reader, contribution
+登場,とうじょう,0,登場,entry (on stage)
+どうせ,どうせ,0,反正、終究,anyhow, in any case, at any rate
+灯台,とうだい,0,燈塔,lighthouse
+盗難,とうなん,0,盜竊,theft, robbery
+当番,とうばん,0,值班,being on duty
+等分,とうぶん,0,等分,division into equal parts
+透明,とうめい,0,透明,transparency, cleanness
+灯油,とうゆ,0,燈油,lamp oil, kerosene
+童話,どうわ,0,童話,fairy tale
+～通り,～とおり,3,…街、…路,in accordance with ~; following ~; ~ street, ~ avenue
+通り掛かる,とおりかかる,5,路過,to happen to pass by
+溶かす,とかす,2,融化、使溶解,to melt, to dissolve
+尖る,とがる,2,尖銳、尖尖的,to taper to a point, to become sharp
+どきどき,どきどき,1,小鹿亂撞、忐忑不安,throb, beat (fast)
+特殊,とくしゅ,0,特殊,special, unique
+特色,とくしょく,0,特色,characteristic, feature
+特定,とくてい,0,特定,specific, special, particular
+特売,とくばい,0,特賣,special sale
+溶け込む,とけこむ,3,融入、習慣,to melt into; to become a part of
+退ける,どける,3,移開、避開,to dislodge, to put something out of the way
+床の間,とこのま,0,壁龕,alcove
+～ところ,～ところ,0,…之處、正當…時,about to do ~
+所々,ところどころ,0,處處、到處,here and there, some parts (of something)
+都心,としん,0,市中心,heart (of city)
+戸棚,とだな,0,櫥櫃,cupboard, cabinet
+とっくに,とっくに,0,早就,long ago, already, a long time ago
+どっと,どっと,1,頓時、突然湧入,suddenly
+整う,ととのう,3,整齊、齊備,to be prepared, to be in order, to be arranged
+留まる,とどまる,3,停留在、固定,to be fixed; to abide, to stay (in the one place)
+怒鳴る,どなる,2,大聲叫嚷,to shout, to yell
+殿,どの,1,殿下、大人,Mister (mostly in addressing someone on an envelope)
+飛び込む,とびこむ,3,跳入,to jump in, to leap in, to plunge into
+留まる,とまる,3,停留、限制,to be fixed; to abide, to stay (in the one place)
+ともかく,ともかく,1,總之、不管怎樣,anyhow, at any rate, anyway
+捕える,とらえる,3,捕捉、抓緊,to seize, to capture, to arrest
+取り入れる,とりいれる,4,採用、收穫,to harvest, to take in, to adopt

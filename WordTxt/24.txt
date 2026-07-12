@@ -1,0 +1,50 @@
+うどん,うどん,0,烏龍麵,udon noodles (Japanese traditional noodles)
+うなずく,うなずく,3,點頭,to nod
+敬う,うやまう,3,敬重,to show respect, to honor
+裏返す,うらがえす,3,翻過來,to turn inside out, to turn (something) over
+裏口,うらぐち,0,後門,backdoor, rear entrance
+占う,うらなう,3,占卜,to predict, to divine
+恨み,うらみ,3,恨意,resentment
+恨む,うらむ,2,恨,to curse, to feel bitter
+羨む,うらやむ,3,羨慕,to envy
+売上,うりあげ,0,銷售額,amount sold, proceeds
+売り切れ,うりきれ,0,賣完（名詞）,sold-out
+売り切れる,うりきれる,4,賣光（動詞）,to be sold out
+売行き,うれゆき,0,銷路,sales
+うろうろ,うろうろ,1,徘徊、晃蕩,loitering, aimless wandering
+上～,うわ～,1,上…,upper ~
+運河,うんが,1,運河,canal, waterway
+うんと,うんと,1,非常、使勁,a great deal, very much
+英文,えいぶん,1,英文,sentence in English
+英和,えいわ,0,英和（英日）,English-Japanese (e.g., dictionary)
+ええと,ええと,0,那個、嗯（猶豫詞）,let me see, well, er...
+液体,えきたい,0,液體,liquid, fluid
+エチケット,えちけっと,2,禮節、禮貌,etiquette
+絵の具,えのぐ,0,顏料,colors, paints
+エプロン,えぷろん,1,圍裙,apron
+偉い,えらい,2,偉大的、了不起的,great, celebrated, remarkable,
+～園,～えん,1,…園,~ garden (especially man made)
+宴会,えんかい,0,宴會,party, banquet
+園芸,えんげい,0,園藝,horticulture, gardening
+演劇,えんげき,0,戲劇,play (theatrical)
+円周,えんしゅう,0,圓周,circumference
+遠足,えんそく,0,遠足,trip, hike, picnic
+延長,えんちょう,0,延長,extension, prolongation
+煙突,えんとつ,0,煙囪,chimney
+御～,おん～,1,御…（尊敬前綴）,honorific ~
+追いかける,おいかける,4,追趕,to chase or run after someone
+追い越す,おいこす,3,超越,to pass (e.g., car), to outdistance, to outstrip
+オイル,おいる,1,油、潤滑油,oil
+王女,おうじょ,1,公主,princess
+応ずる,おうずる,3,響應、答應,to respond, to comply with
+応接,おうせつ,0,接待,reception
+応対,おうたい,0,應酬、對待,receiving, dealing with
+往復,おうふく,0,往返,(col) round trip, coming and going, return ticket
+欧米,おうべい,0,歐美,Europe and America, the West
+応用,おうよう,0,應用,application, put to practical use
+電波,でんぱ,0,電波,electro-magnetic wave
+テンポ,てんぽ,1,節奏、速度,tempo
+電流,でんりゅう,0,電流,electric current
+電力,でんりょく,0,電力,electric power
+問い合わせ,といあわせ,0,詢問、查詢,inquiry
+～頭,～とう,1,…頭（計算大型動物單位）,counter for animals

@@ -1,0 +1,50 @@
+割と,わりと,0,比較地,relatively, comparatively
+割引,わりびき,0,打折,discount
+ワンピース,わんぴいす,3,連身裙,one-piece dress
+アイデア,あいであ,2,主意、創意,idea
+あいまい,あいまい,0,含糊、曖昧,vague, ambiguous
+扇ぐ,あおぐ,2,扇（風）,to fan, to flap
+青白い,あおじろい,4,蒼白的,pale
+呆れる,あきれる,0,驚訝、發呆,to be shocked, to be appalled
+アクセント,あくせんと,1,重音、口音,accent
+あくび,あくび,0,打哈欠,yawn
+飽くまで,あくまで,1,始終、到底,to the end, to the last, stubbornly
+明くる～,あくる～,0,翌…、次…,next, following
+明け方,あけがた,0,黎明、清晨,dawn
+憧れる,あこがれる,0,憧憬、嚮往,to long for, to yearn after
+朝寝坊,あさねぼう,3,睡懶覺,oversleeping, late riser
+足跡,あしあと,3,腳印、足跡,footprint
+足元,あしもと,3,腳下、身邊,at one's feet
+味わう,あじわう,3,品嚐、欣賞,to taste, to savor
+あちらこちら,あちらこちら,0,到處、處處,here and there
+厚かましい,あつかましい,4,厚臉皮的,impudent, shameless,
+圧縮,あっしゅく,0,壓縮,compression, condensation, pressure
+宛名,あてな,0,收件人姓名,address, direction
+当てはまる,あてはまる,4,適用、符合,to be applicable, to come under (a category)
+当てはめる,あてはめる,4,套用、應用,to apply, to adapt
+暴れる,あばれる,0,胡鬧、橫衝直撞,to act violently, to rage
+あぶる,あぶる,2,烤、烘,to scorch, to roast
+あふれる,あふれる,3,溢出、充滿,to flood, to overflow
+雨戸,あまど,0,防雨窗、雨門,sliding storm door
+甘やかす,あまやかす,4,嬌慣、縱容,to pamper, to spoil
+余る,あまる,2,剩餘,to be left over, to be in excess
+編み物,あみもの,2,編織物,knitting
+編む,あむ,1,編織,to knit
+危うい,あやうい,0,危險的、危急的,dangerous, critical
+怪しい,あやしい,0,可疑的,suspicious, dubious, doubtful
+荒い,あらい,2,狂暴的、粗暴的,rough, rude, wild
+粗い,あらい,2,粗糙的,coarse, rough
+粗筋,あらすじ,0,梗概、大意,outline, synopsis
+改めて,あらためて,3,重新、再次,another time, again
+改める,あらためる,3,改進、改變,to change, to reform, to revise
+有難い,ありがたい,4,感激、難得,grateful, thankful, appreciated
+あれこれ,あれこれ,0,這個那個、種種,one thing or another, this and that
+荒れる,あれる,0,荒廢、波濤洶湧,to be stormy, to be rough, to be ruined
+慌ただしい,あわただしい,4,匆忙的、慌張的,busy, hurried
+安易,あんい,1,容易的、隨便的,easy-going
+アンテナ,あんてな,0,天線,antenna
+～位,～い,0,第…位,~th place
+言い出す,いいだす,3,開始說、提出,to start talking, to suggest
+言い付ける,いいつける,4,命令、告狀,to tell, to order
+意義,いぎ,1,意義,meaning, significance
+生き生き,いきいき,3,生龍活虎、栩栩如生,vividly, lively

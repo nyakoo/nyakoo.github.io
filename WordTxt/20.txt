@@ -1,0 +1,50 @@
+実感,じっかん,0,體會、真實感,feelings, realization
+湿気,しっき,3,濕氣,moisture, humidity, dampness
+しつこい,しつこい,3,糾纏不休的、油膩的,insistent, obstinate
+実習,じっしゅう,0,實習,practice, training
+実績,じっせき,0,實際業績、成果,achievements, actual results
+執筆,しっぴつ,0,執筆、寫作,writing
+実物,じつぶつ,0,實物,an actual thing
+しっぽ,しっぽ,3,尾巴,tail (animal)
+実用,じつよう,0,實用,practical use, utility
+しつれいしました,しつれいしました,2,失禮了、對不起,Excuse me., I'm sorry.
+実例,じつれい,0,實例,example, instance
+失恋,しつれん,0,失戀,broken heart, unrequited love
+指定,してい,0,指定,designation, specification, assignment
+私鉄,してつ,0,私鐵,private railway
+縛る,しばる,2,捆綁、束縛,to tie, to bind
+地盤,じばん,0,地基、基礎,(the) ground
+しびれる,しびれる,3,發麻、麻痺,to become numb
+紙幣,しへい,1,紙幣,paper money, notes, bills
+しぼむ,しぼむ,0,枯萎、癟下去,to wither, to shrivel
+絞る,しぼる,2,擰、勒緊、集中,to press, to wring, to squeeze
+縞,しま,2,條紋,stripe
+～おしまい,～おしまい,0,結束、完了,end up ~
+しみじみ,しみじみ,3,深切地、痛感,keenly, deeply, heartily
+氏名,しめい,1,姓名,full name
+締切,しめきり,0,截止日期,deadline
+締め切る,しめきる,3,截止、封閉,to close, cancel
+しめた,しめた,1,太好了、抓到了（感嘆詞）,I've got it, all right, fine
+地面,じめん,1,地面,ground, earth's surface
+～車,～しゃ,1,…車,~ car
+～者,～しゃ,1,…者,person
+～社,～しゃ,1,…社,counter for company
+ジャーナリスト,じゃあなりすと,4,記者、新聞工作者,journalist
+社会科学,しゃかいかがく,4,社會科學,social science
+しゃがむ,しゃがむ,0,蹲下,to squat
+蛇口,じゃぐち,0,水龍頭,faucet, tap
+弱点,じゃくてん,3,弱點,weak point, weakness
+車庫,しゃこ,1,車庫,garage, car shed
+車掌,しゃしょう,0,車掌、乘務員,(train) conductor
+写生,しゃせい,0,寫生,sketching, drawing from nature
+社説,しゃせつ,0,社論,editorial
+しゃっくり,しゃっくり,3,打嗝,hiccough, hiccup
+シャッター,しゃったあ,1,快門、鐵捲門,shutter
+しゃぶる,しゃぶる,2,吮吸、舔,to suck, to chew
+車輪,しゃりん,0,車輪,(car) wheel
+洒落,しゃれ,0,笑話、俏皮話,joke, pun, witticism
+じゃんけん,じゃんけん,3,猜拳,rock-scissors-paper game
+～手,～しゅ,1,…手,~ player, person who does ~
+～酒,～しゅ,1,…酒,kind of alcohol
+～集,～しゅう,1,…集,collection of ~
+重～,じゅう～,1,重…,heavy ~

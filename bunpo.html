@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>N2文法助手</title>
+    <style>
+        :root {
+            --primary-color: #6200ee;
+            --success-color: #46b450;
+            --bg-color: #f8f9fa;
+            --warn-color: #e67e22;
+            --gray-btn: #eeeeee;
+            --error-color: #e74c3c;
+            --placeholder-color: #cccccc;
+            --blue-primary: #0073aa;
+        }
+        * {
+            box-sizing: border-box;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Segoe UI', "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+        }
+        /* 主容器固定高度，整体页面大小永久不变 */
+        #main-container {
+            border: 1px solid #ddd;
+            padding: 25px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            min-height: 780px;
+            height: 780px;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+        h3 { color: #333; margin-top: 0; margin-bottom: 20px; }
+        .hidden { display: none !important; }
+        .setup-box {
+            border: 2px dashed #ccc;
+            padding: 30px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        button {
+            padding: 12px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        button:active { transform: scale(0.98); }
+        /* 核心：固定卡片高度，内容溢出滚动，不会撑大卡片 */
+        .card {
+            border: 2px solid #eef2f5;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            background: #fff;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            height: 200px;
+            min-height: 200px;
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .card.study-mode-card {
+            background: #ffffff !important;
+            color: #333 !important;
+            border: 2px solid var(--blue-primary);
+            height: 135px !important;
+        min-height: 135px !important;
+        max-height: 135px !important;
+        }
+        .card.study-mode-card h2 { color: var(--blue-primary); }
+        .grammar-card-bg {
+            background: linear-gradient(135deg, #0073aa 0%, #005a87 100%);
+            color: white;   
+        height: 135px !important;
+        min-height: 135px !important;
+        max-height: 135px !important;
+        }
+        .sentence-display { font-size: 1.4em; line-height: 1.6; color: #1a1a1a; margin-bottom: 15px; }
+        .translation-display { font-size: 1em; color: #666; font-style: italic; }
+        .spelling-box {
+            margin: 10px 0 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+        .spelling-box label { font-size: 0.85em; color: #888; display: block; margin-bottom: 10px; font-weight: bold; }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2em;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            outline: none;
+            margin-bottom: 5px;
+        }
+        input[type="text"]:focus { border-color: var(--primary-color); }
+        input::placeholder {
+            color: var(--placeholder-color);
+            opacity: 1;
+        }
+        .scramble-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 12px 0;
+            min-height: 130px;
+        }
+        .char-tile {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            width: 42px;
+            height: 42px;
+            line-height: 38px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.15s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .char-tile:active {
+            transform: scale(0.9);
+            background: #eef2f5;
+        }
+        .char-tile.used {
+            opacity: 0.4;
+            background: #e0e0e0;
+            cursor: default;
+            pointer-events: none;
+        }
+        .char-tile.correct-hidden {
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .feedback-text { height: 20px; font-weight: bold; margin: 8px 0; font-size: 0.9em; }
+        #help-list {
+            text-align: left; background: #f9f9f9; padding: 15px; border-radius: 8px;
+            margin: 15px 0; max-height: 120px; overflow-y: auto; font-size: 0.9em; color: #555; border: 1px solid #eee;
+        }
+        .btn-group-vertical { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+        .progress-text { color: #999; font-size: 0.85em; margin-bottom: 5px; text-align: right; }
+        .stage-box {
+            margin: 10px 0 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+        .current-cat-badge { font-size: 1.3em; color: var(--warn-color); font-weight: bold; }
+        /* 接续选项滚动 */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 4px;
+        }
+        .opt-btn {
+            background: var(--gray-btn);
+            color: #333;
+            font-size: 14px;
+            padding: 12px 6px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            word-break: break-all;
+            margin: 0;
+            font-weight: normal;
+        }
+        .opt-btn.correct {
+            background-color: var(--success-color) !important;
+            color: white !important;
+        }
+        .opt-btn.wrong {
+            background-color: #e74c3c !important;
+            color: white !important;
+        }
+        .opt-btn.study-hint {
+            background-color: #cce6ff !important;
+            color: #005a87 !important;
+            border: 1px dashed var(--blue-primary);
+        }
+        /* 虚拟数字键盘 */
+        .num-input-box{
+            margin:10px 0 0 0;
+        }
+        #numFileInput{
+            text-align:center;
+            font-size:18px;
+            letter-spacing:4px;
+        }
+        .numpad-wrap{
+            margin-top:12px;
+        }
+        .numpad-row{
+            display:flex;
+            gap:6px;
+            justify-content:center;
+            margin: 0 0 6px 0;
+        }
+        .num-key{
+            width:60px;
+            height:60px;
+            font-size:22px;
+            padding:0;
+            background:#f0f4f8;
+            color:#222;
+        }
+        .num-key.func{
+            background:#ddd;
+        }
+        .load-txt-btn{
+            background:#5256A4;
+            width:100%;
+            margin-top:12px;
+        }
+        /* 模式选择区：垂直水平全部居中 */
+        #mode-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .mode-btn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+        }
+        .mode-btn-container button {
+            width: 80%;
+            max-width: 320px;
+            margin: 0;
+        }
+        /* 结算页面垂直居中 */
+        #result-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+        }
+        /* ========== 新增：接续区域弹性布局，底部按钮固定 ========== */
+        #setsuzoku-area {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        /* 中间内容区域自动占满剩余空间，内部可滚动 */
+        .setsuzoku-content-wrap {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 10px;
+        }
+        /* 底部按钮容器固定贴底，间距统一 */
+        .setsuzoku-bottom-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 480px) {
+            #main-container { padding: 15px; min-height: 730px; height: 730px; }
+            .char-tile { width: 38px; height: 38px; line-height: 34px; font-size: 1.1em; }
+            .num-key{
+                width:50px;
+                height:50px;
+                font-size:18px;
+            }
+            .card.study-mode-card {
+        height: 115px !important;
+        min-height: 115px !important;
+        max-height: 115px !important;
+    }
+    .card.grammar-card-bg {
+        height: 115px !important;
+        min-height: 115px !important;
+        max-height: 115px !important;
+    }
+            .card { height: 180px; min-height: 180px; max-height: 180px; }
+            .options-grid {
+                max-height: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="main-container">
+    <!-- 1. 文件加载初始区：数字键盘读取BunpoTxt + 本地上传 -->
+    <div id="setup-area">
+        <h3>N2文法助手</h3>
+        <div class="setup-box">
+            <p style="margin:0 0 10px 0;color:#666;">输入数字加载 BunpoTxt/数字.txt</p>
+            <div class="num-input-box">
+                <input type="text" id="numFileInput" readonly placeholder="施工中 敬请期待">
+            </div>
+            <div class="numpad-wrap">
+                <div class="numpad-row">
+                    <button class="num-key" data-val="1">1</button>
+                    <button class="num-key" data-val="2">2</button>
+                    <button class="num-key" data-val="3">3</button>
+                </div>
+                <div class="numpad-row">
+                    <button class="num-key" data-val="4">4</button>
+                    <button class="num-key" data-val="5">5</button>
+                    <button class="num-key" data-val="6">6</button>
+                </div>
+                <div class="numpad-row">
+                    <button class="num-key" data-val="7">7</button>
+                    <button class="num-key" data-val="8">8</button>
+                    <button class="num-key" data-val="9">9</button>
+                </div>
+                <div class="numpad-row">
+                    <button class="num-key func" data-val="0">0</button>
+                    <button class="num-key func" data-val="del">←</button>
+                    <button class="num-key func" data-val="clear">清空</button>
+                </div>
+            </div>
+            <button class="load-txt-btn" id="fetchBunpoTxtBtn">加载文法库</button>
+            <div style="margin-top:15px;border-top:1px solid #ddd;padding-top:15px;width:100%;">
+                <p style="font-size: 0.8em; color: #888; margin:0 0 10px 0;">
+                    TXT格式规范：<br>
+                    上方：句子填空行（句子,翻译,原形,答案）<br>
+                    分隔行：🧩🧩🧩🧩🧩<br>
+                    下方：接续变形行（文法,词性_接续...）
+                </p>
+                <input type="file" id="fileInput" accept=".txt">
+            </div>
+        </div>
+    </div>
+    <!-- 2. 主菜单：选择两种练习模式（完全居中） -->
+    <div id="mode-area" class="hidden">
+        <h3>句子填空：<span id="sentence-count">0</span> 条｜接续变形：<span id="setsuzoku-count">0</span> 条</h3>
+        <div class="mode-btn-container">
+            <button onclick="startMode('sentence-study')">📖 句子填空-学习模式</button>
+            <button onclick="startMode('sentence-challenge')">🎯 句子填空-挑战模式</button>
+            <button onclick="startMode('setsuzoku-study')" style="background: var(--blue-primary);">🔍 接续变形-学习模式</button>
+            <button onclick="startMode('setsuzoku-challenge')" style="background: var(--blue-primary);">📝 接续变形-测试模式</button>
+        </div>
+    </div>
+    <!-- 3. 句子填空练习区域 -->
+    <div id="sentence-area" class="hidden">
+        <div class="progress-text"><span id="sentence-mode-title">填空练习</span>进度: <span id="sentence-progress">0</span> / <span id="sentence-total">0</span></div>
+        <div class="card" id="sentence-card-content"></div>
+        <div class="spelling-box">
+            <label>✍️ 语法填空 (输入答案或点击下方字块，Enter确认)</label>
+            <input type="text" id="sentenceAnswerInput" placeholder="" autocomplete="off">
+            <div id="sentence-scramble-zone" class="scramble-container"></div>
+            <div id="sentence-feedback" class="feedback-text"></div>
+        </div>
+        <div id="sentence-study-btns" style="display:flex; gap:10px;">
+            <button onclick="prevSentenceCard()" style="background:#888; flex:1;">上一条</button>
+            <button onclick="nextSentenceCard()" style="flex:1;">下一条</button>
+        </div>
+        <button id="sentence-hint-btn" onclick="showSentenceAnswer()" style="background: var(--gray-btn); color: #666; width: 100%; border: 1px solid #ddd; margin-top:10px;">💡 查看答案</button>
+        <button onclick="switchView('mode-area')" style="background:#666; width:100%; margin-top:10px; font-size: 14px;">返回菜单</button>
+    </div>
+    <!-- 4. 接续变形测试区域（重构结构，底部按钮固定） -->
+    
+<div id="setsuzoku-area" class="hidden">
+        
+        <!-- 中间可滚动内容区 -->
+        <div class="setsuzoku-content-wrap">
+            <div class="progress-text"><span id="setsuzoku-mode-title">接续测试</span>进度: <span id="setsuzoku-progress">0</span> / <span id="setsuzoku-total">0</span></div>
+            <div class="card grammar-card-bg" id="grammar-card">
+                <h2 id="display-grammar">---</h2>
+            </div>
+            <div class="stage-box">
+                <label id="stage-label">请找出匹配该语法的接续形态：</label>
+                <div>正在考察词性：<span id="current-cat-name" class="current-cat-badge">-</span></div>
+            </div>
+            <div class="options-grid" id="optionsPanel"></div>
+            <button id="peek-answer-btn" onclick="peekStudyAnswer()" style="background: var(--warn-color); width:100%; margin-top:5px; font-size: 14px;" class="hidden">💡 查看答案</button>
+        </div>
+        <!-- 底部固定按钮组，永远贴底不滚动 -->
+        <div class="setsuzoku-bottom-btns">
+            <button id="skip-btn" onclick="skipCurrentGrammar()" style="background:#666; width:100%; font-size: 14px;">跳过此语法 ➔</button>
+            <button onclick="switchView('mode-area')" style="background:#666; width:100%; font-size: 14px;">返回菜单</button>
+        </div>
+    </div>
+    <!-- 5. 结算结果页面 -->
+<div id="result-area" class="hidden">
+    <h2 id="result-title" style="color: var(--success-color);">🎉 通关！</h2>
+    <div id="helped-words-container" class="hidden">
+        <p style="font-weight: bold; color: var(--warn-color); margin-bottom: 5px;">难词回顾：</p>
+        <div id="help-list"></div>
+    </div>
+    <!-- 复用mode-btn-container，和模式选择布局完全一致 -->
+    <div class="mode-btn-container">
+        <button id="btn-retry-easy" onclick="retryExcludingHelped()" style="background: #27ae60;">🔁 重新挑战 (排除难词)</button>
+        <button id="btn-focus-hard" onclick="focusOnHelped()" style="background: var(--warn-color);">🔥 巩固难词</button>
+        <button id="btn-change-mode" onclick="switchView('mode-area')" style="background: var(--primary-color);">🧭 换个模式</button>
+        <button onclick="location.reload()" style="background: #888;">📁 重新选择文件</button>
+    </div>
+</div>
+</div>
+<script>
+(function() {
+    // ====================== 全局常量与数据池 ======================
+    const BASE_STRUCTURE = {
+        "動詞": ["普通", "連体", "原形", "+(い)", "+て", "+ている", "+(え)ば/れば", "+た", "+(あ)", "+(あ)ない", "+(お)う/よう", "+(え)る/られる", "+(あ)せる/させる", "+(あ)れる/られる"],
+        "形容詞": ["普通", "連体", "原形", "+くない", "+くて", "+かった", "+ければ", "+く"],
+        "形容動詞": ["普通", "連体", "原形", "+である", "+だ", "+な", "+では", "+ではない", "+で", "+だった"],
+        "名詞": ["普通", "連体", "原形", "+の", "+である"],
+        "句": ["普通"]
+    };
+    const INTERVALS = [3, 8, 11];
+    const TARGET_TILE_COUNT = 18;
+    const SEP_LINE = "🧩🧩🧩🧩🧩"; // 分隔标记
+    let globalCustomPool = {
+        "動詞": new Set(), "形容詞": new Set(), "形容動詞": new Set(), "名詞": new Set(), "句": new Set()
+    };
+    // 全局状态
+    let rawText = "";
+    let sentenceGrammarList = []; // 填空模式数据（分隔行上方）
+    let setsuzokuQuizBank = [];   // 接续模式原始题库（分隔行下方）
+    let quizQueue = [];           // 接续动态队列
+    let currentQueueIdx = 0;
+    let currentCatIdx = 0;
+    let activeAnswers = [];
+    let userFoundCount = 0;
+    let currentIndex = 0;         // 填空模式下标
+    let currentMode = '';         // 模式标识
+    let helpedSet = new Set();    // 难点缓存
+    // ====================== 虚拟数字键盘逻辑 ======================
+    const numInput = document.getElementById('numFileInput');
+    const numKeys = document.querySelectorAll('.num-key');
+    const loadTxtBtn = document.getElementById('fetchBunpoTxtBtn');
+    numKeys.forEach(key=>{
+        key.addEventListener('click',()=>{
+            const val = key.dataset.val;
+            if(val === 'clear') numInput.value = '';
+            else if(val === 'del') numInput.value = numInput.value.slice(0,-1);
+            else numInput.value += val;
+        })
+    })
+    loadTxtBtn.addEventListener('click',async ()=>{
+        const num = numInput.value.trim();
+        if(!num){ alert("请输入文件编号！"); return; }
+        const txtUrl = `./BunpoTxt/${num}.txt`;
+        try{
+            const res = await fetch(txtUrl);
+            if(!res.ok) throw new Error("文件不存在");
+            rawText = await res.text();
+            parseAllGrammarData(rawText);
+        }catch(err){
+            alert(`加载失败：${err.message}\n确认仓库BunpoTxt文件夹存在 ${num}.txt`);
+        }
+    })
+    // 本地文件上传
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            rawText = event.target.result;
+            parseAllGrammarData(rawText);
+        };
+        reader.readAsText(file);
+    });
+    // ====================== 【核心】按 🧩 分割两类数据 ======================
+    function parseAllGrammarData(text) {
+        sentenceGrammarList = [];
+        setsuzokuQuizBank = [];
+        Object.keys(globalCustomPool).forEach(k => globalCustomPool[k].clear());
+        const blockParts = text.split(SEP_LINE);
+        const sentenceBlock = blockParts[0] || "";
+        const setsuzokuBlock = blockParts[1] || "";
+        // 填空例句
+        const sentenceLines = sentenceBlock.split(/\r?\n/).filter(l => l.trim() !== "" && l.includes(','));
+        sentenceLines.forEach(line => {
+            line = line.trim();
+            const parts = line.split(',');
+            sentenceGrammarList.push({
+                fullSentence: parts[0].trim(),
+                translation: parts[1].trim(),
+                hint: parts[2].trim(),
+                answer: parts[3].trim()
+            });
+        });
+        // 接续变形
+        const setsuLines = setsuzokuBlock.split(/\r?\n/).filter(l => l.trim() !== "" && l.includes(','));
+        setsuLines.forEach(line => {
+            line = line.trim();
+            const parts = line.split(',');
+            const coreGrammar = parts[0];
+            let categories = [];
+            for (let i = 1; i < parts.length; i++) {
+                const catBlock = parts[i].split('_');
+                if (catBlock.length >= 2) {
+                    const catName = catBlock[0];
+                    const rawSubs = catBlock.slice(1);
+                    let cleanedSubs = [];
+                    for(let j=0; j<rawSubs.length; j++){
+                        if(rawSubs[j] === "+" && j+1 < rawSubs.length){
+                            cleanedSubs.push("+" + rawSubs[j+1]); j++;
+                        } else {
+                            if (rawSubs[j].startsWith('+') || rawSubs[j] === "") {
+                                cleanedSubs.push(rawSubs[j]);
+                            } else {
+                                if (cleanedSubs.length > 0 && cleanedSubs[cleanedSubs.length - 1] === "+") {
+                                    cleanedSubs[cleanedSubs.length - 1] = "+" + rawSubs[j];
+                                } else { cleanedSubs.push(rawSubs[j]); }
+                            }
+                        }
+                    }
+                    cleanedSubs = cleanedSubs.filter(s => s !== "").map(s => {
+                        if (s === "の") return "+の";
+                        if (s === "+(あ)+ない") return "+(あ)ない";
+                        return s;
+                    });
+                    if (cleanedSubs.length > 0) {
+                        categories.push({ name: catName, subs: cleanedSubs });
+                        if (globalCustomPool[catName]) {
+                            cleanedSubs.forEach(sub => globalCustomPool[catName].add(sub));
+                        }
+                    }
+                }
+            }
+            if (categories.length > 0) {
+                setsuzokuQuizBank.push({ core: coreGrammar, categories: categories });
+            }
+        });
+        if(sentenceGrammarList.length === 0 && setsuzokuQuizBank.length ===0){
+            alert("txt无有效文法数据，请检查分隔符🧩🧩🧩🧩🧩与每行逗号格式！");
+            return;
+        }
+        document.getElementById('sentence-count').innerText = sentenceGrammarList.length;
+        document.getElementById('setsuzoku-count').innerText = setsuzokuQuizBank.length;
+        switchView('mode-area');
+    }
+    // ====================== 启动练习 ======================
+    window.startMode = function(mode, customBank = null) {
+        currentMode = mode;
+        currentIndex = 0;
+        currentQueueIdx = 0;
+        currentCatIdx = 0;
+        if (!customBank) helpedSet.clear();
+        // 句子填空
+        if(mode === 'sentence-study' || mode === 'sentence-challenge'){
+            const targetList = customBank || sentenceGrammarList;
+            if(targetList.length ===0){ alert("当前无填空文法数据！检查txt分隔行上方内容"); return; }
+            document.getElementById('sentence-mode-title').innerText = mode === 'sentence-study' ? "填空学习" : "填空挑战";
+            document.getElementById('sentence-study-btns').style.display = mode === 'sentence-study' ? "flex" : "none";
+            document.getElementById('sentence-hint-btn').classList.toggle('hidden', mode === 'sentence-study');
+            document.getElementById('sentence-total').innerText = targetList.length;
+            switchView('sentence-area');
+            renderSentenceCard();
+        }
+        // 接续变形
+        if(mode === 'setsuzoku-study' || mode === 'setsuzoku-challenge'){
+            const baseBank = customBank || setsuzokuQuizBank;
+            if(baseBank.length ===0){ alert("当前无接续文法数据！检查txt分隔行下方内容"); return; }
+            quizQueue = [];
+            baseBank.forEach(item => {
+                item.categories.forEach(cat => {
+                    quizQueue.push({
+                        core: item.core,
+                        category: { name: cat.name, subs: [...cat.subs] },
+                        isHardPoint: false
+                    });
+                });
+            });
+            document.getElementById('setsuzoku-mode-title').innerText = mode === 'setsuzoku-study' ? "接续学习" : "接续测试";
+            document.getElementById('setsuzoku-total').innerText = quizQueue.length;
+            const gCard = document.getElementById('grammar-card');
+            const peekBtn = document.getElementById('peek-answer-btn');
+            if(mode === 'setsuzoku-study'){
+                peekBtn.classList.add('hidden');
+                gCard.classList.add('study-mode-card');
+                gCard.classList.remove('grammar-card-bg');
+            }else{
+                peekBtn.classList.remove('hidden');
+                gCard.classList.remove('study-mode-card');
+                gCard.classList.add('grammar-card-bg');
+            }
+            switchView('setsuzoku-area');
+            renderSetsuzokuStep();
+        }
+    };
+    // ====================== 句子填空模块 ======================
+    function generateScrambledTiles(correctAnswer) {
+        let chars = correctAnswer.split('');
+        if (chars.length < TARGET_TILE_COUNT && sentenceGrammarList.length > 0) {
+            let pool = sentenceGrammarList.map(g => g.answer).join('').split('');
+            if (pool.length === 0) pool = "するないたてますればから。".split('');
+            while (chars.length < TARGET_TILE_COUNT && pool.length > 0) {
+                const randIndex = Math.floor(Math.random() * pool.length);
+                chars.push(pool.splice(randIndex, 1)[0]);
+            }
+        }
+        shuffleArray(chars);
+        return chars;
+    }
+    function initSentenceScrambleZone(answer) {
+        const zone = document.getElementById('sentence-scramble-zone');
+        const input = document.getElementById('sentenceAnswerInput');
+        zone.innerHTML = '';
+        input.value = "";
+        const tiles = generateScrambledTiles(answer);
+        tiles.forEach(char => {
+            const btn = document.createElement('div');
+            btn.className = 'char-tile';
+            btn.innerText = char;
+            btn.onclick = () => {
+                const currentLength = input.value.length;
+                if (answer[currentLength] === char) {
+                    input.value += char;
+                    btn.classList.add('correct-hidden');
+                    if (input.value.trim() === answer.trim()) {
+                        checkSentenceAnswer();
+                    }
+                } else {
+                    input.value += char;
+                    btn.classList.add('used');
+                }
+                input.focus();
+            };
+            zone.appendChild(btn);
+        });
+        input.oninput = () => {
+            if (input.value === "") {
+                zone.querySelectorAll('.char-tile').forEach(t => {
+                    t.classList.remove('used', 'correct-hidden');
+                });
+            }
+        };
+    }
+    function renderSentenceCard() {
+        const g = sentenceGrammarList[currentIndex];
+        const input = document.getElementById('sentenceAnswerInput');
+        document.getElementById('sentence-progress').innerText = currentIndex + 1;
+        document.getElementById('sentence-feedback').innerText = "";
+        input.value = "";
+        input.placeholder = currentMode === 'sentence-study' ? g.answer : "请输入答案...";
+        const displaySentence = g.fullSentence.replace(g.answer, ` ⚪️⚪️⚪️ `);
+        document.getElementById('sentence-card-content').innerHTML = `
+            <div class="sentence-display">${displaySentence} (${g.hint})</div>
+            <div class="translation-display">${g.translation}</div>
+        `;
+        initSentenceScrambleZone(g.answer);
+        setTimeout(() => input.focus(), 50);
+    }
+    window.checkSentenceAnswer = function() {
+        const userVal = document.getElementById('sentenceAnswerInput').value.trim();
+        const targetVal = sentenceGrammarList[currentIndex].answer.trim();
+        const fb = document.getElementById('sentence-feedback');
+        if (userVal === targetVal) {
+            fb.innerText = "正确！";
+            fb.style.color = "var(--success-color)";
+            setTimeout(()=>{
+                if(currentMode === 'sentence-study') nextSentenceCard();
+                else { currentIndex++; renderSentenceCard(); }
+            }, 200);
+        } else if (userVal !== "") {
+            fb.innerText = "回答错误";
+            fb.style.color = "var(--error-color)";
+        }
+    };
+    window.nextSentenceCard = () => {
+        if(currentIndex < sentenceGrammarList.length - 1) {
+            currentIndex++;
+            renderSentenceCard();
+        } else { finishSession("📖 句子填空练习完成！"); }
+    };
+    window.prevSentenceCard = () => {
+        if(currentIndex > 0) {
+            currentIndex--;
+            renderSentenceCard();
+        }
+    };
+    window.showSentenceAnswer = function() {
+        const g = sentenceGrammarList[currentIndex];
+        helpedSet.add(g.answer);
+        const fb = document.getElementById('sentence-feedback');
+        fb.innerHTML = `正确答案：<b style="font-size:1.2em">${g.answer}</b>`;
+        fb.style.color = "var(--warn-color)";
+        requeueSentenceItem(g);
+    };
+    function requeueSentenceItem(itemObj) {
+        const baseA = itemObj.answer;
+        sentenceGrammarList = sentenceGrammarList.filter((item, idx) => idx <= currentIndex || item.answer !== baseA);
+        const remainingCount = sentenceGrammarList.length - (currentIndex + 1);
+        INTERVALS.forEach(gap => {
+            let actualGap = gap;
+            if (actualGap > remainingCount) actualGap = remainingCount;
+            const targetPos = currentIndex + 1 + actualGap;
+            sentenceGrammarList.splice(targetPos, 0, { ...itemObj });
+        });
+        document.getElementById('sentence-total').innerText = sentenceGrammarList.length;
+    }
+    // ====================== 接续变形模块 ======================
+    function renderSetsuzokuStep() {
+        if (currentQueueIdx >= quizQueue.length) { finishSession("📝 接续变形练习完成！"); return; }
+        const currentItem = quizQueue[currentQueueIdx];
+        document.getElementById('setsuzoku-progress').innerText = currentQueueIdx + 1;
+        document.getElementById('display-grammar').innerText = (currentItem.isHardPoint ? "🔄 [复习] " : "") + currentItem.core;
+        document.getElementById('current-cat-name').innerText = currentItem.category.name;
+        activeAnswers = currentItem.category.subs;
+        userFoundCount = 0;
+        generateOptionButtons(currentItem.category.name);
+    }
+    function generateOptionButtons(catName) {
+        const panel = document.getElementById('optionsPanel');
+        panel.innerHTML = "";
+        const baseList = BASE_STRUCTURE[catName] || ["普通"];
+        const customList = Array.from(globalCustomPool[catName] || []);
+        let mixedPool = Array.from(new Set([...baseList, ...customList, ...activeAnswers]));
+        mixedPool.forEach(optName => {
+            const btn = document.createElement('button');
+            btn.className = "opt-btn";
+            btn.innerText = optName;
+            if (currentMode === 'setsuzoku-study' && activeAnswers.includes(optName)) {
+                btn.classList.add('study-hint');
+            }
+            btn.onclick = function() {
+                if (btn.classList.contains('correct') || btn.classList.contains('wrong')) return;
+                if (activeAnswers.includes(optName)) {
+                    btn.classList.remove('study-hint');
+                    btn.classList.add('correct');
+                    userFoundCount++;
+                    if (userFoundCount === activeAnswers.length) {
+                        setTimeout(proceedSetsuzoku, 300);
+                    }
+                } else {
+                    btn.classList.add('wrong');
+                    if (currentMode === 'setsuzoku-challenge') triggerHardPointExtract();
+                }
+            };
+            panel.appendChild(btn);
+        });
+    }
+    window.peekStudyAnswer = function() {
+        const panel = document.getElementById('optionsPanel');
+        const btns = panel.getElementsByClassName('opt-btn');
+        for (let btn of btns) {
+            if (activeAnswers.includes(btn.innerText) && !btn.classList.contains('correct')) {
+                btn.classList.add('study-hint');
+            }
+        }
+        triggerHardPointExtract();
+    };
+    function triggerHardPointExtract() {
+        const currentItem = quizQueue[currentQueueIdx];
+        const uniqueKey = `${currentItem.core}_${currentItem.category.name}`;
+        if (helpedSet.has(uniqueKey)) return;
+        helpedSet.add(uniqueKey);
+        const remainingCount = quizQueue.length - (currentQueueIdx + 1);
+        INTERVALS.forEach(gap => {
+            let actualGap = gap;
+            if (actualGap > remainingCount) actualGap = remainingCount;
+            const targetPos = currentQueueIdx + 1 + actualGap;
+            quizQueue.splice(targetPos, 0, {
+                core: currentItem.core,
+                category: { name: currentItem.category.name, subs: [...currentItem.category.subs] },
+                isHardPoint: true
+            });
+        });
+        document.getElementById('setsuzoku-total').innerText = quizQueue.length;
+    }
+    function proceedSetsuzoku() {
+        currentQueueIdx++;
+        renderSetsuzokuStep();
+    }
+    window.skipCurrentGrammar = function() {
+        currentQueueIdx++;
+        renderSetsuzokuStep();
+    };
+    // ====================== 结算、页面切换【核心修复】 ======================
+    function finishSession(title) {
+        switchView('result-area');
+        document.getElementById('result-title').innerText = title;
+        const listDiv = document.getElementById('help-list');
+        const container = document.getElementById('helped-words-container');
+        if (helpedSet.size > 0) {
+            container.classList.remove('hidden');
+            let formatted = Array.from(helpedSet).map(k=>{
+                if(k.includes('_')){
+                    const [core,cat] = k.split('_');
+                    return `${core}(${cat})`;
+                }else return k;
+            });
+            listDiv.innerText = formatted.join('、 ');
+            document.getElementById('btn-focus-hard').classList.remove('hidden');
+        } else {
+            container.classList.add('hidden');
+            document.getElementById('btn-focus-hard').classList.add('hidden');
+        }
+    }
+    window.retryExcludingHelped = function() {
+        if(currentMode.startsWith('sentence')){
+            const filtered = sentenceGrammarList.filter(g => !helpedSet.has(g.answer));
+            if(filtered.length ===0) return alert("无剩余文法");
+            startMode(currentMode, filtered);
+        }else{
+            const filtered = setsuzokuQuizBank.filter(item => {
+                return !item.categories.some(cat => helpedSet.has(`${item.core}_${cat.name}`));
+            });
+            if(filtered.length ===0) return alert("无剩余文法");
+            startMode(currentMode, filtered);
+        }
+    };
+    window.focusOnHelped = function() {
+        if(currentMode.startsWith('sentence')){
+            const filtered = sentenceGrammarList.filter(g => helpedSet.has(g.answer));
+            if(filtered.length ===0) return alert("无难点");
+            startMode(currentMode, filtered);
+        }else{
+            const filtered = [];
+            setsuzokuQuizBank.forEach(item => {
+                let matchCats = item.categories.filter(cat => helpedSet.has(`${item.core}_${cat.name}`));
+                if(matchCats.length>0) filtered.push({core:item.core,categories:matchCats});
+            });
+            if(filtered.length ===0) return alert("无难点");
+            startMode(currentMode, filtered);
+        }
+    };
+    // 页面切换函数全局可用
+    window.switchView = function(id) {
+        ['setup-area','mode-area','sentence-area','setsuzoku-area','result-area'].forEach(v=>{
+            document.getElementById(v).classList.add('hidden');
+        });
+        document.getElementById(id).classList.remove('hidden');
+    };
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    // Enter快捷键
+    document.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            if (!document.getElementById('sentence-area').classList.contains('hidden')) {
+                checkSentenceAnswer();
+            }
+        }
+    });
+})();
+</script>
+</body>
+</html>

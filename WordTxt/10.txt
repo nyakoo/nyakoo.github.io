@@ -1,0 +1,50 @@
+温室,おんしつ,0,溫室,greenhouse
+温泉,おんせん,0,溫泉,spa, hot spring
+温帯,おんたい,0,溫帶,temperate zone
+御中,おんちゅう,1,啟、公啟（公司行號收）,Messrs.
+女の人,おんなのひと,3,女人,woman
+～日,～か,0,…日,counter for days
+～下,～か,1,…下、…之下,under ~
+～化,～か,1,…化,action of making something
+～科,～か,1,…科,family, group, course
+～歌,～か,1,…歌,song of ~
+～画,～が,1,…畫,picture, painting
+カーブ,かあぶ,1,彎道、曲線,curve; curve ball (baseball)
+外～,がい～,1,外…,foreign ~, outside ~
+～外,～がい,1,…外,out of ~
+開会,かいかい,0,開會,opening of a meeting
+会館,かいかん,0,會館,meeting hall, assembly hall
+改札,かいさつ,0,剪票口,examination of tickets
+解散,かいさん,0,解散,breakup, dissolution
+海水浴,かいすいよく,3,海水浴,sea bathing, seawater bath
+回数,かいすう,1,次數,number of times, frequency
+回数券,かいすうけん,3,回數票,book of tickets
+改正,かいせい,0,改正、修訂,revision, amendment, alteration
+快晴,かいせい,0,快晴、晴空萬里,good weather
+解説,かいせつ,0,解說,explanation, commentary
+改造,かいぞう,0,改造,remodeling
+開通,かいつう,0,開通,opening, open
+回転,かいてん,0,旋轉、周轉,rotation, turning
+解答,かいとう,0,解答（問題的答案）,answer, solution
+回答,かいとう,0,回答（對詢問的回覆）,reply, answer
+外部,がいぶ,1,外部,the outside, external
+解放,かいほう,0,解放,release, liberation, emancipation
+開放,かいほう,0,開放,open, throw open, liberalization
+海洋,かいよう,1,海洋,ocean
+概論,がいろん,0,概論,introduction, general remark
+却って,かえって,1,反而,on the contrary, rather
+家屋,かおく,1,房屋、住家,house, building
+係わる,かかわる,3,有關、涉及,to concern oneself in, to be involved in
+書留,かきとめ,0,掛號信,registered mail
+書取,かきとり,0,聽寫,dictation
+垣根,かきね,2,籬笆、圍牆,hedge
+限り,かぎり,3,限度、只要…,limit(s), as far as possible
+各～,かく～,1,各…,every ~, each ~
+架空,かくう,0,虛構、架空,imaginary, fiction, fanciful
+各自,かくじ,1,各自,individual, each
+拡充,かくじゅう,0,擴充,expansion
+学術,がくじゅつ,0,學術,science, learning, scholarship
+各地,かくち,1,各地,various parts of the country
+拡張,かくちょう,0,擴張,expansion, extension
+角度,かくど,1,角度,angle
+学年,がくねん,0,學年,year in school, grade in school

@@ -1,0 +1,50 @@
+転がす,ころがす,3,滾動、撥弄,to roll
+転がる,ころがる,0,滾動、倒下,to roll, to tumble
+紺,こん,1,深藍色、紺色,navy blue, deep blue
+今～,こん～,1,今…、這…,this, current
+コンクール,こんくうる,3,競賽、比賽,contest (FRE: concours)
+コンクリート,こんくりいと,4,混凝土,concrete
+混合,こんごう,0,混合,mixing, mixture
+コンセント,こんせんと,1,插座,consent; power outlet
+献立,こんだて,0,菜單、食譜,menu
+こんばんは,こんばんは,0,晚上好,good evening
+サークル,さあくる,1,社團、圓圈,circle, sports club (e.g., at a company)
+再～,さい～,1,再…,re ~
+最～,さい～,1,最…,the most ~
+在学,ざいがく,0,在學,(enrolled) in school
+再三,さいさん,0,再三,again and again, repeatedly
+祭日,さいじつ,0,節假日、祭日,national holiday, festival day
+催促,さいそく,0,催促,demand, urge (action), press for
+採点,さいてん,0,評分、閱卷,marking, grading
+災難,さいなん,3,災難、不幸,calamity, misfortune
+裁縫,さいほう,0,裁縫,sewing
+材木,ざいもく,0,木材,lumber, timber
+サイレン,さいれん,1,警報器、汽笛,siren
+逆さ,さかさ,1,逆向、顛倒,reverse, upside down
+逆様,さかさま,0,逆向、倒轉,reverse, upside down
+捜す,さがす,0,尋找,to search, to seek, to look for
+遡る,さかのぼる,3,溯流而上、追溯,to go back, to date back; ascend
+酒場,さかば,0,酒吧、酒館,bar, bar-room
+一昨昨日,さきおととい,4,大前天,two days before yesterday, three days ago
+先程,さきほど,0,剛才,a little while ago
+索引,さくいん,0,索引,index, indices
+作者,さくしゃ,1,作者,author, artist
+削除,さくじょ,1,刪除,elimination, deletion
+作成,さくせい,0,作成、擬定,creation, preparation, to make
+作製,さくせい,0,製作、製造,manufacture, production
+探る,さぐる,2,探測、探索,to search, to look for, investigate
+囁く,ささやく,3,細語、低聲說話,to whisper, to murmur
+匙,さじ,0,湯匙,spoon
+座敷,ざしき,3,鋪設榻榻米的房間,tatami room
+差し支え,さしつかえ,0,妨礙、不便,hindrance, impediment
+差し引き,さしひき,0,扣除、結算,deduction, balance
+刺身,さしみ,3,生魚片,sliced raw fish
+さす,さす,1,（撐）傘,to open; hold (an umbrella)
+流石,さすが,0,不愧是、果然,indeed, truly, as one would expect
+撮影,さつえい,0,攝影、拍照,photographing
+雑音,ざつおん,0,雜音、噪音,noise (jarring, grating)
+さっさと,さっさと,1,趕快、利索地,quickly
+早速,さっそく,0,立刻、馬上,at once, immediately, promptly
+錆,さび,2,鏽、鐵鏽,rust (color)
+錆びる,さびる,2,生鏽,to rust, to become rusty
+座布団,ざぶとん,3,坐墊,cushion (Japanese)

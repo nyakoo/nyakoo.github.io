@@ -1,0 +1,50 @@
+鉢,はち,2,盆、缽,a bowl, a pot
+～発,～はつ,1,…發,counter for bullets
+×,ばつ,1,叉、錯誤,cross
+発揮,はっき,0,發揮,exhibition, demonstration, display
+バック,ばっく,1,後退、背景,back
+発想,はっそう,0,構思、想法,idea; way of thinking (same as 考え方 (かんがえかた))
+発電,はつでん,0,發電,generation (e.g., power)
+発売,はつばい,0,發售,sale
+話合い,はなしあい,0,商量、談判,discussion, talk
+話し掛ける,はなしかける,4,搭話,to accost a person, to talk (to someone)
+話中,はなしちゅう,0,通話中,while talking, the line is busy
+甚だしい,はなはだしい,4,嚴重的、過分的,extreme, excessive, terrible
+花火,はなび,1,煙火,fireworks
+花嫁,はなよめ,1,新娘,bride
+ばね,ばね,1,彈簧,spring (e.g., coil, leaf)
+跳ねる,はねる,2,跳躍、濺起,to jump, to leap
+破片,はへん,0,碎片,fragment, broken piece
+歯磨き,はみがき,0,刷牙、牙膏,toothbrushing, toothpaste
+はめる,はめる,0,戴上、套上、鑲嵌,(col) to get in, to insert, to put on
+早口,はやくち,0,說話快,fast-talking
+払い込む,はらいこむ,4,繳納、支付,to deposit, to pay in
+払い戻す,はらいもどす,4,退款、退還,to repay, to pay back
+針金,はりがね,0,金屬線、鐵絲,wire
+張り切る,はりきる,3,勁頭十足、精神抖擻,to be in high spirits, to be full of vigor
+反～,はん～,1,反…,anti ~, counter ~
+反映,はんえい,0,反映,reflection, influence
+半径,はんけい,0,半徑,radius
+判子,はんこ,1,印章,seal (used for signature)
+万歳,ばんざい,1,萬歲,banzai, Long live ~!
+判事,はんじ,1,法官,judge, justice
+番地,ばんち,1,門牌號碼、地址,house number, address
+パンツ,ぱんつ,1,內褲、褲子,underpants
+バンド,ばんど,1,皮帶、樂隊,band
+半島,はんとう,0,半島,peninsula
+ハンドル,はんどる,0,方向盤、手把,handle, steering wheel
+～番目,～ばんめ,3,第…個,~th
+非～,ひ～,1,非…,anti~, counter~, an~, non~
+～費,～ひ,1,…費,cost of ~
+日当たり,ひあたり,0,採光、日照,exposure to the sun, sunny place
+日帰り,ひがえり,0,當天往返,day trip
+比較的,ひかくてき,0,比較性地,comparatively; relatively
+日陰,ひかげ,0,陰涼處,shadow
+ぴかぴか,ぴかぴか,1,閃閃發亮,glitter, sparkle
+引受ける,ひきうける,3,承擔、接手,to undertake, to take up, to take over
+引き返す,ひきかえす,3,折返、返回,to turn back, to go back, reverse
+引算,ひきざん,0,減法,subtraction
+引き出す,ひきだす,3,取出、抽出,to pull out, to take out, to withdraw
+引き止める,ひきとめる,4,挽留、制止,to keep back, to prevent, to hold back
+卑怯,ひきょう,1,卑怯、膽怯、卑鄙,cowardice, meanness, unfairness
+引分け,ひきわけ,0,平手、不分勝負,a draw (in competition), tie game

@@ -1,0 +1,50 @@
+だいいち,だいいち,1,第一,first, foremost,&nbsp;&nbsp;#1
+大学院,だいがくいん,4,研究所,graduate school
+大工,だいく,1,木匠,carpenter
+体系,たいけい,0,體系,system, organization
+太鼓,たいこ,0,大鼓,drum, tambourine
+対策,たいさく,0,對策,counter-plan, counter-measure
+大して,たいして,1,並不怎麼,(not so) much, (not) very
+大小,だいしょう,1,大小,size
+体制,たいせい,0,體制,order, system, structure
+体積,たいせき,1,體積,capacity, volume
+大層,たいそう,1,非常,very much, greatly
+体操,たいそう,0,體操,gymnastics, physical exercises, calisthenics
+大分,だいぶん,0,很,considerably, greatly, a lot
+大木,たいぼく,0,大樹,large tree
+代名詞,だいめいし,3,代名詞,pronoun
+タイア,たいあ,1,輪胎,tire, tyre
+ダイヤグラム,だいやぐらむ,4,圖表,diagram
+ダイヤモンド,だいやもんど,4,鑽石,diamond
+ダイヤル,だいやる,1,撥號盤,dial
+対立,たいりつ,0,對立,confrontation, opposition, antagonism
+田植え,たうえ,0,插秧,rice planting
+絶えず,たえず,1,不斷地,constantly
+楕円,だえん,0,橢圓,ellipse
+耕す,たがやす,3,耕作,to till, to plow, to cultivate
+滝,たき,0,瀑布,waterfall
+蓄える,たくわえる,4,儲備,to save, to store, to lay in stock
+竹,たけ,0,竹子,bamboo
+ただいま,ただいま,4,我回來了,Here I am, I'm home!
+但し,ただし,1,但,but, however, provided that
+立ち止まる,たちどまる,4,站住,to stop, to halt, to stand still
+たちまち,たちまち,0,立刻,instantly, suddenly, all at once
+発,はつ,1,發,to depart (e.g., on a plane, train)
+脱線,だっせん,0,脫軌,derailment, digression
+妥当,だとう,0,妥當,proper, appropriate
+例える,たとえる,3,比喻,to compare, to liken
+頼もしい,たのもしい,4,可靠的,reliable, promising
+ダブル,だぶる,1,雙倍,double
+ダム,だむ,1,水壩,dam
+溜息,ためいき,0,嘆氣,a sigh
+ためらう,ためらう,3,猶豫,to be hesitant
+～だらけ,～だらけ,0,滿是,be full of ~, be filled with ~
+だらしない,だらしない,4,邋遢的,slovenly, loose, a slut
+足る,たる,1,足夠,to be sufficient, to be enough
+短～,たん～,1,短,short ~
+～団,～だん,1,團,group, corps, party
+オーケストラ,おおけすとら,4,管弦樂團,orchestra
+おおざっぱ,おおざっぱ,3,粗枝大葉,rough (not precise), broad, sketchy
+大通り,おおどおり,3,大街,main street
+オートメーション,おおとめいしょん,5,自動化,automation
+大凡,おおよそ,0,大約,about, approximately

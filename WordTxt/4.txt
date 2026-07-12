@@ -1,0 +1,50 @@
+ずらり,ずらり,2,一排地,in a line, in a row
+スリッパ,すりっぱ,2,拖鞋,slippers
+狡い,ずるい,2,狡猾,sly, cunning
+寸法,すんぽう,0,尺寸,measurement, size, dimension
+税関,ぜいかん,0,海關,customs
+製作,せいさく,0,产品,manufacture, production
+制作,せいさく,0,作品,work (e.g., film, book)
+清書,せいしょ,0,正稿,clean copy
+青少年,せいしょうねん,3,青少年,youth, young person
+整数,せいすう,3,整數,integer
+清掃,せいそう,0,清掃,cleaning
+生存,せいぞん,0,生存,existence, being, survival
+政党,せいとう,0,政黨,(member of) political party
+性能,せいのう,1,性能,ability, capability
+整備,せいび,1,维修,maintenance, overhaul
+成分,せいぶん,1,成分,ingredient, component, composition
+性別,せいべつ,0,性別,sex, gender
+正方形,せいほうけい,3,正方形,square
+正門,せいもん,0,正門,main gate, main entrance
+成立,せいりつ,0,成立,formation, establishment, completion
+西暦,せいれき,0,西元,Christian Era, after (Christ’s) death (A.D.)
+背負う,せおう,2,背负,to be burdened with; to carry on (one's) back or shoulder(s)
+～席,～せき,1,座位（計數）,counter for seats
+赤道,せきどう,0,赤道,equator
+折角,せっかく,1,特意,with trouble, at great pains, long-awaited
+接近,せっきん,0,接近,getting closer, drawing nearer, approaching
+接する,せっする,3,接待,to attend to (someone); to associate with
+せっせと,せっせと,1,孜孜不倦地,busily, away
+接続,せつぞく,0,連接,connection, union, join, link; changing trains
+瀬戸物,せともの,2,瓷器,earthenware, crockery, china
+ぜひとも,ぜひとも,1,務必,by all means (with sense of not taking 'no' for an answer)
+迫る,せまる,2,迫近,to draw near, to press
+ゼミ,ぜみ,1,研討會,seminar
+せめて,せめて,1,至少,at least
+セメント,せめんと,0,水泥,cement
+台詞,せりふ,0,台詞,speech, words, one's lines, remarks
+栓,せん,1,栓塞,stopper, cork, stopcock
+～船,～せん,1,船隻（計數）,counter for ships
+～戦,～せん,1,比賽（計數）,counter for games, matches
+前～,ぜん～,1,前任,former, late ~, past ~
+～前,～ぜん,1,在…之前,before ~
+前後,ぜんご,1,前後,front and back, before and after
+全集,ぜんしゅう,0,全集,complete works
+扇子,せんす,0,摺扇,folding fan
+専制,せんせい,0,專制,despotism, autocracy
+先々月,せんせんげつ,3,大上個月,month before last
+先々週,せんせんしゅう,3,大上週,2 weeks before
+先祖,せんぞ,1,祖先,ancestor
+先端,せんたん,0,尖端,pointed end, tip
+センチ,せんち,1,厘米,centimeter

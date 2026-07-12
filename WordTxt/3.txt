@@ -1,0 +1,51 @@
+森林,しんりん,0,森林,forest, woods
+親類,しんるい,0,親戚,relative(s) (same as 親戚 (しんせき))
+針路,しんろ,1,航路,course, direction
+神話,しんわ,0,神話,myth, legend
+水産,すいさん,0,水產,marine products, fisheries
+炊事,すいじ,0,烹飪,cooking
+水蒸気,すいじょうき,3,水蒸氣,water vapor, steam
+水素,すいそ,1,氫,hydrogen
+垂直,すいちょく,0,垂直,vertical, perpendicular
+推定,すいてい,0,推定,presumption, assumption, estimation
+水滴,すいてき,0,水滴,drop of water
+水筒,すいとう,0,水筒,canteen, flask, water bottle
+随筆,ずいひつ,0,隨筆,essays, miscellaneous writings
+水分,すいぶん,1,水分,moisture
+水平,すいへい,0,水平,level, horizontal
+水平線,すいへいせん,0,水平線,horizon
+水面,すいめん,0,水面,water's surface
+図々しい,ずうずうしい,4,厚顏無恥,impudent, shameless
+ずうっと,ずうっと,0,一直,all the time, all the way
+末っ子,すえっこ,0,最小的孩子,youngest child
+スカーフ,すかあふ,2,圍巾,scarf
+図鑑,ずかん,0,圖鑑,picture book
+隙,すき,0,空隙,unguarded moment, chance
+杉,すぎ,1,杉樹,Japanese cedar
+好き嫌い,すききらい,3,喜好與厭惡,likes and dislikes, taste
+好き好き,すきずき,2,各有所好,matter of taste
+透き通る,すきとおる,3,透明,to be(come) transparent
+隙間,すきま,0,縫隙,crack, gap, opening
+～過ぎる,～すぎる,2,過於,too much ~
+スクール,すくうる,2,學校,school
+図形,ずけい,0,圖形,figure
+鈴,すず,0,鈴,bell
+涼む,すずむ,2,乘涼,to cool oneself, to cool off
+スタート,すたあと,2,開始,start
+スチュワーデス,すちゅわあです,3,空姐,stewardess
+すっきり,すっきり,3,舒暢,shapely, clear, neat
+ステージ,すていじ,2,舞台,stage; performance
+ストッキング,すとっきんぐ,2,長筒襪,stockings
+ストップ,すとっぷ,1,停止,stop
+素直,すなお,1,老實,obedient, meek, docile
+頭脳,ずのう,1,頭腦,head, brains, intellect
+スピーカー,すぴいかあ,2,揚聲器,speaker
+図表,ずひょう,0,圖表,chart, diagram, graph
+スマート,すまあと,1,時髦,smart, stylish, slim
+住まい,すまい,2,住所,dwelling, house
+すまない,すまない,3,對不起,sorry (phrase)
+～済,～ずみ,1,已完成,finished
+相撲,すもう,0,相撲,sumo wrestling
+スライド,すらいど,0,幻燈片,slide
+ずらす,ずらす,2,挪動,to put off, to delay
+

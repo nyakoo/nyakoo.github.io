@@ -1,0 +1,50 @@
+先頭,せんとう,0,先頭,head, lead, vanguard
+全般,ぜんぱん,0,全盤,(the) whole, general
+扇風機,せんぷうき,3,電風扇,electric fan
+洗面,せんめん,0,洗臉,wash up (one's face), have a wash
+全力,ぜんりょく,0,全力,all one's power, whole energy
+線路,せんろ,1,線路,line, track, roadbed
+～沿い,～そい,0,沿著,along
+総～,そう～,1,總,gross, general, entire
+～艘,～そう,1,艘,counter for ships
+相違,そうい,0,差異,difference, discrepancy, variation
+そういえば,そういえば,4,這麼說來,which reminds me ..
+雑巾,ぞうきん,0,抹布,house-cloth, dust cloth
+増減,ぞうげん,0,增減,increase and decrease, fluctuation
+倉庫,そうこ,1,倉庫,storehouse, warehouse
+相互,そうご,1,相互,mutual, reciprocal
+創作,そうさく,0,創作,production, creation, work
+葬式,そうしき,0,葬禮,funeral
+造船,ぞうせん,0,造船,shipbuilding
+騒々しい,そうぞうしい,4,吵鬧的,noisy, boisterous
+増大,ぞうだい,0,增大,increase, growth
+そうっと,そうっと,0,輕輕地,softly, cautiously, gently
+送別,そうべつ,0,送別,farewell, send-off
+草履,ぞうり,0,草鞋,Japanese sandals (footwear)
+総理大臣,そうりだいじん,5,總理大臣,Prime Minister
+送料,そうりょう,0,運費,postage, carriage
+～足,～そく,1,雙,counter for shoes
+属する,ぞくする,3,屬於,to belong to, to come under
+続々,ぞくぞく,0,陸續,successively, one after another
+速達,そくたつ,0,限時信,express, special delivery
+測定,そくてい,0,測定,measurement
+測量,そくりょう,0,測量,measurement, surveying
+速力,そくりょく,1,速力,speed
+素質,そしつ,0,素質,talent, capability
+祖先,そせん,1,祖先,ancestor(s)
+そそっかしい,そそっかしい,5,冒失的,careless, thoughtless
+卒直,そっちょく,0,坦率,frank, candid, honest
+そのころ,そのころ,0,那個時候,in those days, at that time, then
+そのため,そのため,4,因此,hence, for that reason
+その他,そのほか,0,其他,besides
+剃る,そる,1,刮,to shave
+それなのに,それなのに,3,儘管那樣,though, although
+それなら,それなら,3,如果是那樣,If that's the case..., If so..., That being the case...
+それはいけませんね,それはいけませんね,8,那可不行啊,that's not good
+逸れる,それる,3,偏離,to stray (turn) from subject, to go astray
+算盤,そろばん,0,算盤,abacus
+存じる,ぞんじる,3,知道,(humble) to know
+存ずる,ぞんずる,3,知道,(humble) to know
+損得,そんとく,1,損益,loss and gain, advantage and disadvantage
+田ぼ,たんぼ,0,稻田,paddy field, farm
+第～,だい～,1,第,~th
