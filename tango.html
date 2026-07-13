@@ -306,7 +306,7 @@
         'a':'あ','i':'い','u':'う','e':'え','o':'お',
         'ka':'か','ki':'き','ku':'く','ke':'け','ko':'こ',
         'sa':'さ','shi':'し','su':'す','se':'せ','so':'そ',
-        'ta':'た','chi':'ち','tu':'つ','te':'て','to':'到',
+        'ta':'た','chi':'ち','tu':'つ','te':'て','to':'と',
         'na':'な','ni':'に','nu':'ぬ','ne':'ね','no':'の',
         'ha':'は','hi':'ひ','hu':'ふ','he':'へ','ho':'ほ',
         'ma':'ま','mi':'み','mu':'む','me':'め','mo':'も',
@@ -315,7 +315,7 @@
         'wa':'わ','wo':'を','nn':'ん',
         'ga':'が','gi':'ぎ','gu':'ぐ','ge':'げ','go':'ご',
         'za':'ざ','ji':'じ','zu':'ず','ze':'ぜ','zo':'ぞ',
-        'da':'だ','di':'ぢ','du':'づ','de':'で','do':'ど',
+        'da':'打','di':'ぢ','du':'づ','de':'で','do':'ど',
         'ba':'ば','bi':'び','bu':'ぶ','be':'べ','bo':'ぼ',
         'pa':'ぱ','pi':'ぴ','pu':'ぷ','pe':'ぺ','po':'ぽ',
         'kya':'きゃ','kyu':'きゅ','kyo':'きょ',
@@ -370,13 +370,15 @@
         container.replaceWith(clone);
     });
 
-    // 3. 静态锚点解析二：带有 data-action-btn 的标签转换为底部灰色控制按钮组 (母本 4)
+    // 3. 静态锚点解析二：带有 data-action-btn 的标签转换为底部灰色控制按钮组 (母本 4) 【已修复 CamelCase 驼峰命名 Bug】
     document.querySelectorAll('[data-action-btn]').forEach(container => {
         const template = document.getElementById('tpl-action-btn');
         const clone = template.content.cloneNode(true);
         const btn = clone.querySelector('button');
         
-        btn.innerText = container.dataset.action-btn;
+        // 修复关键点：使用驼峰法 actionBtn 正确获取属性值
+        btn.innerText = container.dataset.actionBtn;
+        
         // 迁移原有和附加的事件及样式
         if(container.id) btn.id = container.id;
         if(container.dataset.onclick) btn.setAttribute('onclick', container.dataset.onclick);
@@ -438,13 +440,15 @@
     function cleanString(str) { return str ? str.replace(/[^\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FA5]/g, '').toLowerCase() : ""; }
 
     const numInput = document.getElementById('numFileInput');
-    document.querySelectorAll('.num-key').forEach(key => {
-        key.addEventListener('click', () => {
-            const act = key.dataset.val;
-            if(act === 'clear') numInput.value = '';
-            else if(act === 'del') numInput.value = numInput.value.slice(0, -1);
-            else numInput.value += act;
-        });
+    
+    // 采用全局委托或重新注入确保数字键可用
+    document.addEventListener('click', (e) => {
+        const key = e.target.closest('.num-key');
+        if(!key) return;
+        const act = key.dataset.val;
+        if(act === 'clear') numInput.value = '';
+        else if(act === 'del') numInput.value = numInput.value.slice(0, -1);
+        else numInput.value += act;
     });
 
     document.getElementById('fetchWordTxtBtn').addEventListener('click', async () => {
