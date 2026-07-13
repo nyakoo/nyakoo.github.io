@@ -87,17 +87,15 @@
         button:active { top: 4px; box-shadow: 0 0px 0px var(--theme-border-color); }
         .load-txt-btn { background-color: var(--btn-blue); width: 100%; margin: 12px 0 0 0; }
         
-        .mode-btn-container { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; width: 100%; align-items: center; }
-        .mode-btn-container button { width: 85%; max-width: 300px; margin: 0; }
-        .mode-btn-container button:nth-child(1) { background: var(--btn-pink); }
-        .mode-btn-container button:nth-child(2) { background: var(--btn-blue); }
-        .mode-btn-container button:nth-child(3) { background: #e2d1f9; }
-        .mode-btn-container button:nth-child(4) { background: var(--btn-yellow); }
+        /* 统一样式：大按钮垂直组容器，完全对齐模式选择页面的间距与大小 */
+        .unified-btn-container { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; width: 100%; align-items: center; }
+        .unified-btn-container button { width: 85%; max-width: 300px; margin: 0; }
+        
         .btn-gray { background: #e2e2e2 !important; }
         
         .card { border: 2px solid var(--theme-border-color); border-radius: 18px; padding: 20px; margin: 15px 0; background: #fff; text-align: left; }
         
-        /* 学习模式下的原文大字标题规范：完全同步目标字号 */
+        /* 学习模式下的原文大字标题规范 */
         .card h2 { 
             font-size: var(--target-display-size); 
             font-weight: bold;
@@ -112,7 +110,7 @@
         
         input[type="text"] { width: 100%; padding: 12px; font-size: 1.2em; font-weight: 575; border: 2px solid var(--theme-border-color); border-radius: 12px; text-align: center; outline: none; background: #fff; color: var(--theme-border-color); }
         
-        /* 假名挑战原文 与 书写测试释义 核心文字显示规范：完全同步目标字号 */
+        /* 核心文字显示规范 */
         #display-word { 
             font-size: var(--target-display-size); 
             font-weight: bold; 
@@ -128,7 +126,6 @@
         
         #help-list { background: transparent !important; border: none !important; box-shadow: none !important; max-height: 220px; overflow-y: auto; color: var(--theme-text-color); width: 100%; }
         .hard-word-item { margin: 4px 0; font-size: 0.95em; word-break: break-all; text-align: center; }
-        .btn-group-vertical { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; width: 100%; align-items: center; }
         .progress-text { color: var(--theme-border-color); font-size: 0.85em; margin-bottom: 5px; font-weight: bold; text-align: center; width: 100%; }
         
         .scramble-container { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; margin: 12px 0; min-height: 130px; width: 100%; justify-content: center; }
@@ -187,9 +184,14 @@
     <div class="numpad-row flex-row-center"></div>
 </template>
 
-<!-- 母本 4：通用底部小灰控制按钮组件 -->
+<!-- 母本 4：通用小灰底部返回/控制轻量按钮组件 -->
 <template id="tpl-action-btn">
     <button class="btn-gray flex-row-center" style="width: 100%; margin: 0; font-size: 14px; justify-content: center;"></button>
+</template>
+
+<!-- 【全新加注】母本 5：通用大功能操控大长条按钮母本（输入变量：data-color, data-text, data-onclick） -->
+<template id="tpl-major-hub-btn">
+    <button class="flex-row-center" style="justify-content: center;"></button>
 </template>
 <!-- ====================================================== -->
 
@@ -202,7 +204,6 @@
                 <div data-hint="输入数字(1-38)提取 WordTxt/[].txt"></div>
                 <div class="num-input-box" style="width:100%"><input type="text" id="numFileInput" readonly placeholder="..."></div>
                 
-                <!-- 动态填充母本 3 的键盘容器 -->
                 <div class="numpad-wrap" id="dynamic-numpad-container"></div>
                 
                 <button class="load-txt-btn flex-row-center" id="fetchWordTxtBtn">加载在线文本</button>
@@ -214,14 +215,14 @@
             </div>
         </div>
 
-        <!-- 2. 主模式选择菜单 -->
+        <!-- 2. 主模式选择菜单：完全通过母本 5 渲染生产 -->
         <div id="mode-area" class="hidden flex-col-center" style="width:100%">
             <h3>已加载 <span id="total-count">0</span> 个单词</h3>
-            <div class="mode-btn-container">
-                <button class="flex-row-center" onclick="startMode('study')" style="justify-content: center;">📖 学习模式</button>
-                <button class="flex-row-center" onclick="startMode('challenge')" style="justify-content: center;">🎯 假名挑战</button>
-                <button class="flex-row-center" onclick="startMode('hard-test')" style="justify-content: center;">📝 书写测试</button>
-                <button class="flex-row-center" onclick="startMode('match')" style="justify-content: center;">🧩 连线消除</button>
+            <div class="unified-btn-container">
+                <div data-major-btn data-text="📖 学习模式" data-color="var(--btn-pink)" data-onclick="startMode('study')"></div>
+                <div data-major-btn data-text="🎯 假名挑战" data-color="var(--btn-blue)" data-onclick="startMode('challenge')"></div>
+                <div data-major-btn data-text="📝 书写测试" data-color="#e2d1f9" data-onclick="startMode('hard-test')"></div>
+                <div data-major-btn data-text="🧩 连线消除" data-color="var(--btn-yellow)" data-onclick="startMode('match')"></div>
             </div>
         </div>
 
@@ -239,7 +240,6 @@
                     <button class="flex-row-center" onclick="prevCard()" style="flex: 1; margin: 0; justify-content: center;">上一张</button>
                     <button class="flex-row-center" onclick="nextCard()" style="flex: 1; margin: 0; justify-content: center;">下一张</button>
                 </div>
-                <!-- 动态填充母本 4 -->
                 <div data-action-btn="返回菜单" data-onclick="switchView('mode-area')"></div>
             </div>
         </div>
@@ -262,7 +262,6 @@
                 </div>
                 <div id="challenge-feedback" class="feedback-text"></div>
             </div>
-            <!-- 动态填充母本 4 的功能操控组 -->
             <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
                 <div id="show-answer-btn" data-action-btn="提示我" data-onclick="showHelpAnswer()" data-style="color: var(--theme-text-color);"></div>
                 <div data-action-btn="返回菜单" data-onclick="switchView('mode-area')"></div>
@@ -275,22 +274,21 @@
             <div data-hint="中日语可任意顺序双向连线" style="margin-bottom: 10px;"></div>
             <div class="match-grid" id="match-grid-container"></div>
             <div id="match-feedback" class="feedback-text"></div>
-            <!-- 动态填充母本 4 -->
             <div data-action-btn="返回菜单" data-onclick="switchView('mode-area')" style="margin-top:20px;"></div>
         </div>
 
-        <!-- 6. 🎉 游戏通关结算展示区域 -->
+        <!-- 6. 🎉 游戏通关结算展示区域：完美复用母本 5 渲染生产，间距格调丝毫不差 -->
         <div id="result-area" class="hidden flex-col-center" style="width:100%">
             <h2>🧩 恭喜通关！🎉</h2>
             <div id="helped-words-container" class="hidden" style="width:100%">
                 <p style="font-weight: bold; color: var(--warn-color); margin-bottom: 5px; text-align: center;">难词回顾</p>
                 <div id="help-list" class="flex-col-center" style="margin-bottom: 10px;"></div>
             </div>
-            <div class="btn-group-vertical">
-                <button class="flex-row-center" onclick="retryExcludingHelped()" style="background-color: var(--btn-yellow); width: 80%; justify-content: center;">再来一遍</button>
-                <button class="flex-row-center" onclick="focusOnHelped()" style="background-color: var(--selected-color); width: 80%; justify-content: center;">巩固难词</button>
-                <button class="flex-row-center" onclick="switchView('mode-area')" style="background-color: var(--btn-blue); width: 80%; justify-content: center;"><span class="icon-heart"></span>换个模式<span class="icon-heart"></span></button>
-                <button class="flex-row-center" onclick="location.reload()" style="background-color: var(--btn-pink); width: 80%; justify-content: center;">重选文件</button>
+            <div class="unified-btn-container">
+                <div data-major-btn data-text="再来一遍" data-color="var(--btn-yellow)" data-onclick="retryExcludingHelped()"></div>
+                <div data-major-btn data-text="巩固难词" data-color="var(--selected-color)" data-onclick="focusOnHelped()"></div>
+                <div data-major-btn data-text="❤️ 换个模式 ❤️" data-color="var(--btn-blue)" data-onclick="switchView('mode-area')"></div>
+                <div data-major-btn data-text="重选文件" data-color="var(--btn-pink)" data-onclick="location.reload()"></div>
             </div>
         </div>
     </div>
@@ -315,7 +313,7 @@
         'wa':'わ','wo':'を','nn':'ん',
         'ga':'が','gi':'ぎ','gu':'ぐ','ge':'げ','go':'ご',
         'za':'ざ','ji':'じ','zu':'ず','ze':'ぜ','zo':'ぞ',
-        'da':'打','di':'ぢ','du':'づ','de':'で','do':'ど',
+        'da':'だ','di':'ぢ','du':'づ','de':'で','do':'ど',
         'ba':'ば','bi':'び','bu':'ぶ','be':'べ','bo':'ぼ',
         'pa':'ぱ','pi':'ぴ','pu':'ぷ','pe':'ぺ','po':'ぽ',
         'kya':'きゃ','kyu':'きゅ','kyo':'きょ',
@@ -334,7 +332,7 @@
 
     // ==================== 母本页面声明组件动态解析挂载引擎 ====================
     
-    // 1. 动态生成输入小键盘 (母本 3 级联解析)
+    // 1. 动态生成输入小键盘
     const numpadContainer = document.getElementById('dynamic-numpad-container');
     if(numpadContainer) {
         const layout = [
@@ -370,24 +368,35 @@
         container.replaceWith(clone);
     });
 
-    // 3. 静态锚点解析二：带有 data-action-btn 的标签转换为底部灰色控制按钮组 (母本 4) 【已修复 CamelCase 驼峰命名 Bug】
+    // 3. 静态锚点解析二：带有 data-action-btn 的标签转换为底部灰色控制按钮组 (母本 4)
     document.querySelectorAll('[data-action-btn]').forEach(container => {
         const template = document.getElementById('tpl-action-btn');
         const clone = template.content.cloneNode(true);
         const btn = clone.querySelector('button');
-        
-        // 修复关键点：使用驼峰法 actionBtn 正确获取属性值
         btn.innerText = container.dataset.actionBtn;
-        
-        // 迁移原有和附加的事件及样式
         if(container.id) btn.id = container.id;
         if(container.dataset.onclick) btn.setAttribute('onclick', container.dataset.onclick);
-        
         let extraStyle = container.getAttribute('style') || "";
         let btnStyle = container.dataset.style || "";
         if(extraStyle || btnStyle) {
             btn.setAttribute('style', btn.getAttribute('style') + ';' + extraStyle + ';' + btnStyle);
         }
+        container.replaceWith(clone);
+    });
+
+    // 4. 【全新注入】核心功能转换：将带 data-major-btn 的占位签全面渲染成母本 5 的标准大控制按钮
+    document.querySelectorAll('[data-major-btn]').forEach(container => {
+        const template = document.getElementById('tpl-major-hub-btn');
+        const clone = template.content.cloneNode(true);
+        const btn = clone.querySelector('button');
+        
+        // 分别接收传入的三个核心变量参数
+        btn.innerText = container.dataset.text || "";
+        btn.style.backgroundColor = container.dataset.color || "var(--btn-pink)";
+        if(container.dataset.onclick) {
+            btn.setAttribute('onclick', container.dataset.onclick);
+        }
+        
         container.replaceWith(clone);
     });
 
@@ -441,7 +450,6 @@
 
     const numInput = document.getElementById('numFileInput');
     
-    // 采用全局委托或重新注入确保数字键可用
     document.addEventListener('click', (e) => {
         const key = e.target.closest('.num-key');
         if(!key) return;
