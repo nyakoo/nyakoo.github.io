@@ -287,7 +287,7 @@
             <div class="unified-btn-container">
                 <div data-major-btn data-text="再来一遍" data-color="var(--btn-yellow)" data-onclick="retryExcludingHelped()"></div>
                 <div data-major-btn data-text="巩固难词" data-color="var(--selected-color)" data-onclick="focusOnHelped()"></div>
-                <div data-major-btn data-text="❤️ 换个模式 ❤️" data-color="var(--btn-blue)" data-onclick="switchView('mode-area')"></div>
+                <div data-major-btn data-text="换个模式" data-color="var(--btn-blue)" data-onclick="switchView('mode-area')"></div>
                 <div data-major-btn data-text="重选文件" data-color="var(--btn-pink)" data-onclick="location.reload()"></div>
             </div>
         </div>
@@ -646,7 +646,7 @@
             span.innerText = parseInt(span.innerText) + 1;
             if (document.querySelectorAll('#match-grid-container .match-card:not(.invisible)').length === 0) setTimeout(nextMatchRound, 300);
         } else {
-            setFeedback('match-feedback', "❌ 错啦，再试试！", "red");
+            setFeedback('match-feedback', "错啦，再试试！", "red");
             if(card.customData) helpedKanjiSet.add(card.customData.kanji);
             matchFirstSelectedCard.classList.remove('selected'); matchFirstSelectedCard = null;
         }
