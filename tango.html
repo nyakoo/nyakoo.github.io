@@ -8,25 +8,42 @@
 
     <style>
         :root {
-            /* 主题核心变量 */
-            --theme-border-color: #7d6b91; 
-            --theme-text-color: #4a3e56; 
-            
-            --inner-bg: #ecd5fa; 
-            --btn-pink: #ffccd5; 
-            --btn-blue: #bce3f7; 
-            --btn-yellow: #fff4d4; 
-            --success-color: #4a3e56; 
-            --warn-color: #e67e22; 
-            --error-color: #e74c3c; 
-            --selected-color: #e2d1f9cc; 
-            --local-file-bg: #fff4d4;
-            --text-glow: 1px 1px 0px #fff; 
-            --card-padding: 25px 15px;
+            /* ==================== 统一重构：核心 Main 纯色变量 system ==================== */
+            --main-pink: #ffccd5;          /* 核心粉色：原大按钮粉、主渐变粉 */
+            --main-yellow: #fff4d4;        /* 核心黄色：原大按钮黄、主渐变黄、结算按钮黄、连线选中高亮黄 */
+            --main-green: #d8f3dc;         /* 核心绿色：原主渐变绿 */
+            --main-blue: #bce3f7;          /* 核心蓝色：原大按钮蓝、在线加载蓝、主渐变蓝 */
+            --main-purple: #e2d1f9;        /* 核心紫色：原背景格子线条、数字键功能键、拼字块按压底色、主渐变紫、日语卡片底色 */
 
-            /* 合并唯一变量：统一的学习/测试/释义展示字号 */
+            /* 1. 基础边框与文字主色 */
+            --border-purple: #7d6b91;          /* 绝大多数容器、按钮、卡片的 2px 实线和虚线边框色，以及按钮按压时的阴影色 */
+            --text-darkpurple: #4a3e56;        /* 网页内几乎所有标题、提示正文、普通按钮文字、卡片内文本、以及通用正常反馈文本的主颜色 */
+            
+            /* 2. 容器与背景相关色彩 */
+            --inner-purple: #ecd5fa;           /* 核心内层容器 .inner-wrap 的背景色 */
+            --bg-lightpurple: #d1dcff;         /* 网页最外层 body 的基础背景底色 */
+            --ingame-bg-grey: #eaeaef;         /* 游戏模式/运行状态下，body 被动态激活切换后的全新纯色背景 */
+            --ingame-inner-grey: #d5d4e6;      /* 游戏模式/运行状态下，主卡片容器和内层容器被强制替换的纯色背景 */
+            
+            /* 3. 半透明或纯白高光辅助色 */
+            --container-shadow-mask: rgba(93, 77, 112, 0.25); /* 主容器底部的立体系阴影遮罩色 */
+            --inner-scrollbar-track: rgba(0,0,0,0.1);          /* 内层容器滚动条滑块的轻微半透明半透明底色 */
+            --setup-box-bg: rgba(255,255,255,0.4);            /* 首页输入框虚线外框（.setup-box）的白色半透明背景 */
+            --spelling-box-bg: rgba(255,255,255,0.6);         /* 输入假名或点击拼字区域（.spelling-box）的白色半透明背景 */
+            --text-glow-color: #fff;            /* 大标题文字后面的 1px 白色发光反衬硬阴影（--text-glow 变量使用） */
+            --pure-white: #fff;                 /* 输入框内部背景、普通卡片背景、拼字方块背景以及普通数字按键背景的纯白色 */
+            
+            /* 4. 其它功能辅助色 */
+            --btn-gray: #e2e2e2;                /* 底部通用灰色控制/返回菜单按钮（.btn-gray）的背景色 */
+            --warn-color: #e67e22;              /* 书写测试模式下提示难词回顾、以及原系统警告项的橘黄色，同时用于点击或回答错误时的警示色 */
+            --match-def-bg: #f7f0ff;            /* 连线消除中，“中文释义卡片”的默认轻微藕荷色背景 */
+            
+            /* ==================== 统一重构的高级公用样式布局变量 ==================== */
+            --text-glow: 1px 1px 0px var(--text-glow-color); 
+            --card-padding: 25px 15px;
             --target-display-size: 2.2em;
         }
+        
         * { box-sizing: border-box; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         
         /* 通用Flex轴向居中工具 */
@@ -34,120 +51,97 @@
         .flex-row-center { display: flex; flex-direction: row; align-items: center; justify-content: center; }
         
         body {
-            margin: 0; padding: 20px 15px; min-height: 100vh; background-color: #d1dcff;
+            margin: 0; padding: 20px 15px; min-height: 100vh; background-color: var(--bg-lightpurple);
             background-image:
-                linear-gradient(45deg, #e2d1f9 25%, transparent 25%, transparent 75%, #e2d1f9 75%, #e2d1f9),
-                linear-gradient(45deg, #e2d1f9 25%, transparent 25%, transparent 75%, #e2d1f9 75%, #e2d1f9);
+                linear-gradient(45deg, var(--main-purple) 25%, transparent 25%, transparent 75%, var(--main-purple) 75%, var(--main-purple)),
+                linear-gradient(45deg, var(--main-purple) 25%, transparent 25%, transparent 75%, var(--main-purple) 75%, var(--main-purple));
             background-size: 120px 120px; background-position: 0 0, 60px 60px;
             font-family: 'Segoe UI', "Microsoft YaHei", monospace;
             transition: background 0.3s ease;
             display: flex; justify-content: center; align-items: center;
         }
-        body.in-game-mode:not(.game-over) { background-image: none !important; background-color: #eaeaef !important; }
+        body.in-game-mode:not(.game-over) { background-image: none !important; background-color: var(--ingame-bg-grey) !important; }
         body.in-game-mode:not(.game-over) #word-game-container,
-        body.in-game-mode:not(.game-over) .inner-wrap { background: #d5d4e6 !important; }
+        body.in-game-mode:not(.game-over) .inner-wrap { background: var(--ingame-inner-grey) !important; }
         
         #word-game-container {
             width: 100%; max-width: 500px; min-height: 540px; text-align: center;
             max-height: calc(100vh - 40px);
-            background: linear-gradient(135deg, #ffccd5, #fff4d4, #d8f3dc, #bce3f7, #e2d1f9, #ffccd5);
-            border: 2px solid var(--theme-border-color); border-radius: 40px; padding: 16px;
-            box-shadow: 0 12px var(--theme-border-color) rgba(93, 77, 112, 0.25);
+            /* 主背景渐变统一调用提炼后的 main 颜色组合 */
+            background: linear-gradient(135deg, var(--main-pink), var(--main-yellow), var(--main-green), var(--main-blue), var(--main-purple), var(--main-pink));
+            border: 2px solid var(--border-purple); border-radius: 40px; padding: 16px;
+            box-shadow: 0 12px var(--border-purple) var(--container-shadow-mask);
             transition: zoom 0.15s ease, background 0.3s ease;
             display: flex; flex-direction: column;
         }
         #word-game-container.setup-scaled { zoom: 0.8; }
         
         .inner-wrap { 
-            background-color: var(--inner-bg); border-radius: 28px; padding: var(--card-padding); 
+            background-color: var(--inner-purple); border-radius: 28px; padding: var(--card-padding); 
             width: 100%; min-height: 490px; flex: 1; transition: background 0.3s ease; 
             display: flex; flex-direction: column; justify-content: center; 
             overflow-y: auto; scrollbar-width: none;
         }
         .inner-wrap::-webkit-scrollbar { width: 4px; }
-        .inner-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        .inner-wrap::-webkit-scrollbar-thumb { background: var(--inner-scrollbar-track); border-radius: 10px; }
         
-        h3, #result-area h2 { color: var(--theme-text-color); margin: 0 0 20px 0; font-size: 24px; text-shadow: var(--text-glow); text-align: center; width: 100%; }
+        h3, #result-area h2 { color: var(--text-darkpurple); margin: 0 0 20px 0; font-size: 24px; text-shadow: var(--text-glow); text-align: center; width: 100%; }
         .hidden { display: none !important; }
         
-        .setup-box { border: 2px dashed var(--theme-border-color); padding: 25px 20px; border-radius: 20px; background: rgba(255,255,255,0.4); width: 100%; }
+        .setup-box { border: 2px dashed var(--border-purple); padding: 25px 20px; border-radius: 20px; background: var(--setup-box-bg); width: 100%; }
         .icon-heart { display: inline-block; width: 18px; height: 18px; vertical-align: middle; margin-right: 6px; background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M12 4.419C12.433 3.473 13.9 1 18.5 1 23.5 1 26 5.344 26 8.5c0 6-7.5 12-14 17.5-6.5-5.5-14-11.5-14-17.5C-2 5.344.5 1 5.5 1c4.6 0 6.067 2.473 6.5 3.419z' transform='scale(3.5) translate(3, 2)' fill='%23ff9ebb'/></svg>"); background-size: contain; background-repeat: no-repeat; }
         
         /* 全局深紫小字提醒样式类 */
-        .theme-hint-text {
-            color: var(--theme-text-color);
-            font-size: 0.85em;
-            font-weight: bold;
-            text-align: center;
-            width: 100%;
-            margin: 0 0 12px 0;
-        }
+        .theme-hint-text { color: var(--border-purple); font-size: 0.85em; font-weight: bold; text-align: center; width: 100%; margin: 0 0 12px 0; }
         
-        button { padding: 12px 16px; color: var(--theme-text-color); border: 2px solid var(--theme-border-color); border-radius: 16px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 0px var(--theme-border-color); position: relative; top: 0; margin: 5px; outline: none; gap: 8px; transition: all 0.05s ease; }
-        button:active { top: 4px; box-shadow: 0 0px 0px var(--theme-border-color); }
-        .load-txt-btn { background-color: var(--btn-blue); width: 100%; margin: 12px 0 0 0; }
+        button { padding: 12px 16px; color: var(--text-darkpurple); border: 2px solid var(--border-purple); border-radius: 16px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 0px var(--border-purple); position: relative; top: 0; margin: 5px; outline: none; gap: 8px; transition: all 0.05s ease; }
+        button:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); }
+        .load-txt-btn { background-color: var(--main-blue); width: 100%; margin: 12px 0 0 0; }
         
-        /* 统一样式：大按钮垂直组容器，完全对齐模式选择页面的间距与大小 */
+        /* 统一样式：大按钮垂直组容器 */
         .unified-btn-container { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; width: 100%; align-items: center; }
         .unified-btn-container button { width: 85%; max-width: 300px; margin: 0; }
         
-        .btn-gray { background: #e2e2e2 !important; }
+        .btn-gray { background: var(--btn-gray) !important; }
         
-        .card { border: 2px solid var(--theme-border-color); border-radius: 18px; padding: 20px; margin: 15px 0; background: #fff; text-align: left; }
+        .card { border: 2px solid var(--border-purple); border-radius: 18px; padding: 20px; margin: 15px 0; background: var(--pure-white); text-align: left; }
         
         /* 学习模式下的原文大字标题规范 */
-        .card h2 { 
-            font-size: var(--target-display-size); 
-            font-weight: bold;
-            color: var(--theme-text-color); 
-            margin: 0; 
-            text-align: center; 
-            word-break: break-all;
-            padding: 0 10px;
-        }
-        .card-info p { margin: 8px 0; border-bottom: 1px solid #e2d1f9; padding-bottom: 5px; font-size: 1.1em; color: var(--theme-text-color); }
-        .spelling-box { margin: 10px 0 15px 0; padding: 16px 15px; background: rgba(255,255,255,0.6); border-radius: 16px; width: 100%; }
+        .card h2 { font-size: var(--target-display-size); font-weight: bold; color: var(--text-darkpurple); margin: 0; text-align: center; word-break: break-all; padding: 0 10px; }
+        .card-info p { margin: 8px 0; border-bottom: 1px solid var(--main-purple); padding-bottom: 5px; font-size: 1.1em; color: var(--text-darkpurple); }
+        .spelling-box { margin: 10px 0 15px 0; padding: 16px 15px; background: var(--spelling-box-bg); border-radius: 16px; width: 100%; }
         
-        input[type="text"] { width: 100%; padding: 12px; font-size: 1.2em; font-weight: 575; border: 2px solid var(--theme-border-color); border-radius: 12px; text-align: center; outline: none; background: #fff; color: var(--theme-border-color); }
+        input[type="text"] { width: 100%; padding: 12px; font-size: 1.2em; font-weight: 575; border: 2px solid var(--border-purple); border-radius: 12px; text-align: center; outline: none; background: var(--pure-white); color: var(--border-purple); }
         
         /* 核心文字显示规范 */
-        #display-word { 
-            font-size: var(--target-display-size); 
-            font-weight: bold; 
-            margin: 15px 0; 
-            color: var(--theme-text-color); 
-            word-break: break-all; 
-            text-align: center; 
-            width: 100%; 
-            padding: 0 10px;
-        }
+        #display-word { font-size: var(--target-display-size); font-weight: bold; margin: 15px 0; color: var(--text-darkpurple); word-break: break-all; text-align: center; width: 100%; padding: 0 10px; }
         
         .feedback-text { height: 20px; font-weight: bold; margin-top: 10px; font-size: 0.9em; text-align: center; }
         
-        #help-list { background: transparent !important; border: none !important; box-shadow: none !important; max-height: 220px; overflow-y: auto; color: var(--theme-text-color); width: 100%; }
+        #help-list { background: transparent !important; border: none !important; box-shadow: none !important; max-height: 220px; overflow-y: auto; color: var(--text-darkpurple); width: 100%; }
         .hard-word-item { margin: 4px 0; font-size: 0.95em; word-break: break-all; text-align: center; }
-        .progress-text { color: var(--theme-border-color); font-size: 0.85em; margin-bottom: 5px; font-weight: bold; text-align: center; width: 100%; }
+        .progress-text { color: var(--border-purple); font-size: 0.85em; margin-bottom: 5px; font-weight: bold; text-align: center; width: 100%; }
         
         .scramble-container { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; margin: 12px 0; min-height: 130px; width: 100%; justify-content: center; }
-        .char-tile { background: #ffffff; border: 2px solid var(--theme-border-color); color: var(--theme-border-color); border-radius: 12px; width: 42px; height: 42px; line-height: 38px; font-size: 1.2em; font-weight: 575; cursor: pointer; user-select: none; text-align: center; transition: all 0.15s; }
-        .char-tile:active { border-width: 1px; transform: scale(1.05); background: #e2d1f9; }
-        .char-tile.used { opacity: 0.4; background: #d1dcff; pointer-events: none; }
+        .char-tile { background: var(--pure-white); border: 2px solid var(--border-purple); color: var(--border-purple); border-radius: 12px; width: 42px; height: 42px; line-height: 38px; font-size: 1.2em; font-weight: 575; cursor: pointer; user-select: none; text-align: center; transition: all 0.15s; }
+        .char-tile:active { border-width: 1px; transform: scale(1.05); background: var(--main-purple); }
+        .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; }
         .char-tile.correct-hidden { visibility: hidden; pointer-events: none; }
         
         .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; width: 100%; }
         .match-card { border-radius: 16px; padding: 15px 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; min-height: 75px; word-break: break-all; border: 2px solid currentColor; position: relative; top: 0; transition: all 0.05s ease; }
         .match-card:active { top: 4px; }
-        .match-card.lang-word { background-color: var(--selected-color); color: var(--theme-text-color); }
-        .match-card.lang-def { background-color: #f7f0ff; color: var(--theme-text-color); }
-        .match-card.selected { background-color: #fff8e7; color: var(--theme-text-color); transform: scale(1.02); }
+        .match-card.lang-word { background-color: var(--main-purple); color: var(--text-darkpurple); opacity: 0.8; }
+        .match-card.lang-def { background-color: var(--match-def-bg); color: var(--text-darkpurple); }
+        .match-card.selected { background-color: var(--main-yellow) !important; color: var(--text-darkpurple); transform: scale(1.02); opacity: 1; }
         .match-card.invisible { visibility: hidden !important; pointer-events: none !important; }
         
         #numFileInput { text-align: center; font-size: 18px; letter-spacing: 4px; max-width: 200px; margin: 0 auto; display: block; }
         .numpad-wrap { margin-top: 15px; margin-bottom: 12px; width: 100%; }
         .numpad-row { gap: 6px; margin-bottom: 6px; }
-        .num-key { width: 60px; height: 60px; font-size: 22px; padding: 0; margin: 0; background: #fff; color: var(--theme-text-color); border: 2px solid var(--theme-border-color); border-radius: 12px; box-shadow: none; }
+        .num-key { width: 60px; height: 60px; font-size: 22px; padding: 0; margin: 0; background: var(--pure-white); color: var(--text-darkpurple); border: 2px solid var(--border-purple); border-radius: 12px; box-shadow: none; }
         .num-key:active { border-width: 1px; transform: scale(1.05); }
-        .num-key.func { background: #e2d1f9; }
+        .num-key.func { background: var(--main-purple); }
 
         @media (max-width: 480px) {
             #word-game-container { padding: 10px; } .inner-wrap { padding: 15px 10px; }
@@ -159,7 +153,6 @@
 <body>
 
 <!-- ==================== 母本声明区域 ==================== -->
-<!-- 母本 1：小桃心提示标签组件 -->
 <template id="tpl-hint-text">
     <p class="theme-hint-text flex-row-center">
         <span class="icon-heart" style="width:14px; height:14px;"></span>
@@ -167,7 +160,6 @@
     </p>
 </template>
 
-<!-- 母本 2：大字展示 + 释义卡片组件 -->
 <template id="tpl-word-card">
     <div class="word-card-root">
         <h2></h2>
@@ -179,17 +171,14 @@
     </div>
 </template>
 
-<!-- 母本 3：数字键盘行组件 -->
 <template id="tpl-numpad-row">
     <div class="numpad-row flex-row-center"></div>
 </template>
 
-<!-- 母本 4：通用小灰底部返回/控制轻量按钮组件 -->
 <template id="tpl-action-btn">
     <button class="btn-gray flex-row-center" style="width: 100%; margin: 0; font-size: 14px; justify-content: center;"></button>
 </template>
 
-<!-- 【全新加注】母本 5：通用大功能操控大长条按钮母本（输入变量：data-color, data-text, data-onclick） -->
 <template id="tpl-major-hub-btn">
     <button class="flex-row-center" style="justify-content: center;"></button>
 </template>
@@ -207,22 +196,22 @@
                 <div class="numpad-wrap" id="dynamic-numpad-container"></div>
                 
                 <button class="load-txt-btn flex-row-center" id="fetchWordTxtBtn">加载在线文本</button>
-                <div style="margin-top:15px; border-top:2px dashed var(--theme-border-color); padding-top:15px; width:100%;" class="flex-col-center">
+                <div style="margin-top:15px; border-top:2px dashed var(--border-purple); padding-top:15px; width:100%;" class="flex-col-center">
                     <div data-hint="你也可以手动上传txt" style="margin-bottom: 5px; width:100%;"></div>
-                    <label for="fileInput" class="flex-row-center" style="width: 100%; padding: 12px 16px; background-color: var(--local-file-bg); border: 2px solid var(--theme-border-color); border-radius: 16px; color: var(--theme-text-color); font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 0px var(--theme-border-color); position: relative; top: 0; margin: 5px; justify-content: center;">汇入本地文件</label>
+                    <label for="fileInput" class="flex-row-center" style="width: 100%; padding: 12px 16px; background-color: var(--main-yellow); border: 2px solid var(--border-purple); border-radius: 16px; color: var(--text-darkpurple); font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 0px var(--border-purple); position: relative; top: 0; margin: 5px; justify-content: center;">汇入本地文件</label>
                     <input type="file" id="fileInput" accept=".txt" style="display: none;">
                 </div>
             </div>
         </div>
 
-        <!-- 2. 主模式选择菜单：完全通过母本 5 渲染生产 -->
+        <!-- 2. 主模式选择菜单 -->
         <div id="mode-area" class="hidden flex-col-center" style="width:100%">
             <h3>已加载 <span id="total-count">0</span> 个单词</h3>
             <div class="unified-btn-container">
-                <div data-major-btn data-text="📖 学习模式" data-color="var(--btn-pink)" data-onclick="startMode('study')"></div>
-                <div data-major-btn data-text="🎯 假名挑战" data-color="var(--btn-blue)" data-onclick="startMode('challenge')"></div>
-                <div data-major-btn data-text="📝 书写测试" data-color="#e2d1f9" data-onclick="startMode('hard-test')"></div>
-                <div data-major-btn data-text="🧩 连线消除" data-color="var(--btn-yellow)" data-onclick="startMode('match')"></div>
+                <div data-major-btn data-text="📖 学习模式" data-color="var(--main-pink)" data-onclick="startMode('study')"></div>
+                <div data-major-btn data-text="🎯 假名挑战" data-color="var(--main-blue)" data-onclick="startMode('challenge')"></div>
+                <div data-major-btn data-text="📝 书写测试" data-color="var(--main-purple)" data-onclick="startMode('hard-test')"></div>
+                <div data-major-btn data-text="🧩 连线消除" data-color="var(--main-yellow)" data-onclick="startMode('match')"></div>
             </div>
         </div>
 
@@ -263,7 +252,7 @@
                 <div id="challenge-feedback" class="feedback-text"></div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px;">
-                <div id="show-answer-btn" data-action-btn="提示我" data-onclick="showHelpAnswer()" data-style="color: var(--theme-text-color);"></div>
+                <div id="show-answer-btn" data-action-btn="提示我" data-onclick="showHelpAnswer()" data-style="color: var(--text-darkpurple);"></div>
                 <div data-action-btn="返回菜单" data-onclick="switchView('mode-area')"></div>
             </div>
         </div>
@@ -277,7 +266,7 @@
             <div data-action-btn="返回菜单" data-onclick="switchView('mode-area')" style="margin-top:20px;"></div>
         </div>
 
-        <!-- 6. 🎉 游戏通关结算展示区域：完美复用母本 5 渲染生产，间距格调丝毫不差 -->
+        <!-- 6. 🎉 游戏通关结算展示区域 -->
         <div id="result-area" class="hidden flex-col-center" style="width:100%">
             <h2>🧩 恭喜通关！🎉</h2>
             <div id="helped-words-container" class="hidden" style="width:100%">
@@ -285,10 +274,10 @@
                 <div id="help-list" class="flex-col-center" style="margin-bottom: 10px;"></div>
             </div>
             <div class="unified-btn-container">
-                <div data-major-btn data-text="再来一遍" data-color="var(--btn-yellow)" data-onclick="retryExcludingHelped()"></div>
-                <div data-major-btn data-text="巩固难词" data-color="var(--selected-color)" data-onclick="focusOnHelped()"></div>
-                <div data-major-btn data-text="换个模式" data-color="var(--btn-blue)" data-onclick="switchView('mode-area')"></div>
-                <div data-major-btn data-text="重选文件" data-color="var(--btn-pink)" data-onclick="location.reload()"></div>
+                <div data-major-btn data-text="再来一遍" data-color="var(--main-yellow)" data-onclick="retryExcludingHelped()"></div>
+                <div data-major-btn data-text="巩固难词" data-color="var(--main-purple)" data-onclick="focusOnHelped()"></div>
+                <div data-major-btn data-text="换个模式" data-color="var(--main-blue)" data-onclick="switchView('mode-area')"></div>
+                <div data-major-btn data-text="重选文件" data-color="var(--main-pink)" data-onclick="location.reload()"></div>
             </div>
         </div>
     </div>
@@ -305,7 +294,7 @@
         'ka':'か','ki':'き','ku':'く','ke':'け','ko':'こ',
         'sa':'さ','shi':'し','su':'す','se':'せ','so':'そ',
         'ta':'た','chi':'ち','tu':'つ','te':'て','to':'と',
-        'na':'な','ni':'に','nu':'ぬ','ne':'ね','no':'の',
+        'na':'な','ni':'に','nu':'ぬ','ne':'ね','no':'之',
         'ha':'は','hi':'ひ','hu':'ふ','he':'へ','ho':'ほ',
         'ma':'ま','mi':'み','mu':'む','me':'め','mo':'も',
         'ya':'や','yu':'ゆ','yo':'よ',
@@ -321,18 +310,16 @@
         'cha':'ちゃ','chu':'ちゅ','cho':'ちょ',
         'nya':'にゃ','nyu':'にゅ','nyo':'にょ',
         'hya':'ひゃ','hyu':'ひゅ','hyo':'ひょ',
-        'mya':'みゃ','myu':'みゅ','myo':'みょ',
+        'mya':'みゃ','myu':'みゃ','myo':'みょ',
         'rya':'りゃ','ryu':'りゅ','ryo':'りょ',
         'gya':'ぎゃ','gyu':'ぎゅ','gyo':'ぎょ',
         'jya':'じゃ','jyu':'じゅ','jyo':'じょ',
         'bya':'びゃ','byu':'びゅ','byo':'びょ',
-        'pya':'ぴゃ','pyu':'ぴゅ','pya':'ぴょ',
+        'pya':'ぴゃ','pyu':'pyu','pya':'ぴょ',
         'rye':'りぇ','ddi':'でぃ','fa':'ふぁ'
     };
 
     // ==================== 母本页面声明组件动态解析挂载引擎 ====================
-    
-    // 1. 动态生成输入小键盘
     const numpadContainer = document.getElementById('dynamic-numpad-container');
     if(numpadContainer) {
         const layout = [
@@ -356,7 +343,6 @@
         });
     }
 
-    // 2. 静态锚点解析一：带有 data-hint 的标签转换为母本 1
     document.querySelectorAll('[data-hint]').forEach(container => {
         const template = document.getElementById('tpl-hint-text');
         const clone = template.content.cloneNode(true);
@@ -368,7 +354,6 @@
         container.replaceWith(clone);
     });
 
-    // 3. 静态锚点解析二：带有 data-action-btn 的标签转换为底部灰色控制按钮组 (母本 4)
     document.querySelectorAll('[data-action-btn]').forEach(container => {
         const template = document.getElementById('tpl-action-btn');
         const clone = template.content.cloneNode(true);
@@ -384,32 +369,25 @@
         container.replaceWith(clone);
     });
 
-    // 4. 【全新注入】核心功能转换：将带 data-major-btn 的占位签全面渲染成母本 5 的标准大控制按钮
     document.querySelectorAll('[data-major-btn]').forEach(container => {
         const template = document.getElementById('tpl-major-hub-btn');
         const clone = template.content.cloneNode(true);
         const btn = clone.querySelector('button');
-        
-        // 分别接收传入的三个核心变量参数
         btn.innerText = container.dataset.text || "";
-        btn.style.backgroundColor = container.dataset.color || "var(--btn-pink)";
+        btn.style.backgroundColor = container.dataset.color || "var(--main-pink)";
         if(container.dataset.onclick) {
             btn.setAttribute('onclick', container.dataset.onclick);
         }
-        
         container.replaceWith(clone);
     });
 
-    // 母本 2：大字释义卡片专用高级渲染函数
     function renderWordCardTemplate(targetElement, data) {
         const template = document.getElementById('tpl-word-card');
         const clone = template.content.cloneNode(true);
-        
         clone.querySelector('h2').innerText = data.kanji;
         clone.querySelector('.info-kana span').innerText = data.kana;
         clone.querySelector('.info-accent span').innerText = data.accent;
         clone.querySelector('.info-definition span').innerText = data.definition;
-        
         targetElement.innerHTML = '';
         targetElement.appendChild(clone);
     }
@@ -513,13 +491,12 @@
         document.getElementById('study-total').innerText = originalWordList.length;
         setFeedback('study-feedback', "");
         document.getElementById('studyAnswerInput').value = "";
-        
         renderWordCardTemplate(document.getElementById('card-content'), cur);
     }
 
     document.getElementById('studyAnswerInput').addEventListener('input', function() {
         if (cleanString(romajiToKana(this.value.trim())) === cleanString(originalWordList[currentIndex].kana)) {
-            setFeedback('study-feedback', "正确！", "#46b450");
+            setFeedback('study-feedback', "正确！", "var(--text-darkpurple)");
             setTimeout(nextCard, 200);
         }
     });
@@ -548,12 +525,12 @@
                 if (answer[len] === char) {
                     input.value += char; tile.classList.add('correct-hidden');
                     if (input.value.trim() === answer.trim()) {
-                        setFeedback('challenge-feedback', "正确！", "var(--success-color)");
+                        setFeedback('challenge-feedback', "正确！", "var(--text-darkpurple)");
                         currentIndex++; setTimeout(renderChallenge, 220);
                     }
                 } else {
                     input.value += char; tile.classList.add('used');
-                    setFeedback('challenge-feedback', "回答错误", "var(--error-color)");
+                    setFeedback('challenge-feedback', "回答错误", "var(--warn-color)");
                 }
             };
             grid.appendChild(tile);
@@ -585,7 +562,7 @@
 
     document.getElementById('challengeAnswerInput').addEventListener('input', function() {
         if (cleanString(romajiToKana(this.value.trim())) === cleanString(currWord().kana)) {
-            setFeedback('challenge-feedback', "正确！", "#46b450");
+            setFeedback('challenge-feedback', "正确！", "var(--text-darkpurple)");
             currentIndex++; setTimeout(renderChallenge, 220);
         }
     });
@@ -594,7 +571,6 @@
         const cur = currWord();
         helpedKanjiSet.add(cur.kanji);
         const hint = document.getElementById('answer-hint-card');
-        
         renderWordCardTemplate(hint, cur);
         toggleHidden('answer-hint-card', false);
         
@@ -638,7 +614,7 @@
         if (matchFirstSelectedCard.dataset.type === card.dataset.type) { matchFirstSelectedCard.classList.remove('selected'); matchFirstSelectedCard = card; card.classList.add('selected'); return; }
         
         if (matchFirstSelectedCard.dataset.id === card.dataset.id) {
-            setFeedback('match-feedback', "正确！", "var(--success-color)");
+            setFeedback('match-feedback', "正确！", "var(--text-darkpurple)");
             matchFirstSelectedCard.className = card.className = 'match-card invisible';
             matchFirstSelectedCard = null;
             
@@ -646,7 +622,7 @@
             span.innerText = parseInt(span.innerText) + 1;
             if (document.querySelectorAll('#match-grid-container .match-card:not(.invisible)').length === 0) setTimeout(nextMatchRound, 300);
         } else {
-            setFeedback('match-feedback', "错啦，再试试！", "red");
+            setFeedback('match-feedback', "错啦，再试试！", "var(--warn-color)");
             if(card.customData) helpedKanjiSet.add(card.customData.kanji);
             matchFirstSelectedCard.classList.remove('selected'); matchFirstSelectedCard = null;
         }
