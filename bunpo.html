@@ -50,8 +50,9 @@
             display: flex; justify-content: center; align-items: center;
         }
         
+        /* 仅在纯粹的答题练习进行中应用灰色背景，结算页恢复漂亮的马卡龙彩色背景 */
         body.in-game-mode { background-image: none !important; background-color: var(--ingame-bg-grey) !important; }
-        body.in-game-mode #main-container,
+        body.in-game-mode #main-container { background: var(--ingame-inner-grey) !important; }
         body.in-game-mode .inner-wrap { background: var(--ingame-inner-grey) !important; }
         
         #main-container {
@@ -131,10 +132,10 @@
             margin: 10px 0;
         }
 
-        /* 日文题目样式 - 已紧凑化 */
+        /* 日文题目样式 */
         .sentence-display { font-size: 1.2em;  line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 2px; font-weight: 575; text-align: center; }
         
-        /* 中文解释样式与进度条样式统一 - 已紧凑化 */
+        /* 中文解释样式与进度条样式统一 */
         .translation-display, .purple-progress-hint { font-size: 0.85em; line-height: 1.2; color: var(--border-purple); font-style: normal; font-weight: bold; opacity: 1; display: block; text-align: center; margin-bottom: 8px; }
         
         #display-grammar { font-size: 1.2em; line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 8px; font-weight: 575; text-align: center; }
@@ -159,7 +160,6 @@
         }
         input[type="text"].readonly-clickable-input::placeholder { color: #b5afbe; opacity: 0.8; font-weight: 575; }
         
-        /* 【已优化】移除自动分配宽度的属性，通过 justify-content 让固定大小的网格整体水平居中 */
         .scramble-container { 
             display: grid; 
             grid-template-rows: repeat(3, auto); 
@@ -170,7 +170,6 @@
             justify-content: center; 
             margin: 6px 0 0 0; 
         }
-        /* 【已优化】保持原本 42px 大小不变 */
         .char-tile { 
             background: var(--pure-white); border: 2px solid var(--border-purple); color: var(--border-purple); 
             border-radius: 12px; width: 42px; height: 42px; line-height: 38px; 
@@ -180,7 +179,6 @@
         .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; }
         .char-tile.correct-hidden { visibility: hidden; pointer-events: none; }
         
-        /* 完全同步 dl3 数字输入框的所有排版样式 */
         #numFileInput { 
             text-align: center; 
             font-size: 18px; 
@@ -207,7 +205,6 @@
         #setsuzoku-area { display: flex; flex-direction: column; height: 100%; }
         .setsuzoku-content-wrap { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding-bottom: 2px; }
         
-        /* 接续模式：重构为严格、整齐的三列网格布局，并固定容器总高度 */
         .options-grid { 
             width: 100%; 
             height: 252px; 
@@ -231,7 +228,6 @@
         
         .action-row-btns { display: flex; gap: 10px; width: 100%; margin-top: 10px; }
         
-        /* 统一所有灰色按钮 */
         .btn-prev, .btn-next { flex: 1; background: var(--btn-gray); justify-content: center; border-radius: 18px; margin: 0; }
         
         .btn-back-menu, .btn-hint { background: var(--btn-gray); width: 100%; margin-top: 10px; justify-content: center; }
@@ -240,11 +236,10 @@
         .btn-peek-ans { background: var(--btn-gray); width: 100%; margin-top: 6px; margin-bottom: 12px; font-size: 16px; padding: 12px 16px; border-radius: 18px; justify-content: center; }
         .btn-back-menu-small { background: var(--btn-gray); width: 100%; font-size: 16px; padding: 12px 16px; border-radius: 18px; justify-content: center; }
         
-        .hard-points-wrapper { width: 100%; }
+        .hard-points-wrapper { width: 100%; margin-bottom: 10px; }
         .hard-points-title { font-weight: bold; color: var(--warn-color); margin-bottom: 5px; }
         .result-title-text { color: var(--text-darkpurple); }
         
-        /* 选项方块 */
         .opt-btn {
             display: flex; align-items: center; justify-content: center;
             width: 100%; min-height: 42px; padding: 4px 6px; margin: 0;
@@ -261,7 +256,6 @@
             #main-container { padding: 10px; }
             #main-container.setup-scaled { transform: none !important; margin-bottom: 0 !important; zoom: 0.8; }
             .inner-wrap { padding: 15px 10px; }
-            /* 【已优化】移动端依然保持 36px 原本尺寸不变，并完美居中 */
             .char-tile { width: 36px; height: 36px; line-height: 32px; font-size: 1.2em; border-radius: 9px; }
             .num-key { width: 50px; height: 50px; font-size: 18px; }
             .card.study-mode-card, .card { height: 120px !important; margin: 10px 0; }
@@ -377,7 +371,7 @@
                 <button id="btn-retry-easy" class="btn-base major-hub-btn major-btn-study flex-row-center" onclick="retryExcludingHelped()">重新挑战</button>
                 <button id="btn-focus-hard" class="btn-base major-hub-btn major-btn-write flex-row-center" onclick="focusOnHelped()">巩固难词</button>
                 <button id="btn-change-mode" class="btn-base major-hub-btn major-btn-match flex-row-center" onclick="switchView('mode-area')">换个模式</button>
-                <button class="btn-base major-hub-btn major-btn-challenge flex-row-center" onclick="location.reload()">重新选择文件</button>
+                <button class="btn-base major-hub-btn major-btn-challenge flex-row-center" onclick="location.reload()">重选文件</button>
             </div>
         </div>
     </div>
@@ -441,7 +435,7 @@
         const reader = new FileReader();
         reader.onload = (event) => {
             rawText = event.target.result;
-            parseAllGrammarData(rawText);
+            parseAllGrammarData(event.target.result);
         };
         reader.readAsText(file);
     });
@@ -552,7 +546,6 @@
             
             const peekBtn = document.getElementById('peek-answer-btn');
             const navRow = document.getElementById('setsuzoku-nav-row');
-            const gridPanel = document.getElementById('optionsPanel');
             
             if(mode === 'setsuzoku-study'){
                 peekBtn.classList.add('hidden');
@@ -650,7 +643,7 @@
         if(currentIndex < sentenceGrammarList.length - 1) {
             currentIndex++;
             renderSentenceCard();
-        } else { finishSession("句子填空练习完成！"); }
+        } else { finishSession(); }
     };
     window.prevSentenceCard = () => {
         if(currentIndex > 0) {
@@ -681,7 +674,7 @@
     }
 
     function renderSetsuzokuStep() {
-        if (currentQueueIdx >= quizQueue.length) { finishSession("接续变形练习完成！"); return; }
+        if (currentQueueIdx >= quizQueue.length) { finishSession(); return; }
         const currentItem = quizQueue[currentQueueIdx];
         document.getElementById('setsuzoku-progress').innerText = currentQueueIdx + 1;
         
@@ -759,7 +752,7 @@
         if (currentQueueIdx < quizQueue.length - 1) {
             currentQueueIdx++;
             renderSetsuzokuStep();
-        } else { finishSession("接续变形练习完成！"); }
+        } else { finishSession(); }
     };
 
     window.prevSetsuzokuCard = function() {
@@ -769,7 +762,7 @@
         }
     };
 
-    function finishSession(title) {
+    function finishSession() {
         switchView('result-area');
         document.getElementById('result-title').innerText = "恭喜通关！";
         const listDiv = document.getElementById('help-list');
@@ -823,8 +816,10 @@
             document.getElementById('main-container').classList.remove('setup-scaled');
         }
 
-        const isGame = ['sentence-area', 'setsuzoku-area'].includes(id);
-        document.body.classList[isGame || id === 'result-area' ? 'add' : 'remove']('in-game-mode');
+        // 仅在真正的答题阶段（句子输入、接续面板）使用灰色护眼背景
+        // 菜单页（mode-area）与结算页（result-area）都将展现漂亮的彩色炫彩渐变背景
+        const isActualGameQuiz = ['sentence-area', 'setsuzoku-area'].includes(id);
+        document.body.classList[isActualGameQuiz ? 'add' : 'remove']('in-game-mode');
         
         document.querySelector('.inner-wrap').scrollTop = 0;
     };
