@@ -50,9 +50,9 @@
             display: flex; justify-content: center; align-items: center;
         }
         
-        body.in-game-mode:not(.game-over) { background-image: none !important; background-color: var(--ingame-bg-grey) !important; }
-        body.in-game-mode:not(.game-over) #main-container,
-        body.in-game-mode:not(.game-over) .inner-wrap { background: var(--ingame-inner-grey) !important; }
+        body.in-game-mode { background-image: none !important; background-color: var(--ingame-bg-grey) !important; }
+        body.in-game-mode #main-container,
+        body.in-game-mode .inner-wrap { background: var(--ingame-inner-grey) !important; }
         
         #main-container {
             width: 100%; max-width: 500px; min-height: 540px; text-align: center;
@@ -100,7 +100,7 @@
         }
         .btn-base:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); }
         
-        .load-txt-btn { background-color: var(--main-blue); width: 100%; margin: 12px 0 0 0; }
+        .load-txt-btn { background-color: var(--main-blue); width: 100%; margin: 0; }
         .unified-btn-container { display: flex; flex-direction: column; gap: 12px; width: 100%; align-items: center; margin-top: 15px; }
         
         .major-hub-btn { width: 85%; max-width: 300px; justify-content: center; }
@@ -132,7 +132,7 @@
         }
 
         /* 日文题目样式 - 已紧凑化 */
-        .sentence-display { font-size: 1.2em; line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 2px; font-weight: 575; text-align: center; }
+        .sentence-display { font-size: 1.2em;  line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 2px; font-weight: 575; text-align: center; }
         
         /* 中文解释样式与进度条样式统一 - 已紧凑化 */
         .translation-display, .purple-progress-hint { font-size: 0.85em; line-height: 1.2; color: var(--border-purple); font-style: normal; font-weight: bold; opacity: 1; display: block; text-align: center; margin-bottom: 8px; }
@@ -157,23 +157,24 @@
             text-align: center; outline: none; background: var(--pure-white); 
             color: var(--border-purple); cursor: pointer; caret-color: transparent;
         }
-        input[type="text"].readonly-clickable-input::placeholder { color: #b5afbe; opacity: 0.8; font-weight: normal; }
+        input[type="text"].readonly-clickable-input::placeholder { color: #b5afbe; opacity: 0.8; font-weight: 575; }
         
+        /* 【已优化】移除自动分配宽度的属性，通过 justify-content 让固定大小的网格整体水平居中 */
         .scramble-container { 
             display: grid; 
             grid-template-rows: repeat(3, auto); 
             grid-auto-flow: column; 
-            grid-auto-columns: minmax(0, 1fr); 
             gap: 6px; 
             min-height: 130px; 
             width: 100%; 
             justify-content: center; 
             margin: 6px 0 0 0; 
         }
+        /* 【已优化】保持原本 42px 大小不变 */
         .char-tile { 
             background: var(--pure-white); border: 2px solid var(--border-purple); color: var(--border-purple); 
             border-radius: 12px; width: 42px; height: 42px; line-height: 38px; 
-            font-size: 1.2em; font-weight: 575; cursor: pointer; user-select: none; text-align: center; transition: all 0.15s; 
+            font-size: 1.2em ; font-weight: 575; cursor: pointer; user-select: none; text-align: center; transition: all 0.15s; 
         }
         .char-tile:active { border-width: 1px; transform: scale(1.05); background: var(--main-purple); }
         .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; }
@@ -196,8 +197,8 @@
             outline: none;
         }
         
-        .numpad-wrap { margin-top: 15px; margin-bottom: 12px; width: 100%; display: flex; flex-direction: column; gap: 6px; }
-        .numpad-row { display: flex; gap: 6px; justify-content: center; margin-bottom: 6px; }
+        .numpad-wrap { margin-top: 15px; margin-bottom: 15px; width: 100%; display: flex; flex-direction: column; gap: 6px; }
+        .numpad-row { display: flex; gap: 6px; justify-content: center; margin-bottom: 0; }
         .num-key { width: 60px; height: 60px; font-size: 22px; padding: 0; margin: 0; background: var(--pure-white); color: var(--text-darkpurple); border: 2px solid var(--border-purple); border-radius: 12px; box-shadow: none; font-weight: bold; }
         .num-key:active { border-width: 1px; transform: scale(1.05); }
         .num-key.func { background: var(--main-purple); }
@@ -207,7 +208,6 @@
         .setsuzoku-content-wrap { flex: 1; display: flex; flex-direction: column; overflow: hidden; padding-bottom: 2px; }
         
         /* 接续模式：重构为严格、整齐的三列网格布局，并固定容器总高度 */
-        /* 调整 margin-top 使题目框到方块的距离和题目框到进度提示的距离一致 (10px) */
         .options-grid { 
             width: 100%; 
             height: 252px; 
@@ -244,7 +244,7 @@
         .hard-points-title { font-weight: bold; color: var(--warn-color); margin-bottom: 5px; }
         .result-title-text { color: var(--text-darkpurple); }
         
-        /* 选项方块：适配 Grid 布局，去除了旧样式的不定外边距，使用弹性盒实现文本居中和长文本换行 */
+        /* 选项方块 */
         .opt-btn {
             display: flex; align-items: center; justify-content: center;
             width: 100%; min-height: 42px; padding: 4px 6px; margin: 0;
@@ -261,7 +261,8 @@
             #main-container { padding: 10px; }
             #main-container.setup-scaled { transform: none !important; margin-bottom: 0 !important; zoom: 0.8; }
             .inner-wrap { padding: 15px 10px; }
-            .char-tile { width: 36px; height: 36px; line-height: 32px; font-size: 1.05em; border-radius: 9px; }
+            /* 【已优化】移动端依然保持 36px 原本尺寸不变，并完美居中 */
+            .char-tile { width: 36px; height: 36px; line-height: 32px; font-size: 1.2em; border-radius: 9px; }
             .num-key { width: 50px; height: 50px; font-size: 18px; }
             .card.study-mode-card, .card { height: 120px !important; margin: 10px 0; }
             .options-grid { height: 252px; min-height: 252px; max-height: 252px; gap: 5px; margin-top: 10px; }
@@ -273,13 +274,12 @@
 
 <div id="main-container" class="setup-scaled">
     <div class="inner-wrap">
-        <!-- 1. 文件加载初始区 -->
         <div id="setup-area" class="flex-col-center" style="width:100%">
             <h3>N2文法助手</h3>
             <div class="setup-box flex-col-center">
                 <p class="theme-hint-text flex-row-center">
                     <span class="icon-heart" style="width:14px; height:14px;"></span>
-                    <span>输入数字加载 BunpoTxt/数字.txt</span>
+                    <span>输入数字提取 BunpoTxt/数字.txt</span>
                 </p>
                 <div class="num-input-box">
                     <input type="text" id="numFileInput" readonly placeholder="...">
@@ -306,7 +306,7 @@
                         <button class="num-key func" data-val="del">&larr;</button>
                     </div>
                 </div>
-                <button class="btn-base load-txt-btn flex-row-center" id="fetchBunpoTxtBtn">加载文法库</button>
+                <button class="btn-base load-txt-btn flex-row-center" id="fetchBunpoTxtBtn">加载在线文本</button>
                 <div class="divider-box flex-col-center" style="width:100%">
                     <p class="theme-hint-text flex-row-center txt-spec-hint">
                         <span>TXT格式规范：<br>
@@ -320,20 +320,18 @@
             </div>
         </div>
 
-        <!-- 2. 主菜单 -->
         <div id="mode-area" class="hidden">
             <h3>句子：<span id="sentence-count">0</span> | 接续：<span id="setsuzoku-count">0</span></h3>
             <div class="unified-btn-container">
-                <button class="btn-base major-hub-btn major-btn-study flex-row-center" onclick="startMode('sentence-study')">句子填空-学习模式</button>
-                <button class="btn-base major-hub-btn major-btn-challenge flex-row-center" onclick="startMode('sentence-challenge')">句子填空-挑战模式</button>
-                <button class="btn-base major-hub-btn major-btn-write flex-row-center" onclick="startMode('setsuzoku-study')">接续变形-学习模式</button>
-                <button class="btn-base major-hub-btn major-btn-match flex-row-center" onclick="startMode('setsuzoku-challenge')">接续变形-测试模式</button>
+                <button class="btn-base major-hub-btn major-btn-study flex-row-center" onclick="startMode('sentence-study')">句子学习</button>
+                <button class="btn-base major-hub-btn major-btn-challenge flex-row-center" onclick="startMode('sentence-challenge')">句子测试</button>
+                <button class="btn-base major-hub-btn major-btn-write flex-row-center" onclick="startMode('setsuzoku-study')">接续学习</button>
+                <button class="btn-base major-hub-btn major-btn-match flex-row-center" onclick="startMode('setsuzoku-challenge')">接续测试</button>
             </div>
         </div>
 
-        <!-- 3. 句子填空练习区域 -->
         <div id="sentence-area" class="hidden">
-            <div class="purple-progress-hint">填空练习: <span id="sentence-progress">0</span> / <span id="sentence-total">0</span></div>
+            <div class="purple-progress-hint"><span id="sentence-mode-title">句子学习</span>: <span id="sentence-progress">0</span> / <span id="sentence-total">0</span></div>
             <div class="card" id="sentence-card-content"></div>
             
             <div class="spelling-box">
@@ -350,7 +348,6 @@
             <button class="btn-base btn-back-menu flex-row-center" onclick="switchView('mode-area')">返回菜单</button>
         </div>
 
-        <!-- 4. 接续变形测试区域 -->
         <div id="setsuzoku-area" class="hidden">
             <div class="setsuzoku-content-wrap">
                 <div class="purple-progress-hint"><span id="setsuzoku-mode-title">接续测试</span>: <span id="setsuzoku-progress">0</span> / <span id="setsuzoku-total">0</span></div>
@@ -358,11 +355,9 @@
                     <div id="display-grammar">---</div>
                     <div id="display-cat-hint" class="translation-display" style="margin-bottom:0;">正在考察词性：-</div>
                 </div>
-                <!-- 选项区域大小已完全固定，升级为整齐的三列网格 -->
                 <div class="options-grid" id="optionsPanel"></div>
                 <button id="peek-answer-btn" class="btn-base btn-peek-ans flex-row-center hidden" onclick="peekStudyAnswer()">查看答案</button>
             </div>
-            <!-- 底部按钮区域永远固定在最下方 -->
             <div class="setsuzoku-bottom-btns">
                 <div id="setsuzoku-nav-row" class="action-row-btns" style="margin-top: 0;">
                     <button class="btn-base btn-prev flex-row-center" onclick="prevSetsuzokuCard()">上一条</button>
@@ -372,7 +367,6 @@
             </div>
         </div>
 
-        <!-- 5. 结算结果页面 -->
         <div id="result-area" class="hidden">
             <h2 id="result-title" class="result-title-text">通关！</h2>
             <div id="helped-words-container" class="hard-points-wrapper">
@@ -380,7 +374,7 @@
                 <div id="help-list">暂无难词</div>
             </div>
             <div class="unified-btn-container">
-                <button id="btn-retry-easy" class="btn-base major-hub-btn major-btn-study flex-row-center" onclick="retryExcludingHelped()">重新挑战 (排除难词)</button>
+                <button id="btn-retry-easy" class="btn-base major-hub-btn major-btn-study flex-row-center" onclick="retryExcludingHelped()">重新挑战</button>
                 <button id="btn-focus-hard" class="btn-base major-hub-btn major-btn-write flex-row-center" onclick="focusOnHelped()">巩固难词</button>
                 <button id="btn-change-mode" class="btn-base major-hub-btn major-btn-match flex-row-center" onclick="switchView('mode-area')">换个模式</button>
                 <button class="btn-base major-hub-btn major-btn-challenge flex-row-center" onclick="location.reload()">重新选择文件</button>
@@ -533,6 +527,7 @@
             const targetList = customBank || sentenceGrammarList;
             if(targetList.length ===0){ alert("当前无填空文法数据！"); return; }
             
+            document.getElementById('sentence-mode-title').innerText = mode === 'sentence-study' ? "句子学习" : "句子测试";
             document.getElementById('sentence-hint-btn').classList.toggle('hidden', mode === 'sentence-study');
             document.getElementById('sentence-nav-row').classList.toggle('hidden', mode === 'sentence-challenge');
             document.getElementById('sentence-total').innerText = targetList.length;
@@ -562,15 +557,9 @@
             if(mode === 'setsuzoku-study'){
                 peekBtn.classList.add('hidden');
                 navRow.classList.remove('hidden'); 
-                gridPanel.style.height = "252px";  
-                gridPanel.style.minHeight = "252px";
-                gridPanel.style.maxHeight = "252px";
             }else{
                 peekBtn.classList.remove('hidden');
                 navRow.classList.add('hidden');    
-                gridPanel.style.height = "252px";  
-                gridPanel.style.minHeight = "252px";
-                gridPanel.style.maxHeight = "252px";
             }
             switchView('setsuzoku-area');
             renderSetsuzokuStep();
@@ -759,7 +748,7 @@
             const targetPos = currentQueueIdx + 1 + actualGap;
             quizQueue.splice(targetPos, 0, {
                 core: currentItem.core,
-                category: { name: catName, subs: [...currentItem.category.subs] },
+                category: { name: currentItem.category.name, subs: [...currentItem.category.subs] },
                 isHardPoint: true
             });
         });
@@ -782,7 +771,7 @@
 
     function finishSession(title) {
         switchView('result-area');
-        document.getElementById('result-title').innerText = title;
+        document.getElementById('result-title').innerText = "恭喜通关！";
         const listDiv = document.getElementById('help-list');
         const helpedWrapper = document.getElementById('helped-words-container');
         
@@ -799,22 +788,10 @@
             helpedWrapper.classList.add('hidden');
             listDiv.innerText = "暂无难词";
         }
-        document.body.classList.add('game-over');
     }
     
     window.retryExcludingHelped = function() {
-        if(helpedSet.size === 0) { alert("当前无难词需要排除，将为您直接重新挑战！"); startMode(currentMode); return; }
-        if(currentMode.startsWith('sentence')){
-            const filtered = sentenceGrammarList.filter(g => !helpedSet.has(g.answer));
-            if(filtered.length ===0) return alert("过滤后无剩余文法");
-            startMode(currentMode, filtered);
-        }else{
-            const filtered = setsuzokuQuizBank.filter(item => {
-                return !item.categories.some(cat => helpedSet.has(`${item.core}_${cat.name}`));
-            });
-            if(filtered.length ===0) return alert("过滤后无剩余文法");
-            startMode(currentMode, filtered);
-        }
+        startMode(currentMode);
     };
     
     window.focusOnHelped = function() {
@@ -848,7 +825,6 @@
 
         const isGame = ['sentence-area', 'setsuzoku-area'].includes(id);
         document.body.classList[isGame || id === 'result-area' ? 'add' : 'remove']('in-game-mode');
-        if (!isGame) document.body.classList.remove('game-over');
         
         document.querySelector('.inner-wrap').scrollTop = 0;
     };
