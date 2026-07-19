@@ -50,7 +50,6 @@
             display: flex; justify-content: center; align-items: center;
         }
         
-        /* 仅在纯粹的答题练习进行中应用灰色背景，结算页恢复漂亮的马卡龙彩色背景 */
         body.in-game-mode { background-image: none !important; background-color: var(--ingame-bg-grey) !important; }
         body.in-game-mode #main-container { background: var(--ingame-inner-grey) !important; }
         body.in-game-mode .inner-wrap { background: var(--ingame-inner-grey) !important; }
@@ -114,7 +113,6 @@
         
         .divider-box { margin-top: 15px; border-top: 2px dashed var(--border-purple); padding-top: 15px; width: 100%; }
         
-        /* 题目范围卡片样式 */
         .card { 
             border: none; border-radius: 18px; padding: 15px; 
             background: var(--pure-white); text-align: left; margin: 10px 0; 
@@ -132,13 +130,10 @@
             margin: 10px 0;
         }
 
-        /* 日文题目样式 */
-        .sentence-display { font-size: 1.2em;  line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 2px; font-weight: 575; text-align: center; }
-        
-        /* 中文解释样式与进度条样式统一 */
+        .sentence-display { font-size: 1.6em;  line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 2px; font-weight: 575; text-align: center; }
         .translation-display, .purple-progress-hint { font-size: 0.85em; line-height: 1.2; color: var(--border-purple); font-style: normal; font-weight: bold; opacity: 1; display: block; text-align: center; margin-bottom: 8px; }
         
-        #display-grammar { font-size: 1.2em; line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 8px; font-weight: 575; text-align: center; }
+        #display-grammar { font-size: 1.6em; line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 8px; font-weight: 575; text-align: center; }
         
         .spelling-box { 
             padding: 12px 15px; 
@@ -223,13 +218,9 @@
         .options-grid::-webkit-scrollbar-thumb { background: var(--inner-scrollbar-track); border-radius: 10px; }
         
         .setsuzoku-bottom-btns { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; margin-top: auto; }
-        
         .num-input-box { width: 100%; }
-        
         .action-row-btns { display: flex; gap: 10px; width: 100%; margin-top: 10px; }
-        
         .btn-prev, .btn-next { flex: 1; background: var(--btn-gray); justify-content: center; border-radius: 18px; margin: 0; }
-        
         .btn-back-menu, .btn-hint { background: var(--btn-gray); width: 100%; margin-top: 10px; justify-content: center; }
         .btn-back-menu { padding: 12px 16px; border-radius: 18px; margin: 10px 0 0 0; }
         
@@ -244,8 +235,11 @@
             display: flex; align-items: center; justify-content: center;
             width: 100%; min-height: 42px; padding: 4px 6px; margin: 0;
             border: 2px solid var(--border-purple); border-radius: 12px;
-            background: var(--pure-white); color: var(--text-darkpurple);
-            font-size: 13px; font-weight: bold; cursor: pointer; transition: all 0.1s;
+            background: var(--pure-white); 
+            color: var(--border-purple);
+            font-size: 1.2em; 
+            font-weight: 575; 
+            cursor: pointer; transition: all 0.1s;
             word-break: break-all; text-align: center; line-height: 1.2;
         }
         .opt-btn.study-hint { background: var(--main-yellow); }
@@ -260,7 +254,7 @@
             .num-key { width: 50px; height: 50px; font-size: 18px; }
             .card.study-mode-card, .card { height: 120px !important; margin: 10px 0; }
             .options-grid { height: 252px; min-height: 252px; max-height: 252px; gap: 5px; margin-top: 10px; }
-            .opt-btn { font-size: 12px; min-height: 40px; }
+            .opt-btn { min-height: 40px; }
         }
     </style>
 </head>
@@ -303,10 +297,9 @@
                 <button class="btn-base load-txt-btn flex-row-center" id="fetchBunpoTxtBtn">加载在线文本</button>
                 <div class="divider-box flex-col-center" style="width:100%">
                     <p class="theme-hint-text flex-row-center txt-spec-hint">
-                        <span>TXT格式规范：<br>
-                        上方：句子填空行（句子,翻译,原形,答案）<br>
-                        分隔行：🧩🧩🧩🧩🧩<br>
-                        下方：接续变形行（文法,词性_接续...）</span>
+                        <span>全格式单行规范：<br>
+                        文法, 词性_接续, 中文翻译, 日文整句, 句子翻译, 提示原形, 填空答案<br>
+                        示例：⚪️⚪️⚪️ +に沿って,名詞_原形,沿著...</span>
                     </p>
                     <label for="fileInput" class="btn-base flex-row-center local-import-btn" style="justify-content: center;">汇入本地文件</label>
                     <input type="file" id="fileInput" accept=".txt" class="hidden">
@@ -388,7 +381,6 @@
     };
     const INTERVALS = [3, 8, 11];
     const TARGET_TILE_COUNT = 18;
-    const SEP_LINE = "🧩🧩🧩🧩🧩"; 
     let globalCustomPool = {
         "動詞": new Set(), "形容詞": new Set(), "形容動詞": new Set(), "名詞": new Set(), "句": new Set()
     };
@@ -444,66 +436,57 @@
         sentenceGrammarList = [];
         setsuzokuQuizBank = [];
         Object.keys(globalCustomPool).forEach(k => globalCustomPool[k].clear());
-        const blockParts = text.split(SEP_LINE);
-        const sentenceBlock = blockParts[0] || "";
-        const setsuzokuBlock = blockParts[1] || "";
         
-        const sentenceLines = sentenceBlock.split(/\r?\n/).filter(l => l.trim() !== "" && l.includes(','));
-        sentenceLines.forEach(line => {
+        const lines = text.split(/\r?\n/).filter(l => l.trim() !== "" && l.includes(','));
+        
+        lines.forEach(line => {
             line = line.trim();
             const parts = line.split(',');
-            sentenceGrammarList.push({
-                fullSentence: parts[0].trim(),
-                translation: parts[1].trim(),
-                hint: parts[2].trim(),
-                answer: parts[3].trim()
-            });
-        });
-        
-        const setsuLines = setsuzokuBlock.split(/\r?\n/).filter(l => l.trim() !== "" && l.includes(','));
-        setsuLines.forEach(line => {
-            line = line.trim();
-            const parts = line.split(',');
-            const coreGrammar = parts[0];
-            let categories = [];
-            for (let i = 1; i < parts.length; i++) {
-                const catBlock = parts[i].split('_');
+            if (parts.length >= 6) {
+                const coreGrammar = parts[0].replace('⚪️⚪️⚪️', '').trim(); 
+                const catString = parts[1].trim(); 
+                const grammarTranslation = parts[2].trim();
+                const fullSentence = parts[3].trim();
+                const sentenceTranslation = parts[4].trim();
+                const hint = parts[5].trim();
+                const answer = parts[6] ? parts[6].trim() : hint; 
+
+                sentenceGrammarList.push({
+                    fullSentence: fullSentence,
+                    translation: sentenceTranslation,
+                    hint: hint,
+                    answer: answer
+                });
+
+                const catBlock = catString.split('_');
                 if (catBlock.length >= 2) {
-                    const catName = catBlock[0];
-                    const rawSubs = catBlock.slice(1);
-                    let cleanedSubs = [];
-                    for(let j=0; j<rawSubs.length; j++){
-                        if(rawSubs[j] === "+" && j+1 < rawSubs.length){
-                            cleanedSubs.push("+" + rawSubs[j+1]); j++;
-                        } else {
-                            if (rawSubs[j].startsWith('+') || rawSubs[j] === "") {
-                                cleanedSubs.push(rawSubs[j]);
-                            } else {
-                                if (cleanedSubs.length > 0 && cleanedSubs[cleanedSubs.length - 1] === "+") {
-                                    cleanedSubs[cleanedSubs.length - 1] = "+" + rawSubs[j];
-                                } else { cleanedSubs.push(rawSubs[j]); }
-                            }
-                        }
+                    const catName = catBlock[0].trim();
+                    const subName = catBlock[1].trim();
+
+                    if (globalCustomPool[catName]) {
+                        globalCustomPool[catName].add(subName);
                     }
-                    cleanedSubs = cleanedSubs.filter(s => s !== "").map(s => {
-                        if (s === "の") return "+の";
-                        if (s === "+(あ)+ない") return "+(あ)ない";
-                        return s;
-                    });
-                    if (cleanedSubs.length > 0) {
-                        categories.push({ name: catName, subs: cleanedSubs });
-                        if (globalCustomPool[catName]) {
-                            cleanedSubs.forEach(sub => globalCustomPool[catName].add(sub));
-                        }
+
+                    let existingBankItem = setsuzokuQuizBank.find(b => b.core === parts[0].trim());
+                    if (!existingBankItem) {
+                        existingBankItem = { core: parts[0].trim(), categories: [] };
+                        setsuzokuQuizBank.push(existingBankItem);
+                    }
+
+                    let existingCat = existingBankItem.categories.find(c => c.name === catName);
+                    if (!existingCat) {
+                        existingCat = { name: catName, subs: [] };
+                        existingBankItem.categories.push(existingCat);
+                    }
+                    if (!existingCat.subs.includes(subName)) {
+                        existingCat.subs.push(subName);
                     }
                 }
             }
-            if (categories.length > 0) {
-                setsuzokuQuizBank.push({ core: coreGrammar, categories: categories });
-            }
         });
-        if(sentenceGrammarList.length === 0 && setsuzokuQuizBank.length ===0){
-            alert("txt无有效文法数据，请检查分隔符与每行逗号格式！");
+
+        if(sentenceGrammarList.length === 0 && setsuzokuQuizBank.length === 0){
+            alert("txt无有效文法数据，请检查每行逗号格式！");
             return;
         }
         document.getElementById('sentence-count').innerText = sentenceGrammarList.length;
@@ -519,7 +502,7 @@
         
         if(mode === 'sentence-study' || mode === 'sentence-challenge'){
             const targetList = customBank || sentenceGrammarList;
-            if(targetList.length ===0){ alert("当前无填空文法数据！"); return; }
+            if(targetList.length === 0){ alert("当前无填空文法数据！"); return; }
             
             document.getElementById('sentence-mode-title').innerText = mode === 'sentence-study' ? "句子学习" : "句子测试";
             document.getElementById('sentence-hint-btn').classList.toggle('hidden', mode === 'sentence-study');
@@ -530,7 +513,7 @@
         }
         if(mode === 'setsuzoku-study' || mode === 'setsuzoku-challenge'){
             const baseBank = customBank || setsuzokuQuizBank;
-            if(baseBank.length ===0){ alert("当前无接续文法数据！"); return; }
+            if(baseBank.length === 0){ alert("当前无接续文法数据！"); return; }
             quizQueue = [];
             baseBank.forEach(item => {
                 item.categories.forEach(cat => {
@@ -617,7 +600,7 @@
         if (currentMode === 'sentence-study') {
             input.placeholder = g.answer;
         } else {
-            input.placeholder = (g.hint && g.hint.trim() !== "") ? `(${g.hint.trim()})` : "...";
+            input.placeholder = (g.hint && g.hint.trim() !== "") ? `${g.hint.trim()}` : "...";
         }
         
         let displaySentence = g.fullSentence.replace(g.answer, `⚪️⚪️⚪️`);
@@ -791,7 +774,7 @@
         if(helpedSet.size === 0) { alert("当前无错题难词，无法进行巩固复习！"); return; }
         if(currentMode.startsWith('sentence')){
             const filtered = sentenceGrammarList.filter(g => helpedSet.has(g.answer));
-            if(filtered.length ===0) return alert("无对应难点");
+            if(filtered.length === 0) return alert("无对应难点");
             startMode(currentMode, filtered);
         }else{
             const filtered = [];
@@ -799,7 +782,7 @@
                 let matchCats = item.categories.filter(cat => helpedSet.has(`${item.core}_${cat.name}`));
                 if(matchCats.length>0) filtered.push({core:item.core,categories:matchCats});
             });
-            if(filtered.length ===0) return alert("无对应难点");
+            if(filtered.length === 0) return alert("无对应难点");
             startMode(currentMode, filtered);
         }
     };
@@ -816,8 +799,6 @@
             document.getElementById('main-container').classList.remove('setup-scaled');
         }
 
-        // 仅在真正的答题阶段（句子输入、接续面板）使用灰色护眼背景
-        // 菜单页（mode-area）与结算页（result-area）都将展现漂亮的彩色炫彩渐变背景
         const isActualGameQuiz = ['sentence-area', 'setsuzoku-area'].includes(id);
         document.body.classList[isActualGameQuiz ? 'add' : 'remove']('in-game-mode');
         
