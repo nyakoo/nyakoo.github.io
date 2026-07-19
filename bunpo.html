@@ -23,6 +23,7 @@
             --inner-scrollbar-track: rgba(0,0,0,0.1);          
             --setup-box-bg: rgba(255,255,255,0.4);            
             --spelling-box-bg: rgba(255,255,255,0.6);         
+            --block-bg-purple: #f7f0ff;        /* 新增：接续模式方块背景色 */
             --text-glow-color: #fff;            
             --pure-white: #fff;                 
             --btn-gray: #e2e2e2;                
@@ -113,27 +114,35 @@
         
         .divider-box { margin-top: 15px; border-top: 2px dashed var(--border-purple); padding-top: 15px; width: 100%; }
         
+        /* 句子模式题目框 */
         .card { 
-            border: none; border-radius: 18px; padding: 15px; 
-            background: var(--pure-white); text-align: left; margin: 10px 0; 
-            height: 120px; overflow-y: auto; 
+            border: none; border-radius: 16px; padding: 15px; 
+            background: var(--spelling-box-bg); text-align: left; margin: 10px 0; 
+            height: 145px; overflow-y: auto; 
             display: flex; flex-direction: column; justify-content: center;
         }
         .card::-webkit-scrollbar { width: 4px; }
         .card::-webkit-scrollbar-thumb { background: var(--inner-scrollbar-track); border-radius: 10px; }
 
+        /* 接续模式题目框 */
         .card.study-mode-card {
             background: var(--pure-white) !important;
             border: 2px solid var(--border-purple);
             border-radius: 18px;
-            height: 120px !important;
+            height: 145px !important;
             margin: 10px 0;
         }
 
-        .sentence-display { font-size: 1.6em;  line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 2px; font-weight: 575; text-align: center; }
+        /* 题目日文大号文字类 */
+        .jp-title-text {
+            font-size: 1.5em;
+            line-height: 1.2;
+            color: var(--text-darkpurple);
+            font-weight: 575;
+            text-align: center;
+        }
+
         .translation-display, .purple-progress-hint { font-size: 0.85em; line-height: 1.2; color: var(--border-purple); font-style: normal; font-weight: bold; opacity: 1; display: block; text-align: center; margin-bottom: 8px; }
-        
-        #display-grammar { font-size: 1.6em; line-height: 1.2; color: var(--text-darkpurple); margin-bottom: 8px; font-weight: 575; text-align: center; }
         
         .spelling-box { 
             padding: 12px 15px; 
@@ -147,8 +156,10 @@
         }
         .spelling-box label { font-size: 0.85em; color: var(--border-purple); display: block; font-weight: bold; text-align: center; }
         
+        /* 输入框保留大号字体外观 */
         input[type="text"].readonly-clickable-input { 
-            width: 100%; padding: 12px; font-size: 1.2em; font-weight: 575; 
+            width: 100%; padding: 12px;
+            font-size: 1.2em; font-weight: 575; line-height: 1.2;
             border: 2px solid var(--border-purple); border-radius: 12px; 
             text-align: center; outline: none; background: var(--pure-white); 
             color: var(--border-purple); cursor: pointer; caret-color: transparent;
@@ -165,13 +176,24 @@
             justify-content: center; 
             margin: 6px 0 0 0; 
         }
+
+        /* 句子模式的待选方块 */
         .char-tile { 
-            background: var(--pure-white); border: 2px solid var(--border-purple); color: var(--border-purple); 
-            border-radius: 12px; width: 42px; height: 42px; line-height: 38px; 
-            font-size: 1.2em ; font-weight: 575; cursor: pointer; user-select: none; text-align: center; transition: all 0.15s; 
+            display: flex; align-items: center; justify-content: center;
+            width: 42px; height: 42px; padding: 12px 6px; margin: 0;
+            border: 2px solid var(--border-purple); border-radius: 12px;
+            background: var(--pure-white); 
+            color: var(--border-purple); 
+            font-size: 1.2em;              
+            font-weight: 575;            
+            line-height: 1.2;
+            cursor: pointer; transition: all 0.1s;
+            word-break: break-all; text-align: center;
+            user-select: none;
+            position: relative; top: 0;
         }
-        .char-tile:active { border-width: 1px; transform: scale(1.05); background: var(--main-purple); }
-        .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; }
+        .char-tile:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); transform: none; background: var(--pure-white); }
+        .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; top: 0; }
         .char-tile.correct-hidden { visibility: hidden; pointer-events: none; }
         
         #numFileInput { 
@@ -231,30 +253,34 @@
         .hard-points-title { font-weight: bold; color: var(--warn-color); margin-bottom: 5px; }
         .result-title-text { color: var(--text-darkpurple); }
         
+        /* 接续模式选项方块：默认背景色修改为新增的浅紫粉色变量 */
         .opt-btn {
             display: flex; align-items: center; justify-content: center;
-            width: 100%; min-height: 42px; padding: 4px 6px; margin: 0;
+            width: 100%; min-height: 42px; padding: 12px 6px; margin: 0;
             border: 2px solid var(--border-purple); border-radius: 12px;
-            background: var(--pure-white); 
+            background: var(--block-bg-purple); 
             color: var(--border-purple);
-            font-size: 1.2em; 
-            font-weight: 575; 
+            font-size: 16px;           
+            font-weight: bold;         
             cursor: pointer; transition: all 0.1s;
             word-break: break-all; text-align: center; line-height: 1.2;
+            position: relative; top: 0;
         }
-        .opt-btn.study-hint { background: var(--main-yellow); }
+        .opt-btn:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); }
+        
+        .opt-btn.study-hint { background: var(--main-purple);  color: var(--text-darkpurple); }
         .opt-btn.correct { background: var(--main-purple); color: var(--text-darkpurple); }
-        .opt-btn.wrong { background: var(--main-pink); }
+        .opt-btn.wrong { background: var(--main-pink); color: var(--text-darkpurple); }
         
         @media (max-width: 480px) {
             #main-container { padding: 10px; }
             #main-container.setup-scaled { transform: none !important; margin-bottom: 0 !important; zoom: 0.8; }
             .inner-wrap { padding: 15px 10px; }
-            .char-tile { width: 36px; height: 36px; line-height: 32px; font-size: 1.2em; border-radius: 9px; }
+            .char-tile { width: 36px; height: 36px; padding: 10px 4px; }
             .num-key { width: 50px; height: 50px; font-size: 18px; }
-            .card.study-mode-card, .card { height: 120px !important; margin: 10px 0; }
+            .card.study-mode-card, .card { height: 145px !important; margin: 10px 0; }
             .options-grid { height: 252px; min-height: 252px; max-height: 252px; gap: 5px; margin-top: 10px; }
-            .opt-btn { min-height: 40px; }
+            .opt-btn { min-height: 40px; padding: 10px 4px; font-size: 15px; } 
         }
     </style>
 </head>
@@ -322,7 +348,6 @@
             <div class="card" id="sentence-card-content"></div>
             
             <div class="spelling-box">
-                <label>语法填空 (输入答案或点击字块)</label>
                 <input type="text" id="sentenceAnswerInput" class="readonly-clickable-input" placeholder="" readonly autocomplete="off" onclick="resetSentenceInput()">
                 <div id="sentence-scramble-zone" class="scramble-container"></div>
             </div>
@@ -339,7 +364,7 @@
             <div class="setsuzoku-content-wrap">
                 <div class="purple-progress-hint"><span id="setsuzoku-mode-title">接续测试</span>: <span id="setsuzoku-progress">0</span> / <span id="setsuzoku-total">0</span></div>
                 <div class="card study-mode-card flex-col-center" id="grammar-card">
-                    <div id="display-grammar">---</div>
+                    <div id="display-grammar" class="jp-title-text">---</div>
                     <div id="display-cat-hint" class="translation-display" style="margin-bottom:0;">正在考察词性：-</div>
                 </div>
                 <div class="options-grid" id="optionsPanel"></div>
@@ -604,7 +629,7 @@
         }
         
         let displaySentence = g.fullSentence.replace(g.answer, `⚪️⚪️⚪️`);
-        let cardHtml = `<div class="sentence-display">${displaySentence}</div>`;
+        let cardHtml = `<div class="jp-title-text">${displaySentence}</div>`;
         cardHtml += `<div class="translation-display" style="margin-top: 8px; margin-bottom: 0;">${g.translation}</div>`;
         
         document.getElementById('sentence-card-content').innerHTML = cardHtml;
@@ -735,7 +760,7 @@
         if (currentQueueIdx < quizQueue.length - 1) {
             currentQueueIdx++;
             renderSetsuzokuStep();
-        } else { finishSession(); }
+        } else { finishSession(); return; }
     };
 
     window.prevSetsuzokuCard = function() {
@@ -808,7 +833,7 @@
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+            [array[j], array[i]] = [array[i], array[j]];
         }
     }
 })();
