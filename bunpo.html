@@ -454,6 +454,10 @@
         "動詞": new Set(), "形容詞": new Set(), "形容動詞": new Set(), "名詞": new Set(), "句": new Set()
     };
     let rawText = "";
+    let globalSentenceMaster = []; 
+    let globalSetsuzokuMaster = []; 
+    let globalShiyiMaster = [];     
+    
     let sentenceGrammarList = []; 
     let setsuzokuQuizBank = [];   
     let shiyiQuizBank = [];       
@@ -503,9 +507,9 @@
     });
 
     function parseAllGrammarData(text) {
-        sentenceGrammarList = [];
-        setsuzokuQuizBank = [];
-        shiyiQuizBank = [];
+        globalSentenceMaster = [];
+        globalSetsuzokuMaster = [];
+        globalShiyiMaster = [];
         Object.keys(globalCustomPool).forEach(k => globalCustomPool[k].clear());
         
         const lines = text.split(/\r?\n/).filter(l => l.trim() !== "" && l.includes(','));
@@ -521,7 +525,8 @@
                 const hint = parts[4].trim();
                 const answer = parts[5].trim();
 
-                sentenceGrammarList.push({
+                globalSentenceMaster.push({
+                    grammar: rawGrammar,
                     fullSentence: fullSentence,
                     translation: sentenceTranslation,
                     hint: hint,
@@ -529,7 +534,7 @@
                 });
 
                 if (grammarTranslation) {
-                    shiyiQuizBank.push({
+                    globalShiyiMaster.push({
                         grammar: rawGrammar,
                         translation: grammarTranslation
                     });
@@ -547,10 +552,10 @@
                             globalCustomPool[catName].add(subName);
                         }
 
-                        let existingBankItem = setsuzokuQuizBank.find(b => b.core === rawGrammar);
+                        let existingBankItem = globalSetsuzokuMaster.find(b => b.core === rawGrammar);
                         if (!existingBankItem) {
                             existingBankItem = { core: rawGrammar, categories: [] };
-                            setsuzokuQuizBank.push(existingBankItem);
+                            globalSetsuzokuMaster.push(existingBankItem);
                         }
 
                         let existingCat = existingBankItem.categories.find(c => c.name === catName);
@@ -565,6 +570,10 @@
                 });
             }
         });
+
+        sentenceGrammarList = [...globalSentenceMaster];
+        setsuzokuQuizBank = JSON.parse(JSON.stringify(globalSetsuzokuMaster));
+        shiyiQuizBank = [...globalShiyiMaster];
 
         if(sentenceGrammarList.length === 0 && setsuzokuQuizBank.length === 0 && shiyiQuizBank.length === 0){
             alert("txt无有效文法数据，请检查每行逗号格式！");
@@ -583,10 +592,9 @@
         if (!customBank) helpedSet.clear();
         
         if(mode === 'sentence-study' || mode === 'sentence-challenge'){
-            let targetList = customBank ? [...customBank] : [...sentenceGrammarList];
+            let targetList = customBank ? [...customBank] : [...globalSentenceMaster];
             if(targetList.length === 0){ alert("当前无填空文法数据！"); return; }
             
-            // 句子测试/学习进行随机打乱
             shuffleArray(targetList);
             sentenceGrammarList = targetList;
 
@@ -598,7 +606,7 @@
             renderSentenceCard();
         }
         if(mode === 'setsuzoku-study' || mode === 'setsuzoku-challenge'){
-            const baseBank = customBank || setsuzokuQuizBank;
+            const baseBank = customBank || globalSetsuzokuMaster;
             if(baseBank.length === 0){ alert("当前无接续文法数据！"); return; }
             quizQueue = [];
             baseBank.forEach(item => {
@@ -611,7 +619,6 @@
                 });
             });
 
-            // 接续测试/学习进行随机打乱
             shuffleArray(quizQueue);
 
             document.getElementById('setsuzoku-mode-title').innerText = mode === 'setsuzoku-study' ? "接续学习" : "接续测试";
@@ -631,10 +638,9 @@
             renderSetsuzokuStep();
         }
         if(mode === 'shiyi-quiz'){
-            let targetList = customBank ? [...customBank] : [...shiyiQuizBank];
+            let targetList = customBank ? [...customBank] : [...globalShiyiMaster];
             if(targetList.length === 0){ alert("当前无释义文法数据！"); return; }
 
-            // 释义选择进行随机打乱
             shuffleArray(targetList);
             shiyiQuizBank = targetList;
 
@@ -647,8 +653,9 @@
     function generateScrambledTiles(correctAnswer) {
         let chars = correctAnswer.split('');
         const targetTileCount = (window.innerWidth > 480) ? 24 : 18;
-        if (chars.length < targetTileCount && sentenceGrammarList.length > 0) {
-            let pool = sentenceGrammarList.map(g => g.answer).join('').split('');
+        if (chars.length < targetTileCount) {
+            let poolSource = (globalSentenceMaster.length > 0 ? globalSentenceMaster : sentenceGrammarList);
+            let pool = poolSource.map(g => g.answer).join('').split('');
             if (pool.length === 0) pool = "するないたてますればから。".split('');
             while (chars.length < targetTileCount && pool.length > 0) {
                 const randIndex = Math.floor(Math.random() * pool.length);
@@ -779,7 +786,6 @@
         const customList = Array.from(globalCustomPool[catName] || []);
         let mixedPool = Array.from(new Set([...baseList, ...customList, ...activeAnswers]));
         
-        // 选项打乱随机排列
         shuffleArray(mixedPool);
 
         mixedPool.forEach(optName => {
@@ -858,14 +864,16 @@
         document.getElementById('shiyi-progress').innerText = currentIndex + 1;
         document.getElementById('shiyi-display-grammar').innerText = currentItem.grammar;
 
-        let allTransPool = shiyiQuizBank.map(item => item.translation).filter(t => t !== currentItem.translation);
+        // 从全局释义库抽取干扰项填满
+        let sourcePool = (globalShiyiMaster.length > 0 ? globalShiyiMaster : shiyiQuizBank);
+        let allTransPool = sourcePool.map(item => item.translation).filter(t => t !== currentItem.translation);
         allTransPool = Array.from(new Set(allTransPool));
         
         shuffleArray(allTransPool);
         let selectedWrongOptions = allTransPool.slice(0, 3);
         
         while(selectedWrongOptions.length < 3) {
-            selectedWrongOptions.push("（暂无其它释义干扰）");
+            selectedWrongOptions.push(`（干扰选项 ${selectedWrongOptions.length + 1}）`);
         }
 
         let finalFourOptions = [currentItem.translation, ...selectedWrongOptions];
@@ -943,22 +951,46 @@
         startMode(currentMode);
     };
     
+    // 巩固难词优化：不足时随机抽满
     window.focusOnHelped = function() {
         if(helpedSet.size === 0) { alert("当前无错题难词，无法进行巩固复习！"); return; }
+        const MIN_REQUIRED = 5; // 期望巩固模式下的最小题目容量
+
         if(currentMode.startsWith('sentence')){
-            const filtered = sentenceGrammarList.filter(g => helpedSet.has(g.answer));
+            let filtered = globalSentenceMaster.filter(g => helpedSet.has(g.answer) || helpedSet.has(g.grammar));
+            if(filtered.length === 0) filtered = sentenceGrammarList.filter(g => helpedSet.has(g.answer));
+            
+            if(filtered.length < MIN_REQUIRED && globalSentenceMaster.length > filtered.length) {
+                let rest = globalSentenceMaster.filter(g => !filtered.some(f => f.answer === g.answer));
+                shuffleArray(rest);
+                filtered = filtered.concat(rest.slice(0, MIN_REQUIRED - filtered.length));
+            }
             if(filtered.length === 0) return alert("无对应难点");
             startMode(currentMode, filtered);
+
         } else if (currentMode === 'shiyi-quiz') {
-            const filtered = shiyiQuizBank.filter(g => helpedSet.has(g.grammar));
+            let filtered = globalShiyiMaster.filter(g => helpedSet.has(g.grammar));
+            
+            if(filtered.length < MIN_REQUIRED && globalShiyiMaster.length > filtered.length) {
+                let rest = globalShiyiMaster.filter(g => !filtered.some(f => f.grammar === g.grammar));
+                shuffleArray(rest);
+                filtered = filtered.concat(rest.slice(0, MIN_REQUIRED - filtered.length));
+            }
             if(filtered.length === 0) return alert("无对应难点");
             startMode(currentMode, filtered);
+
         } else {
-            const filtered = [];
-            setsuzokuQuizBank.forEach(item => {
+            let filtered = [];
+            globalSetsuzokuMaster.forEach(item => {
                 let matchCats = item.categories.filter(cat => helpedSet.has(`${item.core}_${cat.name}`));
-                if(matchCats.length>0) filtered.push({core:item.core,categories:matchCats});
+                if(matchCats.length > 0) filtered.push({core: item.core, categories: matchCats});
             });
+
+            if(filtered.length < MIN_REQUIRED && globalSetsuzokuMaster.length > filtered.length) {
+                let rest = globalSetsuzokuMaster.filter(g => !filtered.some(f => f.core === g.core));
+                shuffleArray(rest);
+                filtered = filtered.concat(rest.slice(0, MIN_REQUIRED - filtered.length));
+            }
             if(filtered.length === 0) return alert("无对应难点");
             startMode(currentMode, filtered);
         }
