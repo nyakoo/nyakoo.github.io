@@ -133,7 +133,6 @@
             width: 100%;
         }
 
-        /* 释义模式专属题目卡片：高度设为两个藕荷色按钮的总高度加间距 (56*2 + 8 = 120px) */
         .shiyi-content-wrap .card.study-mode-card {
             height: 120px !important;
         }
@@ -172,8 +171,7 @@
         
         .scramble-container { 
             display: grid; 
-            grid-template-rows: repeat(3, auto); 
-            grid-auto-flow: column; 
+            grid-template-columns: repeat(8, auto); 
             gap: 6px; 
             min-height: 130px; 
             width: 100%; 
@@ -242,7 +240,6 @@
         .options-grid::-webkit-scrollbar { width: 4px; }
         .options-grid::-webkit-scrollbar-thumb { background: var(--inner-scrollbar-track); border-radius: 10px; }
         
-        /* 释义选择专属选项纵向列表（拉伸填满宽度） */
         .shiyi-options-vertical {
             width: 100%;
             height: 260px;
@@ -254,7 +251,6 @@
             flex-direction: column;
             gap: 8px;
             align-items: center;
-            /* 最后一个藕荷色按钮到返回菜单按钮之间，留出一个藕荷色按钮的高度（56px） */
             margin-bottom: 56px; 
         }
         .shiyi-options-vertical::-webkit-scrollbar { width: 4px; }
@@ -263,11 +259,9 @@
         .setsuzoku-bottom-btns, .shiyi-bottom-btns { display: flex; flex-direction: column; flex-shrink: 0; margin-top: auto; }
         .num-input-box { width: 100%; }
         
-        /* 统一控制：上一条/下一条包裹行的间距以句子测试为基准统一为 10px */
         .action-row-btns { display: flex; gap: 10px; width: 100%; margin-top: 10px; }
         .btn-prev, .btn-next { flex: 1; background: var(--btn-gray); justify-content: center; border-radius: 18px; margin: 0; }
         
-        /* 统一控制：主灰色按钮的外边距与各种控制逻辑，直接继承 .btn-hint 与 .btn-back-menu */
         .btn-back-menu, .btn-hint, .btn-peek-ans, .btn-back-menu-small { 
             background: var(--btn-gray); 
             width: 100%; 
@@ -291,11 +285,9 @@
             cursor: pointer; transition: all 0.1s;
             word-break: break-all; text-align: center; line-height: 1.2;
             position: relative; top: 0;
-            
         }
         .opt-btn:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); }
         
-        /* 释义模式下的方块：与上方卡片等宽，固定高度，保留边框和点击动态效果 */
         .shiyi-options-vertical .opt-btn {
             width: 100%;
             height: 56px; 
@@ -313,6 +305,7 @@
             #main-container.setup-scaled { transform: none !important; margin-bottom: 0 !important; zoom: 0.8; }
             .inner-wrap { padding: 15px 10px; }
             .char-tile { width: 36px; height: 36px; padding: 10px 4px; }
+            .scramble-container { grid-template-columns: repeat(6, auto) !important; }
             .num-key { width: 50px; height: 50px; font-size: 18px; }
             .card.study-mode-card, .card { height: 145px !important; margin: 10px 0; }
             .shiyi-content-wrap .card.study-mode-card { height: 120px !important; border: none}
@@ -458,7 +451,6 @@
         "句": ["普通"]
     };
     const INTERVALS = [3, 8, 11];
-    const TARGET_TILE_COUNT = 18;
     let globalCustomPool = {
         "動詞": new Set(), "形容詞": new Set(), "形容動詞": new Set(), "名詞": new Set(), "句": new Set()
     };
@@ -639,10 +631,11 @@
 
     function generateScrambledTiles(correctAnswer) {
         let chars = correctAnswer.split('');
-        if (chars.length < TARGET_TILE_COUNT && sentenceGrammarList.length > 0) {
+        const targetTileCount = (window.innerWidth > 480) ? 24 : 18;
+        if (chars.length < targetTileCount && sentenceGrammarList.length > 0) {
             let pool = sentenceGrammarList.map(g => g.answer).join('').split('');
             if (pool.length === 0) pool = "するないたてますればから。".split('');
-            while (chars.length < TARGET_TILE_COUNT && pool.length > 0) {
+            while (chars.length < targetTileCount && pool.length > 0) {
                 const randIndex = Math.floor(Math.random() * pool.length);
                 chars.push(pool.splice(randIndex, 1)[0]);
             }
