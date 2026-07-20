@@ -535,7 +535,6 @@
                     });
                 }
 
-                // 读取第 6 个逗号之后（索引 index >= 6）的所有接续块
                 const setsuzokuParts = parts.slice(6).map(p => p.trim()).filter(p => p !== "");
 
                 setsuzokuParts.forEach(catString => {
@@ -584,13 +583,17 @@
         if (!customBank) helpedSet.clear();
         
         if(mode === 'sentence-study' || mode === 'sentence-challenge'){
-            const targetList = customBank || sentenceGrammarList;
+            let targetList = customBank ? [...customBank] : [...sentenceGrammarList];
             if(targetList.length === 0){ alert("当前无填空文法数据！"); return; }
             
+            // 句子测试/学习进行随机打乱
+            shuffleArray(targetList);
+            sentenceGrammarList = targetList;
+
             document.getElementById('sentence-mode-title').innerText = mode === 'sentence-study' ? "句子学习" : "句子测试";
             document.getElementById('sentence-hint-btn').classList.toggle('hidden', mode === 'sentence-study');
             document.getElementById('sentence-nav-row').classList.toggle('hidden', mode === 'sentence-challenge');
-            document.getElementById('sentence-total').innerText = targetList.length;
+            document.getElementById('sentence-total').innerText = sentenceGrammarList.length;
             switchView('sentence-area');
             renderSentenceCard();
         }
@@ -607,6 +610,10 @@
                     });
                 });
             });
+
+            // 接续测试/学习进行随机打乱
+            shuffleArray(quizQueue);
+
             document.getElementById('setsuzoku-mode-title').innerText = mode === 'setsuzoku-study' ? "接续学习" : "接续测试";
             document.getElementById('setsuzoku-total').innerText = quizQueue.length;
             
@@ -624,9 +631,14 @@
             renderSetsuzokuStep();
         }
         if(mode === 'shiyi-quiz'){
-            const targetList = customBank || shiyiQuizBank;
+            let targetList = customBank ? [...customBank] : [...shiyiQuizBank];
             if(targetList.length === 0){ alert("当前无释义文法数据！"); return; }
-            document.getElementById('shiyi-total').innerText = targetList.length;
+
+            // 释义选择进行随机打乱
+            shuffleArray(targetList);
+            shiyiQuizBank = targetList;
+
+            document.getElementById('shiyi-total').innerText = shiyiQuizBank.length;
             switchView('shiyi-area');
             renderShiyiStep();
         }
@@ -766,6 +778,10 @@
         const baseList = BASE_STRUCTURE[catName] || ["普通"];
         const customList = Array.from(globalCustomPool[catName] || []);
         let mixedPool = Array.from(new Set([...baseList, ...customList, ...activeAnswers]));
+        
+        // 选项打乱随机排列
+        shuffleArray(mixedPool);
+
         mixedPool.forEach(optName => {
             const btn = document.createElement('button');
             btn.className = "opt-btn";
