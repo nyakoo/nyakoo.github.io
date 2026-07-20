@@ -133,6 +133,7 @@
             width: 100%;
         }
 
+        /* 释义模式专属题目卡片：高度设为两个藕荷色按钮的总高度加间距 (56*2 + 8 = 120px) */
         .shiyi-content-wrap .card.study-mode-card {
             height: 120px !important;
         }
@@ -169,25 +170,24 @@
         }
         input[type="text"].readonly-clickable-input::placeholder { color: #b5afbe; opacity: 0.8; font-weight: 575; }
         
-        /* 拼字方块网格区域：默认8列显示 */
         .scramble-container { 
             display: grid; 
-            grid-template-columns: repeat(8, 1fr); 
-            gap: 5px; 
+            grid-template-rows: repeat(3, auto); 
+            grid-auto-flow: column; 
+            gap: 6px; 
             min-height: 130px; 
             width: 100%; 
             justify-content: center; 
-            align-content: center;
             margin: 6px 0 0 0; 
         }
 
         .char-tile { 
             display: flex; align-items: center; justify-content: center;
-            width: 100%; aspect-ratio: 1 / 1; padding: 2px; margin: 0;
-            border: 2px solid var(--border-purple); border-radius: 10px;
+            width: 42px; height: 42px; padding: 12px 6px; margin: 0;
+            border: 2px solid var(--border-purple); border-radius: 12px;
             background: var(--pure-white); 
             color: var(--border-purple); 
-            font-size: 1.1em;              
+            font-size: 1.2em;              
             font-weight: 575;            
             line-height: 1.2;
             cursor: pointer; transition: all 0.1s;
@@ -195,7 +195,7 @@
             user-select: none;
             position: relative; top: 0;
         }
-        .char-tile:active { top: 3px; box-shadow: 0 0px 0px var(--border-purple); transform: none; background: var(--pure-white); }
+        .char-tile:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); transform: none; background: var(--pure-white); }
         .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; top: 0; }
         .char-tile.correct-hidden { visibility: hidden; pointer-events: none; }
         
@@ -242,6 +242,7 @@
         .options-grid::-webkit-scrollbar { width: 4px; }
         .options-grid::-webkit-scrollbar-thumb { background: var(--inner-scrollbar-track); border-radius: 10px; }
         
+        /* 释义选择专属选项纵向列表（拉伸填满宽度） */
         .shiyi-options-vertical {
             width: 100%;
             height: 260px;
@@ -253,6 +254,7 @@
             flex-direction: column;
             gap: 8px;
             align-items: center;
+            /* 最后一个藕荷色按钮到返回菜单按钮之间，留出一个藕荷色按钮的高度（56px） */
             margin-bottom: 56px; 
         }
         .shiyi-options-vertical::-webkit-scrollbar { width: 4px; }
@@ -261,14 +263,18 @@
         .setsuzoku-bottom-btns, .shiyi-bottom-btns { display: flex; flex-direction: column; flex-shrink: 0; margin-top: auto; }
         .num-input-box { width: 100%; }
         
+        /* 统一控制：上一条/下一条包裹行的间距以句子测试为基准统一为 10px */
         .action-row-btns { display: flex; gap: 10px; width: 100%; margin-top: 10px; }
         .btn-prev, .btn-next { flex: 1; background: var(--btn-gray); justify-content: center; border-radius: 18px; margin: 0; }
         
-        .btn-back-menu, .btn-hint { background: var(--btn-gray); width: 100%; margin-top: 10px; justify-content: center; }
-        .btn-back-menu { padding: 12px 16px; border-radius: 18px; margin: 10px 0 0 0; }
-        .btn-hint { padding: 12px 16px; border-radius: 18px; }
-        
-        .btn-back-menu-small { background: var(--btn-gray); width: 100%; font-size: 16px; padding: 12px 16px; border-radius: 18px; justify-content: center; margin-top: 10px; }
+        /* 统一控制：主灰色按钮的外边距与各种控制逻辑，直接继承 .btn-hint 与 .btn-back-menu */
+        .btn-back-menu, .btn-hint, .btn-peek-ans, .btn-back-menu-small { 
+            background: var(--btn-gray); 
+            width: 100%; 
+            margin-top: 10px; 
+            justify-content: center; 
+            border-radius: 18px;
+        }
         
         .hard-points-wrapper { width: 100%; margin-bottom: 10px; }
         .hard-points-title { font-weight: bold; color: var(--warn-color); margin-bottom: 5px; }
@@ -285,9 +291,11 @@
             cursor: pointer; transition: all 0.1s;
             word-break: break-all; text-align: center; line-height: 1.2;
             position: relative; top: 0;
+            
         }
         .opt-btn:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); }
         
+        /* 释义模式下的方块：与上方卡片等宽，固定高度，保留边框和点击动态效果 */
         .shiyi-options-vertical .opt-btn {
             width: 100%;
             height: 56px; 
@@ -300,13 +308,11 @@
         .opt-btn.correct { background: var(--main-purple); color: var(--text-darkpurple); }
         .opt-btn.wrong { background: var(--main-pink); color: var(--text-darkpurple); }
         
-        /* 移动端/窄屏响应式控制：切换为6列布局 */
         @media (max-width: 480px) {
             #main-container { padding: 10px; }
             #main-container.setup-scaled { transform: none !important; margin-bottom: 0 !important; zoom: 0.8; }
             .inner-wrap { padding: 15px 10px; }
-            .scramble-container { grid-template-columns: repeat(6, 1fr); gap: 4px; }
-            .char-tile { font-size: 1.0em; border-radius: 8px; }
+            .char-tile { width: 36px; height: 36px; padding: 10px 4px; }
             .num-key { width: 50px; height: 50px; font-size: 18px; }
             .card.study-mode-card, .card { height: 145px !important; margin: 10px 0; }
             .shiyi-content-wrap .card.study-mode-card { height: 120px !important; border: none}
@@ -402,9 +408,9 @@
                     <div id="display-cat-hint" class="translation-display" style="margin-bottom:0;">正在考察词性：-</div>
                 </div>
                 <div class="options-grid" id="optionsPanel"></div>
+                <button id="peek-answer-btn" class="btn-base btn-peek-ans flex-row-center hidden" onclick="peekStudyAnswer()">查看答案</button>
             </div>
             <div class="setsuzoku-bottom-btns">
-                <button id="peek-answer-btn" class="btn-base btn-hint flex-row-center hidden" onclick="peekStudyAnswer()">查看答案</button>
                 <div id="setsuzoku-nav-row" class="action-row-btns">
                     <button class="btn-base btn-prev flex-row-center" onclick="prevSetsuzokuCard()">上一条</button>
                     <button class="btn-base btn-next flex-row-center" onclick="nextSetsuzokuCard()">下一条</button>
@@ -967,7 +973,7 @@
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[i], array[j]];
+            [array[j], array[i]] = [array[i], array[j]];
         }
     }
 })();
