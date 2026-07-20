@@ -356,8 +356,8 @@
                 <div class="divider-box flex-col-center" style="width:100%">
                     <p class="theme-hint-text flex-row-center txt-spec-hint">
                         <span>全格式单行规范：<br>
-                        文法, 词性_接续, 中文翻译, 日文整句, 句子翻译, 提示原形, 填空答案<br>
-                        示例：⚪️⚪️⚪️に沿って,名詞_原形,沿著...</span>
+                        文法, 中文翻译, 日文整句, 句子翻译, 提示原形, 填空答案, 接续1, 接续2...<br>
+                        示例：⚪️⚪️⚪️に基づいて,基於...,句子...,句子翻译,提示,答案,名詞_原形,形容動詞_+な...</span>
                     </p>
                     <label for="fileInput" class="btn-base flex-row-center local-import-btn" style="justify-content: center;">汇入本地文件</label>
                     <input type="file" id="fileInput" accept=".txt" class="hidden">
@@ -516,12 +516,11 @@
             const parts = line.split(',');
             if (parts.length >= 6) {
                 const rawGrammar = parts[0].trim();
-                const catString = parts[1].trim(); 
-                const grammarTranslation = parts[2].trim();
-                const fullSentence = parts[3].trim();
-                const sentenceTranslation = parts[4].trim();
-                const hint = parts[5].trim();
-                const answer = parts[6] ? parts[6].trim() : hint; 
+                const grammarTranslation = parts[1].trim();
+                const fullSentence = parts[2].trim();
+                const sentenceTranslation = parts[3].trim();
+                const hint = parts[4].trim();
+                const answer = parts[5].trim();
 
                 sentenceGrammarList.push({
                     fullSentence: fullSentence,
@@ -537,30 +536,35 @@
                     });
                 }
 
-                const catBlock = catString.split('_');
-                if (catBlock.length >= 2) {
-                    const catName = catBlock[0].trim();
-                    const subName = catBlock[1].trim();
+                // 读取第 6 个逗号之后（索引 index >= 6）的所有接续块
+                const setsuzokuParts = parts.slice(6).map(p => p.trim()).filter(p => p !== "");
 
-                    if (globalCustomPool[catName]) {
-                        globalCustomPool[catName].add(subName);
-                    }
+                setsuzokuParts.forEach(catString => {
+                    const catBlock = catString.split('_');
+                    if (catBlock.length >= 2) {
+                        const catName = catBlock[0].trim();
+                        const subName = catBlock[1].trim();
 
-                    let existingBankItem = setsuzokuQuizBank.find(b => b.core === parts[0].trim());
-                    if (!existingBankItem) {
-                        existingBankItem = { core: parts[0].trim(), categories: [] };
-                        setsuzokuQuizBank.push(existingBankItem);
-                    }
+                        if (globalCustomPool[catName]) {
+                            globalCustomPool[catName].add(subName);
+                        }
 
-                    let existingCat = existingBankItem.categories.find(c => c.name === catName);
-                    if (!existingCat) {
-                        existingCat = { name: catName, subs: [] };
-                        existingBankItem.categories.push(existingCat);
+                        let existingBankItem = setsuzokuQuizBank.find(b => b.core === rawGrammar);
+                        if (!existingBankItem) {
+                            existingBankItem = { core: rawGrammar, categories: [] };
+                            setsuzokuQuizBank.push(existingBankItem);
+                        }
+
+                        let existingCat = existingBankItem.categories.find(c => c.name === catName);
+                        if (!existingCat) {
+                            existingCat = { name: catName, subs: [] };
+                            existingBankItem.categories.push(existingCat);
+                        }
+                        if (!existingCat.subs.includes(subName)) {
+                            existingCat.subs.push(subName);
+                        }
                     }
-                    if (!existingCat.subs.includes(subName)) {
-                        existingCat.subs.push(subName);
-                    }
-                }
+                });
             }
         });
 
