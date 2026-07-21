@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>EbiFlow2</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #f4f7f9; padding: 20px; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h2 { color: #1a73e8; border-bottom: 2px solid #e8f0fe; padding-bottom: 10px; }
+        textarea { width: 100%; height: 150px; border: 1px solid #ddd; border-radius: 8px; padding: 12px; font-family: monospace; margin-bottom: 10px; box-sizing: border-box; }
+        
+        .control-group { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #eee; 
+        }
+        
+        /* 修改布局：输入框独占一行 */
+        .flex-row-inputs { 
+            display: flex; 
+            justify-content: center;
+            gap: 20px; 
+            margin-bottom: 20px;
+        }
+        
+        .input-item { display: flex; flex-direction: column; gap: 5px; }
+        input { width: 85px; padding: 8px; border: 1px solid #ccc; border-radius: 5px; text-align: center; font-size: 13px; }
+        
+        button { border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.2s; box-sizing: border-box; }
+        
+        /* 居中按钮样式 */
+        .action-center {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .action-group { display: flex; gap: 10px; margin-bottom: 25px; }
+        .action-group-bottom { margin-top: 10px; margin-bottom: 0; }
+
+        .btn-gray, .btn-copy, .btn-generate { 
+            font-size: 14px;
+            color: white;
+        }
+
+        /* 顶部和底部按钮保持 50% */
+        .btn-gray, .btn-copy { width: calc(50% - 5px); }
+
+        /* 生成按钮单独设置宽度并居中 */
+        .btn-generate { 
+            background: #1a73e8; 
+            min-width: 300px; /* 设置一个合适的宽度 */
+        }
+        .btn-generate:hover { background: #1557b0; }
+
+        .btn-gray { background: #5f6368; }
+        .btn-gray:hover { background: #4a4e52; }
+
+        .btn-copy { background: #34a853; }
+        .btn-copy:hover { background: #2d8e47; }
+
+        pre { background: #282c34; color: #abb2bf; padding: 20px; border-radius: 10px; font-size: 14px; overflow-x: auto; white-space: pre-wrap; }
+        .highlight { color: #f8f9fa; background: rgba(255, 255, 255, 0.1); display: block; border-left: 4px solid #4285f4; padding-left: 10px; margin: 2px 0; font-weight: bold; }
+        
+        .label-tag { font-size: 13px; font-weight: bold; color: #555; display: block; margin-bottom: 5px; margin-top: 0; }
+        .label-center { text-align: center; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🧠 记忆计划动态生成器</h2>
+    
+    <p class="label-tag">1. 粘贴当前已完成的列表内容：</p>
+    <textarea id="sourceText" placeholder="Day 01 | List 01 | - ..."></textarea>
+    
+    <div class="action-group">
+        <button class="btn-gray" onclick="pasteFromClipboard()">一键粘贴内容</button>
+        <button class="btn-gray" onclick="clearInput()">一键清空内容</button>
+    </div>
+    
+    <div class="control-group">
+        <p class="label-tag label-center">2. 规划未来三天（若暂停填 0，照常请留空）：</p>
+        <div class="flex-row-inputs" id="inputContainer"></div>
+        <div class="action-center">
+            <button class="btn-generate" onclick="generatePlan()">校正并生成完整列表</button>
+        </div>
+    </div>
+
+    <p class="label-tag">3. 修正后的记忆计划（蓝色侧边线为新增）：</p>
+    <pre id="output">等待操作...</pre>
+    
+    <div class="action-group action-group-bottom">
+        <button class="btn-copy" onclick="copyText('new')">复制新增部分</button>
+        <button class="btn-copy" onclick="copyText('all')">复制整个列表</button>
+    </div>
+</div>
+
+<script>
+let lastFullResult = "";
+let lastNewPart = "";
+
+function initInputs() {
+    const container = document.getElementById('inputContainer');
+    const text = document.getElementById('sourceText').value;
+    const lines = text.trim().split('\n');
+    let startDay = 1;
+
+    for (let i = lines.length - 1; i >= 0; i--) {
+        const dMatch = lines[i].match(/Day\s*(\d+)/i);
+        if (dMatch) {
+            startDay = parseInt(dMatch[1]) + 1;
+            break;
+        }
+    }
+
+    container.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+        let currentDay = startDay + i;
+        const dayLabel = `Day ${currentDay.toString().padStart(2, '0')}`;
+        container.innerHTML += `
+            <div class="input-item">
+                <input type="text" class="day-status" data-day="${currentDay}" placeholder="${dayLabel}">
+            </div>
+        `;
+    }
+}
+
+async function pasteFromClipboard() {
+    try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('sourceText').value = text;
+        initInputs();
+    } catch (err) {
+        alert("无法访问剪贴板，请手动粘贴。");
+    }
+}
+
+function clearInput() {
+    document.getElementById('sourceText').value = '';
+    initInputs();
+    document.getElementById('output').innerHTML = '已清空';
+    lastFullResult = "";
+    lastNewPart = "";
+}
+
+document.getElementById('sourceText').addEventListener('input', initInputs);
+
+function generatePlan() {
+    const raw = document.getElementById('sourceText').value;
+    const inputs = document.querySelectorAll('.day-status');
+    const intervals = [1, 2, 4, 7, 15, 30];
+    
+    let listOrigins = {}; 
+    let maxListNum = 0;
+    let originalMaxDay = 0;
+
+    const lines = raw.split('\n');
+    lines.forEach(line => {
+        const dMatch = line.match(/Day\s*(\d+)/i);
+        const lMatch = line.match(/List\s*(\d+)/i);
+        if (dMatch) {
+            let d = parseInt(dMatch[1]);
+            originalMaxDay = Math.max(originalMaxDay, d);
+            if (lMatch) {
+                let l = parseInt(lMatch[1]);
+                listOrigins[l] = d;
+                maxListNum = Math.max(maxListNum, l);
+            }
+        }
+    });
+
+    const futureDays = Array.from(inputs).map(input => parseInt(input.getAttribute('data-day')));
+    const startOfFuture = futureDays[0];
+    const endOfFuture = futureDays[futureDays.length - 1];
+
+    let nextListToLearn = maxListNum + 1;
+    inputs.forEach(input => {
+        const status = input.value.trim();
+        const dayNum = parseInt(input.getAttribute('data-day'));
+        if (status !== "0") {
+            listOrigins[nextListToLearn] = dayNum;
+            nextListToLearn++;
+        }
+    });
+
+    let fullResultHTML = "";
+    let fullResultText = "";
+    let newPartText = "";
+
+    for (let d = 1; d <= endOfFuture; d++) {
+        let study = "(暂停)";
+        let reviews = [];
+
+        for (let num in listOrigins) {
+            let n = parseInt(num);
+            if (listOrigins[n] === d) {
+                study = `List ${n.toString().padStart(2, '0')}`;
+            }
+            const gap = d - listOrigins[n];
+            if (intervals.includes(gap)) {
+                reviews.push(`L${n.toString().padStart(2, '0')} (${gap}天后)`);
+            }
+        }
+
+        const dStr = `Day ${d.toString().padStart(2, '0')}`;
+        const rStr = reviews.length > 0 ? reviews.join(', ') : "-";
+        const line = `${dStr} | ${study.padEnd(8)} | ${rStr}\n`;
+        
+        fullResultText += line;
+        
+        if (d >= startOfFuture) {
+            fullResultHTML += `<span class="highlight">${line}</span>`;
+            newPartText += line;
+        } else {
+            fullResultHTML += line;
+        }
+    }
+
+    lastFullResult = fullResultText;
+    lastNewPart = newPartText;
+    document.getElementById('output').innerHTML = fullResultHTML;
+}
+
+function copyText(type) {
+    const textToCopy = (type === 'new') ? lastNewPart : lastFullResult;
+    if (!textToCopy) return alert("请生成列表");
+    
+    navigator.clipboard.writeText(textToCopy.trim()).then(() => {
+        alert(type === 'new' ? "已复制新增部分" : "已复制完整列表");
+    });
+}
+
+initInputs();
+</script>
+
+</body>
+</html>
