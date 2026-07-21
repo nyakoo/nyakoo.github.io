@@ -99,16 +99,7 @@
             gap: 8px; 
             transition: all 0.2s ease; 
         }
-        .btn-base:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); transform: scale(0.98); }
-        
-        /* PC 端鼠标悬停高亮动画效果 */
-        @media (min-width: 768px) {
-            .btn-base:hover, .opt-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 12px rgba(125, 107, 145, 0.25);
-                opacity: 0.95;
-            }
-        }
+        .btn-base:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); }
         
         .load-txt-btn { background-color: var(--main-blue); width: 100%; margin: 0; }
         .unified-btn-container { display: flex; flex-direction: column; gap: 12px; width: 100%; align-items: center; margin-top: 15px; }
@@ -121,6 +112,17 @@
         .major-btn-shiyi { background-color: var(--main-green); } 
         
         .local-import-btn { background-color: var(--main-yellow); width: 100%; margin: 5px; }
+        
+        /* 增加悬停时的微光与平移效果（匹配 index） */
+        @media (min-width: 768px) {
+            .load-txt-btn:hover,
+            .local-import-btn:hover,
+            .major-hub-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+                opacity: 0.95;
+            }
+        }
         
         .divider-box { margin-top: 15px; border-top: 2px dashed var(--border-purple); padding-top: 15px; width: 100%; }
         
@@ -197,16 +199,10 @@
             font-size: 1.2em;              
             font-weight: 575;            
             line-height: 1.2;
-            cursor: pointer; transition: all 0.2s ease;
+            cursor: pointer; transition: all 0.1s;
             word-break: break-all; text-align: center;
             user-select: none;
             position: relative; top: 0;
-        }
-        @media (min-width: 768px) {
-            .char-tile:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(125, 107, 145, 0.2);
-            }
         }
         .char-tile:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); transform: none; background: var(--pure-white); }
         .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; top: 0; }
@@ -230,14 +226,7 @@
         
         .numpad-wrap { margin-top: 15px; margin-bottom: 15px; width: 100%; display: flex; flex-direction: column; gap: 6px; }
         .numpad-row { display: flex; gap: 6px; justify-content: center; margin-bottom: 0; }
-        .num-key { width: 60px; height: 60px; font-size: 22px; padding: 0; margin: 0; background: var(--pure-white); color: var(--text-darkpurple); border: 2px solid var(--border-purple); border-radius: 12px; box-shadow: none; font-weight: bold; transition: all 0.2s ease; cursor: pointer; }
-        @media (min-width: 768px) {
-            .num-key:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 8px rgba(125, 107, 145, 0.2);
-                background: #fdf8ff;
-            }
-        }
+        .num-key { width: 60px; height: 60px; font-size: 22px; padding: 0; margin: 0; background: var(--pure-white); color: var(--text-darkpurple); border: 2px solid var(--border-purple); border-radius: 12px; box-shadow: none; font-weight: bold; }
         .num-key:active { border-width: 1px; transform: scale(1.05); }
         .num-key.func { background: var(--main-purple); }
         
@@ -304,7 +293,7 @@
             color: var(--border-purple);
             font-size: 16px;           
             font-weight: bold;         
-            cursor: pointer; transition: all 0.2s ease;
+            cursor: pointer; transition: all 0.1s;
             word-break: break-all; text-align: center; line-height: 1.2;
             position: relative; top: 0;
         }
@@ -886,7 +875,6 @@
         document.getElementById('shiyi-progress').innerText = currentIndex + 1;
         document.getElementById('shiyi-display-grammar').innerText = currentItem.grammar;
 
-        // 从全局释义库抽取干扰项填满
         let sourcePool = (globalShiyiMaster.length > 0 ? globalShiyiMaster : shiyiQuizBank);
         let allTransPool = sourcePool.map(item => item.translation).filter(t => t !== currentItem.translation);
         allTransPool = Array.from(new Set(allTransPool));
@@ -973,10 +961,9 @@
         startMode(currentMode);
     };
     
-    // 巩固难词优化：不足时随机抽满
     window.focusOnHelped = function() {
         if(helpedSet.size === 0) { alert("当前无错题难词，无法进行巩固复习！"); return; }
-        const MIN_REQUIRED = 5; // 期望巩固模式下的最小题目容量
+        const MIN_REQUIRED = 5;
 
         if(currentMode.startsWith('sentence')){
             let filtered = globalSentenceMaster.filter(g => helpedSet.has(g.answer) || helpedSet.has(g.grammar));
