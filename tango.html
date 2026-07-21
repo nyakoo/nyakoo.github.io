@@ -241,7 +241,15 @@
         .progress-text { color: var(--border-purple); font-size: 0.85em; font-weight: bold; text-align: center; width: 100%; margin: 0; }
         
         /* [假名拼字方块] 九宫格网图及假名可点击方块 */
-        .scramble-container { display: grid; grid-template-rows: repeat(3, auto); grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; min-height: 130px; width: 100%; justify-content: center; }
+        .scramble-container { 
+            display: grid; 
+            grid-template-columns: repeat(8, auto); 
+            gap: 6px; 
+            min-height: 130px; 
+            width: 100%; 
+            justify-content: center; 
+            margin: 6px 0 0 0; 
+        }
         .char-tile { background: var(--pure-white); border: 2px solid var(--border-purple); color: var(--border-purple); border-radius: 12px; width: 42px; height: 42px; line-height: 38px; font-size: 1.2em; font-weight: 575; cursor: pointer; user-select: none; text-align: center; transition: all 0.15s; }
         .char-tile:active { border-width: 1px; transform: scale(1.05); background: var(--main-purple); }
         .char-tile.used { opacity: 0.4; background: var(--ingame-bg-grey); pointer-events: none; }
@@ -303,6 +311,7 @@
             .char-tile { width: 36px; height: 36px; line-height: 32px; font-size: 1.05em; border-radius: 9px; }
             .match-card { font-size: 0.95em; padding: 12px 4px; min-height: 70px; } 
             .num-key { width: 50px; height: 50px; font-size: 18px; }
+.scramble-container { grid-template-columns: repeat(6, auto) !important; }
         }
     </style>
 </head>
@@ -387,10 +396,10 @@
             <h3>已加载 <span id="total-count">0</span> 个单词</h3>
             <div class="unified-btn-container">
                 <!-- 声明式大按钮：动态挂载组件引擎自动化解析渲染 -->
-                <div data-major-btn data-text="📖 学习模式" data-class-suffix="study" data-onclick="startMode('study')"></div>
-                <div data-major-btn data-text="🎯 假名挑战" data-class-suffix="challenge" data-onclick="startMode('challenge')"></div>
-                <div data-major-btn data-text="📝 书写测试" data-class-suffix="write" data-onclick="startMode('hard-test')"></div>
-                <div data-major-btn data-text="🧩 连线消除" data-class-suffix="match" data-onclick="startMode('match')"></div>
+                <div data-major-btn data-text="学习模式" data-class-suffix="study" data-onclick="startMode('study')"></div>
+                <div data-major-btn data-text="假名挑战" data-class-suffix="challenge" data-onclick="startMode('challenge')"></div>
+                <div data-major-btn data-text="书写测试" data-class-suffix="write" data-onclick="startMode('hard-test')"></div>
+                <div data-major-btn data-text="连线消除" data-class-suffix="match" data-onclick="startMode('match')"></div>
             </div>
         </div>
 
@@ -464,7 +473,7 @@
              [板块 6] 通关结算与难词回顾视图
              ------------------------------------------------------------------ -->
         <div id="result-area" class="hidden">
-            <h2>🧩 恭喜通关！🎉</h2>
+            <h2>恭喜通关！</h2>
             <!-- 难词回顾弹窗面板 -->
             <div id="helped-words-container" class="hidden helped-words-box">
                 <p>难词回顾</p>
