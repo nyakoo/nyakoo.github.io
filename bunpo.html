@@ -97,7 +97,7 @@
             top: 0; 
             outline: none; 
             gap: 8px; 
-            transition: all 0.2s ease; 
+            transition: all 0.05s ease; 
         }
         .btn-base:active { top: 4px; box-shadow: 0 0px 0px var(--border-purple); }
         
@@ -113,13 +113,11 @@
         
         .local-import-btn { background-color: var(--main-yellow); width: 100%; margin: 5px; }
         
-        /* 增加悬停时的微光与平移效果（匹配 index） */
+        /* 电脑端鼠标悬停高亮效果 */
         @media (min-width: 768px) {
             .load-txt-btn:hover,
             .local-import-btn:hover,
             .major-hub-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(0,0,0,0.15);
                 opacity: 0.95;
             }
         }
@@ -875,6 +873,7 @@
         document.getElementById('shiyi-progress').innerText = currentIndex + 1;
         document.getElementById('shiyi-display-grammar').innerText = currentItem.grammar;
 
+        // 从全局释义库抽取干扰项填满
         let sourcePool = (globalShiyiMaster.length > 0 ? globalShiyiMaster : shiyiQuizBank);
         let allTransPool = sourcePool.map(item => item.translation).filter(t => t !== currentItem.translation);
         allTransPool = Array.from(new Set(allTransPool));
@@ -961,9 +960,10 @@
         startMode(currentMode);
     };
     
+    // 巩固难词优化：不足时随机抽满
     window.focusOnHelped = function() {
         if(helpedSet.size === 0) { alert("当前无错题难词，无法进行巩固复习！"); return; }
-        const MIN_REQUIRED = 5;
+        const MIN_REQUIRED = 5; // 期望巩固模式下的最小题目容量
 
         if(currentMode.startsWith('sentence')){
             let filtered = globalSentenceMaster.filter(g => helpedSet.has(g.answer) || helpedSet.has(g.grammar));
