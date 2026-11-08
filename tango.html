@@ -700,8 +700,11 @@
     function parseTxtData(rawText) {
         originalWordList = rawText.split(/\r?\n/).filter(l => l.includes(',')).map(line => {
             const p = line.split(',').map(s => s.trim());
-            let def = p.slice(3).filter(x => x).join('、').replace(/[^\u4e00-\u9fa5\u3001\uff0c\uff08\uff09\u2014]/g, '').trim();
-            def = def.replace(/、{2,}/g, '、').replace(/^、|、$/g, '').trim();
+            // 修改后：保留所有常规文本、英文字母、数字、日文假名及常用标点
+let def = p.slice(3).filter(x => x).join('、').trim();
+// 如果你仍想清理多余的连续顿号，可以保留下面这行：
+def = def.replace(/、{2,}/g, '、').replace(/^、|、$/g, '').trim();
+
             return { id: Math.random().toString(36).substr(2, 9), kanji: p[0], kana: p[1], accent: p[2] || '0', definition: def || p.slice(3).join('、') };
         });
         if(originalWordList.length > 0) {
